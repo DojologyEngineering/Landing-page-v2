@@ -26,7 +26,7 @@ export default function HeroSection() {
       initial="hidden"
       animate="show"
       variants={container}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 bg-[#010103]"
+      className="relative h-screen flex flex-col items-center justify-center px-4 bg-[#010103] overflow-hidden"
     >
       {/* Background SVG (brought to front) */}
       <div className="absolute inset-0 z-[70] pointer-events-none overflow-hidden">
