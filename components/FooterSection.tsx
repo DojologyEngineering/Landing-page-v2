@@ -1,6 +1,16 @@
+"use client";
+
+import { motion, fadeUp } from "./motion";
+
 export default function FooterSection() {
   return (
-    <footer className="py-20 px-4 bg-gradient-to-b from-purple-900/20 to-purple-950/30">
+    <motion.footer
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={fadeUp}
+      className="py-20 px-4 bg-gradient-to-b from-purple-900/20 to-purple-950/30"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Main Footer Content */}
         <div className="text-center mb-12">
@@ -24,9 +34,7 @@ export default function FooterSection() {
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-400 text-sm">
-              © 2024 All rights reserved
-            </div>
+            <div className="text-gray-400 text-sm">© 2024 All rights reserved</div>
             <div className="flex gap-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 Privacy Policy
@@ -38,6 +46,6 @@ export default function FooterSection() {
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

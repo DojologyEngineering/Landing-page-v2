@@ -1,3 +1,22 @@
+"use client";
+
+import { motion, fadeUp } from "./motion";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export default function TechnologiesSection() {
   const features = [
     {
@@ -23,7 +42,13 @@ export default function TechnologiesSection() {
   ];
 
   return (
-    <section className="py-20 px-4">
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={fadeUp}
+      className="py-20 px-4"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -33,19 +58,27 @@ export default function TechnologiesSection() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid md:grid-cols-2 gap-6"
+        >
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={item}
+              whileHover={{ scale: 1.03, borderColor: "rgba(59, 130, 246, 0.5)", transition: { duration: 0.2 } }}
               className="bg-gradient-to-br from-gray-900 to-gray-950 p-8 rounded-2xl border border-gray-800 hover:border-blue-500/50 transition-colors"
             >
               <div className="text-4xl mb-4">{feature.icon}</div>
               <h3 className="text-2xl font-semibold mb-3">{feature.title}</h3>
               <p className="text-gray-400">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

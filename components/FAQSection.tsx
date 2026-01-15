@@ -1,6 +1,23 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "./motion";
+import { fadeUp } from "./motion";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, x: -20 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+};
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -25,28 +42,42 @@ export default function FAQSection() {
   ];
 
   return (
-    <section className="py-20 px-4">
+    <motion.section
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={fadeUp}
+      className="py-20 px-4"
+    >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Frequently</h2>
           <p className="text-gray-400">ASKED QUESTIONS</p>
         </div>
 
-        <div className="space-y-4">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="space-y-4"
+        >
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={item}
               className="bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-xl overflow-hidden"
             >
-              <button
+              <motion.button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-800/50 transition-colors"
+                whileHover={{ backgroundColor: "rgba(31, 41, 55, 0.5)" }}
+                className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors"
               >
                 <span className="font-medium">{faq.question}</span>
-                <svg
-                  className={`w-5 h-5 transition-transform ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                <motion.svg
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -57,17 +88,25 @@ export default function FAQSection() {
                     strokeWidth={2}
                     d="M19 9l-7 7-7-7"
                   />
-                </svg>
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4 text-gray-400">
-                  {faq.answer}
-                </div>
-              )}
-            </div>
+                </motion.svg>
+              </motion.button>
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-4 text-gray-400">{faq.answer}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
