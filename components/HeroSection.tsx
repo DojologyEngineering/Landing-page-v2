@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion, fadeUp } from "./motion";
-import { BackgroundSVG, circleIconStyle } from "../assets/icons/icon-asset";
+import { BackgroundSVG, circleIconStyle, AngularBackground } from "../assets/icons/icon-asset";
+import Icon from "../assets/icons/icon-asset";
 
 const container = {
   hidden: { opacity: 0 },
@@ -24,38 +26,74 @@ export default function HeroSection() {
       initial="hidden"
       animate="show"
       variants={container}
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 bg-[#010103]"
     >
-      {/* Background SVG */}
-      <div className="absolute inset-0 -z-20 overflow-hidden">
+      {/* Background SVG (brought to front) */}
+      <div className="absolute inset-0 z-[70] pointer-events-none overflow-hidden">
         <BackgroundSVG className="w-full h-full" />
       </div>
-      {/* Bottom circle (above background, aligned to bottom) */}
-      <div className="absolute left-0 right-0 bottom-0 pointer-events-none z-10">
+      {/* Lighting background image */}
+      <div className="absolute inset-x-0 top-[-5rem] h-[calc(50vh+5rem)] z-50">
+        <Image 
+          src="/lighting.png"
+          alt="" 
+          fill
+          className="object-cover object-top"
+          priority
+        />
+      </div>
+      {/* Bottom circle (centered at bottom) */}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-2.5rem] pointer-events-none z-[70] flex justify-center">
         {circleIconStyle({ className: "w-full h-[220px] md:h-[320px]" })}
       </div>
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60 -z-10" />
-      <div className="text-center max-w-4xl mx-auto relative z-10">
-        <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold mb-6">
-          We Engineer <br />
-          You Scale 🚀
-        </motion.h1>
-        <motion.p variants={item} className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt
+      {/* Dark overlay moved behind background */}
+      <div className="absolute inset-0 -z-40" />
+      
+      <div className="text-center max-w-4xl mx-auto relative z-[80]">
+        <motion.div variants={item} className="mb-6 flex justify-center">
+          <Image 
+            src="/main-test.png" 
+            alt="We Engineer You Scale" 
+            width={600} 
+            height={200}
+            priority
+          />
+        </motion.div>
+        <motion.div variants={item} className="mb-4 flex justify-center items-center gap-2">
+          <Image 
+            src="/sub-title.png" 
+            alt="Subtitle" 
+            width={364} 
+            height={88}
+            priority
+          />
+          <div className="w-20 h-20 flex items-center justify-center">
+            <Icon name="earth" />
+          </div>
+        </motion.div>
+        <motion.p variants={item} className="text-[#FFFFF] text-[24px] mb-8 max-w-5xl mx-auto">
+          A hybrid Venture Studio and VC firm empowering startups and SMEs to scale faster
         </motion.p>
-        <motion.button
-          variants={item}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition-colors"
-        >
-          Get Started
-        </motion.button>
+        <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#34CB4D] hover:bg-green-600 text-[#0A0A0A] px-6 py-4 rounded-[8px] transition-colors font-normal font-family: Manrope"
+          >
+            Start Your Journey Now
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="border-1 border-[#34CB4D] hover:bg-white hover:text-black text-white px-6 py-4 rounded-lg transition-colors font-medium"
+          >
+            Contact Us
+          </motion.button>
+        </motion.div>
       </div>
 
       {/* Stats Section */}
-      <motion.div
+      {/* <motion.div
         variants={container}
         className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 relative z-10"
       >
@@ -75,7 +113,7 @@ export default function HeroSection() {
           <div className="text-4xl font-bold mb-2">600k</div>
           <div className="text-gray-400 text-sm">Metric</div>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </motion.section>
   );
 }
