@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, fadeUp } from "./motion";
+import { BackgroundSVG, circleIconStyle } from "../assets/icons/icon-asset";
 
 const container = {
   hidden: { opacity: 0 },
@@ -25,7 +26,17 @@ export default function HeroSection() {
       variants={container}
       className="relative min-h-screen flex flex-col items-center justify-center px-4"
     >
-      <div className="text-center max-w-4xl mx-auto">
+      {/* Background SVG */}
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        <BackgroundSVG className="w-full h-full" />
+      </div>
+      {/* Bottom circle (above background, aligned to bottom) */}
+      <div className="absolute left-0 right-0 bottom-0 pointer-events-none z-10">
+        {circleIconStyle({ className: "w-full h-[220px] md:h-[320px]" })}
+      </div>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60 -z-10" />
+      <div className="text-center max-w-4xl mx-auto relative z-10">
         <motion.h1 variants={item} className="text-5xl md:text-7xl font-bold mb-6">
           We Engineer <br />
           You Scale 🚀
@@ -46,7 +57,7 @@ export default function HeroSection() {
       {/* Stats Section */}
       <motion.div
         variants={container}
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20"
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 relative z-10"
       >
         <motion.div variants={item} className="text-center">
           <div className="text-4xl font-bold mb-2">1</div>

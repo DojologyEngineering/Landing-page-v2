@@ -41,149 +41,229 @@ const ICONS = {
       />
     </svg>
   ),
-  background: (
-    <svg
-      width="1440"
-      height="1024"
-      viewBox="0 0 1440 1024"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g opacity="0.2">
-        <path d="M1440 -205H0V1235H1440V-205Z" stroke="#B3B3B3" />
-        <path
-          d="M1356.78 -121.773H83.2266V1151.78H1356.78V-121.773Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M1281.48 -46.4766H158.52V1076.49H1281.48V-46.4766Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M1214.11 20.8906H225.891V1009.11H1214.11V20.8906Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M1154.67 80.3359H285.336V949.667H1154.67V80.3359Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M1103.15 131.852H336.852V898.146H1103.15V131.852Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M1059.56 175.445H380.449V854.554H1059.56V175.445Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M1023.88 211.117H416.109V818.892H1023.88V211.117Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M996.149 238.852H443.855V791.145H996.149V238.852Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M976.332 258.672H463.668V771.336H976.332V258.672Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M964.441 270.562H475.555V759.448H964.441V270.562Z"
-          stroke="#B3B3B3"
-        />
-        <path
-          d="M960.483 274.523H479.523V755.483H960.483V274.523Z"
-          stroke="#B3B3B3"
-        />
-        <path d="M479.52 755.484L-0.000469323 1235" stroke="#B3B3B3" />
-        <path d="M503.566 755.484L94.0177 1235" stroke="#B3B3B3" />
-        <path d="M527.613 755.484L179.222 1235" stroke="#B3B3B3" />
-        <path d="M551.66 755.484L257.81 1235" stroke="#B3B3B3" />
-        <path d="M575.715 755.484L331.387 1235" stroke="#B3B3B3" />
-        <path d="M599.762 755.484L401.138 1235" stroke="#B3B3B3" />
-        <path d="M623.809 755.484L468.003 1235" stroke="#B3B3B3" />
-        <path d="M647.855 755.484L532.733 1235" stroke="#B3B3B3" />
-        <path d="M671.902 755.484L595.954 1235" stroke="#B3B3B3" />
-        <path d="M695.957 755.484L658.218 1235" stroke="#B3B3B3" />
-        <path d="M720.004 755.484V1235" stroke="#B3B3B3" />
-        <path d="M744.051 755.484L781.79 1235" stroke="#B3B3B3" />
-        <path d="M768.098 755.484L844.046 1235" stroke="#B3B3B3" />
-        <path d="M792.145 755.484L907.267 1235" stroke="#B3B3B3" />
-        <path d="M816.195 755.484L972.001 1235" stroke="#B3B3B3" />
-        <path d="M840.242 755.484L1038.87 1235" stroke="#B3B3B3" />
-        <path d="M864.289 755.484L1108.62 1235" stroke="#B3B3B3" />
-        <path d="M888.332 755.484L1182.18 1235" stroke="#B3B3B3" />
-        <path d="M912.379 755.484L1260.77 1235" stroke="#B3B3B3" />
-        <path d="M936.434 755.484L1345.98 1235" stroke="#B3B3B3" />
-        <path d="M960.48 755.484L1440 1235" stroke="#B3B3B3" />
-        <path d="M479.523 274.523L0.00343693 -204.997" stroke="#B3B3B3" />
-        <path d="M479.523 298.57L0.00349215 -110.978" stroke="#B3B3B3" />
-        <path d="M479.523 322.617L0.00350496 -25.7744" stroke="#B3B3B3" />
-        <path d="M479.523 346.664L0.00348912 52.8139" stroke="#B3B3B3" />
-        <path d="M479.523 370.719L0.0034393 126.391" stroke="#B3B3B3" />
-        <path d="M479.523 394.766L0.00342554 196.142" stroke="#B3B3B3" />
-        <path d="M479.523 418.812L0.00346986 263.007" stroke="#B3B3B3" />
-        <path d="M479.523 442.859L0.00351695 327.737" stroke="#B3B3B3" />
-        <path d="M479.523 466.906L0.00349851 390.958" stroke="#B3B3B3" />
-        <path d="M479.523 490.961L0.00349404 453.222" stroke="#B3B3B3" />
-        <path d="M479.523 515.008H0.00349784" stroke="#B3B3B3" />
-        <path d="M479.523 539.055L0.00349404 576.794" stroke="#B3B3B3" />
-        <path d="M479.523 563.102L0.00349851 639.05" stroke="#B3B3B3" />
-        <path d="M479.523 587.148L0.00351695 702.271" stroke="#B3B3B3" />
-        <path d="M479.523 611.195L0.00346986 767.001" stroke="#B3B3B3" />
-        <path d="M479.523 635.242L0.00342554 833.866" stroke="#B3B3B3" />
-        <path d="M479.523 659.289L0.0034393 903.617" stroke="#B3B3B3" />
-        <path d="M479.523 683.336L0.00348912 977.186" stroke="#B3B3B3" />
-        <path d="M479.523 707.383L0.00350496 1055.77" stroke="#B3B3B3" />
-        <path d="M479.523 731.438L0.00349215 1140.99" stroke="#B3B3B3" />
-        <path d="M479.523 755.484L0.00343693 1235" stroke="#B3B3B3" />
-        <path d="M960.484 274.523L1440 -204.997" stroke="#B3B3B3" />
-        <path d="M936.438 274.523L1345.99 -204.997" stroke="#B3B3B3" />
-        <path d="M912.391 274.523L1260.78 -204.996" stroke="#B3B3B3" />
-        <path d="M888.344 274.523L1182.19 -204.997" stroke="#B3B3B3" />
-        <path d="M864.289 274.523L1108.62 -204.997" stroke="#B3B3B3" />
-        <path d="M840.242 274.523L1038.87 -204.997" stroke="#B3B3B3" />
-        <path d="M816.195 274.523L972.001 -204.997" stroke="#B3B3B3" />
-        <path d="M792.148 274.523L907.271 -204.996" stroke="#B3B3B3" />
-        <path d="M768.102 274.523L844.05 -204.997" stroke="#B3B3B3" />
-        <path d="M744.047 274.523L781.786 -204.997" stroke="#B3B3B3" />
-        <path d="M720 274.523L720 -204.997" stroke="#B3B3B3" />
-        <path d="M695.953 274.523L658.214 -204.997" stroke="#B3B3B3" />
-        <path d="M671.906 274.523L595.958 -204.997" stroke="#B3B3B3" />
-        <path d="M647.859 274.523L532.737 -204.996" stroke="#B3B3B3" />
-        <path d="M623.809 274.523L468.003 -204.997" stroke="#B3B3B3" />
-        <path d="M599.762 274.523L401.138 -204.997" stroke="#B3B3B3" />
-        <path d="M575.715 274.523L331.387 -204.997" stroke="#B3B3B3" />
-        <path d="M551.672 274.523L257.822 -204.997" stroke="#B3B3B3" />
-        <path d="M527.625 274.523L179.233 -204.996" stroke="#B3B3B3" />
-        <path d="M503.57 274.523L94.0216 -204.997" stroke="#B3B3B3" />
-        <path d="M479.523 274.523L0.00343693 -204.997" stroke="#B3B3B3" />
-        <path d="M960.48 755.484L1440 1235" stroke="#B3B3B3" />
-        <path d="M960.48 731.438L1440 1140.99" stroke="#B3B3B3" />
-        <path d="M960.48 707.391L1440 1055.78" stroke="#B3B3B3" />
-        <path d="M960.48 683.344L1440 977.194" stroke="#B3B3B3" />
-        <path d="M960.48 659.289L1440 903.617" stroke="#B3B3B3" />
-        <path d="M960.48 635.242L1440 833.866" stroke="#B3B3B3" />
-        <path d="M960.48 611.195L1440 767.001" stroke="#B3B3B3" />
-        <path d="M960.48 587.148L1440 702.271" stroke="#B3B3B3" />
-        <path d="M960.48 563.102L1440 639.05" stroke="#B3B3B3" />
-        <path d="M960.48 539.047L1440 576.786" stroke="#B3B3B3" />
-        <path d="M960.48 515L1440 515" stroke="#B3B3B3" />
-        <path d="M960.48 490.953L1440 453.214" stroke="#B3B3B3" />
-        <path d="M960.48 466.906L1440 390.958" stroke="#B3B3B3" />
-        <path d="M960.48 442.859L1440 327.737" stroke="#B3B3B3" />
-        <path d="M960.48 418.812L1440 263.007" stroke="#B3B3B3" />
-        <path d="M960.48 394.766L1440 196.142" stroke="#B3B3B3" />
-        <path d="M960.48 370.719L1440 126.391" stroke="#B3B3B3" />
-        <path d="M960.48 346.672L1440 52.8217" stroke="#B3B3B3" />
-        <path d="M960.48 322.625L1440 -25.7666" stroke="#B3B3B3" />
-        <path d="M960.48 298.57L1440 -110.978" stroke="#B3B3B3" />
-        <path d="M960.48 274.523L1440 -204.997" stroke="#B3B3B3" />
-      </g>
-    </svg>
-  ),
 };
+export const circleIconStyle = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    width="1440"
+    height="385"
+    viewBox="0 0 1440 385"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g filter="url(#filter0_f_2102_4655)">
+      <circle
+        cx="706"
+        cy="1134"
+        r="1054"
+        fill="url(#paint0_linear_2102_4655)"
+        fillOpacity={0.7}
+      />
+    </g>
+    <g filter="url(#filter1_f_2102_4655)">
+      <circle cx="706" cy="1185" r="1054" fill="#FFF3EC" fillOpacity={0.7} />
+    </g>
+    <circle cx="706" cy="1185" r="1054" fill="#0A0A0A" />
+    <defs>
+      <filter
+        id="filter0_f_2102_4655"
+        x="-428"
+        y="0"
+        width="2268"
+        height="2268"
+        filterUnits="userSpaceOnUse"
+        colorInterpolationFilters="sRGB"
+      >
+        <feFlood floodOpacity={0} result="BackgroundImageFix" />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="BackgroundImageFix"
+          result="shape"
+        />
+        <feGaussianBlur
+          stdDeviation={40}
+          result="effect1_foregroundBlur_2102_4655"
+        />
+      </filter>
+      <filter
+        id="filter1_f_2102_4655"
+        x="-392"
+        y="87"
+        width="2196"
+        height="2196"
+        filterUnits="userSpaceOnUse"
+        colorInterpolationFilters="sRGB"
+      >
+        <feFlood floodOpacity={0} result="BackgroundImageFix" />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="BackgroundImageFix"
+          result="shape"
+        />
+        <feGaussianBlur
+          stdDeviation={22}
+          result="effect1_foregroundBlur_2102_4655"
+        />
+      </filter>
+      <linearGradient
+        id="paint0_linear_2102_4655"
+        x1="706"
+        y1="136.071"
+        x2="706"
+        y2="346.493"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#3B82F6" />
+        <stop offset={1} stopColor="#4F46E5" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
 
+// Background SVG component (exported so other components can style it)
+export const BackgroundSVG = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 1440 1024"
+    fill="none"
+    preserveAspectRatio="xMidYMid slice"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <g opacity="0.2">
+      <path d="M1440 -205H0V1235H1440V-205Z" stroke="#B3B3B3" />
+      <path
+        d="M1356.78 -121.773H83.2266V1151.78H1356.78V-121.773Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M1281.48 -46.4766H158.52V1076.49H1281.48V-46.4766Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M1214.11 20.8906H225.891V1009.11H1214.11V20.8906Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M1154.67 80.3359H285.336V949.667H1154.67V80.3359Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M1103.15 131.852H336.852V898.146H1103.15V131.852Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M1059.56 175.445H380.449V854.554H1059.56V175.445Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M1023.88 211.117H416.109V818.892H1023.88V211.117Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M996.149 238.852H443.855V791.145H996.149V238.852Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M976.332 258.672H463.668V771.336H976.332V258.672Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M964.441 270.562H475.555V759.448H964.441V270.562Z"
+        stroke="#B3B3B3"
+      />
+      <path
+        d="M960.483 274.523H479.523V755.483H960.483V274.523Z"
+        stroke="#B3B3B3"
+      />
+      <path d="M479.52 755.484L-0.000469323 1235" stroke="#B3B3B3" />
+      <path d="M503.566 755.484L94.0177 1235" stroke="#B3B3B3" />
+      <path d="M527.613 755.484L179.222 1235" stroke="#B3B3B3" />
+      <path d="M551.66 755.484L257.81 1235" stroke="#B3B3B3" />
+      <path d="M575.715 755.484L331.387 1235" stroke="#B3B3B3" />
+      <path d="M599.762 755.484L401.138 1235" stroke="#B3B3B3" />
+      <path d="M623.809 755.484L468.003 1235" stroke="#B3B3B3" />
+      <path d="M647.855 755.484L532.733 1235" stroke="#B3B3B3" />
+      <path d="M671.902 755.484L595.954 1235" stroke="#B3B3B3" />
+      <path d="M695.957 755.484L658.218 1235" stroke="#B3B3B3" />
+      <path d="M720.004 755.484V1235" stroke="#B3B3B3" />
+      <path d="M744.051 755.484L781.79 1235" stroke="#B3B3B3" />
+      <path d="M768.098 755.484L844.046 1235" stroke="#B3B3B3" />
+      <path d="M792.145 755.484L907.267 1235" stroke="#B3B3B3" />
+      <path d="M816.195 755.484L972.001 1235" stroke="#B3B3B3" />
+      <path d="M840.242 755.484L1038.87 1235" stroke="#B3B3B3" />
+      <path d="M864.289 755.484L1108.62 1235" stroke="#B3B3B3" />
+      <path d="M888.332 755.484L1182.18 1235" stroke="#B3B3B3" />
+      <path d="M912.379 755.484L1260.77 1235" stroke="#B3B3B3" />
+      <path d="M936.434 755.484L1345.98 1235" stroke="#B3B3B3" />
+      <path d="M960.48 755.484L1440 1235" stroke="#B3B3B3" />
+      <path d="M479.523 274.523L0.00343693 -204.997" stroke="#B3B3B3" />
+      <path d="M479.523 298.57L0.00349215 -110.978" stroke="#B3B3B3" />
+      <path d="M479.523 322.617L0.00350496 -25.7744" stroke="#B3B3B3" />
+      <path d="M479.523 346.664L0.00348912 52.8139" stroke="#B3B3B3" />
+      <path d="M479.523 370.719L0.0034393 126.391" stroke="#B3B3B3" />
+      <path d="M479.523 394.766L0.00342554 196.142" stroke="#B3B3B3" />
+      <path d="M479.523 418.812L0.00346986 263.007" stroke="#B3B3B3" />
+      <path d="M479.523 442.859L0.00351695 327.737" stroke="#B3B3B3" />
+      <path d="M479.523 466.906L0.00349851 390.958" stroke="#B3B3B3" />
+      <path d="M479.523 490.961L0.00349404 453.222" stroke="#B3B3B3" />
+      <path d="M479.523 515.008H0.00349784" stroke="#B3B3B3" />
+      <path d="M479.523 539.055L0.00349404 576.794" stroke="#B3B3B3" />
+      <path d="M479.523 563.102L0.00349851 639.05" stroke="#B3B3B3" />
+      <path d="M479.523 587.148L0.00351695 702.271" stroke="#B3B3B3" />
+      <path d="M479.523 611.195L0.00346986 767.001" stroke="#B3B3B3" />
+      <path d="M479.523 635.242L0.00342554 833.866" stroke="#B3B3B3" />
+      <path d="M479.523 659.289L0.0034393 903.617" stroke="#B3B3B3" />
+      <path d="M479.523 683.336L0.00348912 977.186" stroke="#B3B3B3" />
+      <path d="M479.523 707.383L0.00350496 1055.77" stroke="#B3B3B3" />
+      <path d="M479.523 731.438L0.00349215 1140.99" stroke="#B3B3B3" />
+      <path d="M479.523 755.484L0.00343693 1235" stroke="#B3B3B3" />
+      <path d="M960.484 274.523L1440 -204.997" stroke="#B3B3B3" />
+      <path d="M936.438 274.523L1345.99 -204.997" stroke="#B3B3B3" />
+      <path d="M912.391 274.523L1260.78 -204.996" stroke="#B3B3B3" />
+      <path d="M888.344 274.523L1182.19 -204.997" stroke="#B3B3B3" />
+      <path d="M864.289 274.523L1108.62 -204.997" stroke="#B3B3B3" />
+      <path d="M840.242 274.523L1038.87 -204.997" stroke="#B3B3B3" />
+      <path d="M816.195 274.523L972.001 -204.997" stroke="#B3B3B3" />
+      <path d="M792.148 274.523L907.271 -204.996" stroke="#B3B3B3" />
+      <path d="M768.102 274.523L844.05 -204.997" stroke="#B3B3B3" />
+      <path d="M744.047 274.523L781.786 -204.997" stroke="#B3B3B3" />
+      <path d="M720 274.523L720 -204.997" stroke="#B3B3B3" />
+      <path d="M695.953 274.523L658.214 -204.997" stroke="#B3B3B3" />
+      <path d="M671.906 274.523L595.958 -204.997" stroke="#B3B3B3" />
+      <path d="M647.859 274.523L532.737 -204.996" stroke="#B3B3B3" />
+      <path d="M623.809 274.523L468.003 -204.997" stroke="#B3B3B3" />
+      <path d="M599.762 274.523L401.138 -204.997" stroke="#B3B3B3" />
+      <path d="M575.715 274.523L331.387 -204.997" stroke="#B3B3B3" />
+      <path d="M551.672 274.523L257.822 -204.997" stroke="#B3B3B3" />
+      <path d="M527.625 274.523L179.233 -204.996" stroke="#B3B3B3" />
+      <path d="M503.57 274.523L94.0216 -204.997" stroke="#B3B3B3" />
+      <path d="M479.523 274.523L0.00343693 -204.997" stroke="#B3B3B3" />
+      <path d="M960.48 755.484L1440 1235" stroke="#B3B3B3" />
+      <path d="M960.48 731.438L1440 1140.99" stroke="#B3B3B3" />
+      <path d="M960.48 707.391L1440 1055.78" stroke="#B3B3B3" />
+      <path d="M960.48 683.344L1440 977.194" stroke="#B3B3B3" />
+      <path d="M960.48 659.289L1440 903.617" stroke="#B3B3B3" />
+      <path d="M960.48 635.242L1440 833.866" stroke="#B3B3B3" />
+      <path d="M960.48 611.195L1440 767.001" stroke="#B3B3B3" />
+      <path d="M960.48 587.148L1440 702.271" stroke="#B3B3B3" />
+      <path d="M960.48 563.102L1440 639.05" stroke="#B3B3B3" />
+      <path d="M960.48 539.047L1440 576.786" stroke="#B3B3B3" />
+      <path d="M960.48 515L1440 515" stroke="#B3B3B3" />
+      <path d="M960.48 490.953L1440 453.214" stroke="#B3B3B3" />
+      <path d="M960.48 466.906L1440 390.958" stroke="#B3B3B3" />
+      <path d="M960.48 442.859L1440 327.737" stroke="#B3B3B3" />
+      <path d="M960.48 418.812L1440 263.007" stroke="#B3B3B3" />
+      <path d="M960.48 394.766L1440 196.142" stroke="#B3B3B3" />
+      <path d="M960.48 370.719L1440 126.391" stroke="#B3B3B3" />
+      <path d="M960.48 346.672L1440 52.8217" stroke="#B3B3B3" />
+      <path d="M960.48 322.625L1440 -25.7666" stroke="#B3B3B3" />
+      <path d="M960.48 298.57L1440 -110.978" stroke="#B3B3B3" />
+      <path d="M960.48 274.523L1440 -204.997" stroke="#B3B3B3" />
+    </g>
+  </svg>
+);
 // Generic Icon component
 type IconProps = {
   name: keyof typeof ICONS;
