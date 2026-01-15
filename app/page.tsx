@@ -1,6 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import PrinciplesSection from "@/components/PrinciplesSection";
-import TechnologiesSection from "@/components/TechnologiesSection";
+import TechnologiesSection from "@/components/serviceSection";
 import TeamSection from "@/components/TeamSection";
 import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
