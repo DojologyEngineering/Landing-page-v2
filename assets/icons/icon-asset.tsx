@@ -387,6 +387,13 @@ export const BackgroundSVG = ({ className }: { className?: string }) => (
     </g>
   </svg>
 );
+
+// Principles Section Images
+export const AboutUsTag = "/aboutus_tag.svg";
+export const WhoWeAreIcon = "/who_we_are_icon.svg";
+export const PillBackground = "/pill.png";
+export const Card3Image = "/card3_image.png";
+
 // Generic Icon component
 type IconProps = {
   name: keyof typeof ICONS;
