@@ -2,8 +2,13 @@
 
 import Image from "next/image";
 import { motion, fadeUp } from "./motion";
-import { BackgroundSVG, circleIconStyle, AngularBackground } from "../assets/icons/icon-asset";
+import {
+  BackgroundSVG,
+  circleIconStyle,
+  AngularBackground,
+} from "../assets/icons/icon-asset";
 import Icon from "../assets/icons/icon-asset";
+import LogoLoop from "@/components/LogoLoop";
 
 const container = {
   hidden: { opacity: 0 },
@@ -34,47 +39,86 @@ export default function HeroSection() {
       </div>
       {/* Lighting background image */}
       <div className="absolute inset-x-0 top-[-5rem] h-[calc(50vh+5rem)] z-50">
-        <Image 
+        <Image
           src="/lighting.png"
-          alt="" 
+          alt=""
           fill
           className="object-cover object-top"
           priority
         />
       </div>
-      {/* Bottom circle (centered at bottom) */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-2.5rem] pointer-events-none z-[70] flex justify-center">
-        {circleIconStyle({ className: "w-full h-[220px] md:h-[320px]" })}
+      {/* Bottom circle (centered at bottom) with logo loop inside */}
+      <div className="absolute left-[51%] -translate-x-1/2 bottom-[-2rem] pointer-events-none z-[70] w-screen flex justify-center items-center">
+        {circleIconStyle({ className: "h-[220px] md:h-[320px]" })}
+        {/* Logo loop positioned inside the circle */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20%] w-[430px] pointer-events-auto">
+          <div className="relative overflow-hidden backdrop-blur-sm px-1 pt-9">
+            {/* Top border with gradient fade */}
+            <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+
+            {/* Logo loop */}
+            <LogoLoop
+              logos={[
+                { src: "/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
+                { src: "/Prohose%20white%20logo.png", alt: "Prohose" },
+                { src: "/umami%20white%20logo.png", alt: "Umami" },
+              ]}
+              speed={60}
+              gap={56}
+              logoHeight={46}
+              fadeOut={false}
+              className="mx-auto opacity-30"
+            />
+
+            {/* Left fade */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
+
+            {/* Right fade */}
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+          </div>
+        </div>
       </div>
       {/* Dark overlay moved behind background */}
       <div className="absolute inset-0 -z-40" />
-      
+
       <div className="text-center max-w-4xl mx-auto relative z-[80]">
         <motion.div variants={item} className="mb-6 flex justify-center">
-          <Image 
-            src="/main-test.png" 
-            alt="We Engineer You Scale" 
-            width={600} 
+          <Image
+            src="/main-test.png"
+            alt="We Engineer You Scale"
+            width={600}
             height={200}
             priority
           />
         </motion.div>
-        <motion.div variants={item} className="mb-4 flex justify-center items-center gap-2">
-          <Image 
-            src="/sub-title.png" 
-            alt="Subtitle" 
-            width={364} 
+        <motion.div
+          variants={item}
+          className="mb-4 flex justify-center items-center gap-2"
+        >
+          <Image
+            src="/sub-title.png"
+            alt="Subtitle"
+            width={364}
             height={88}
             priority
           />
-          <div className="w-20 h-20 flex items-center justify-center">
-            <Icon name="earth" />
+          <div className="relative w-20 h-20 overflow-hidden flex items-center">
+            <div className="absolute animate-earth-orbit">
+              <Icon name="earth" />
+            </div>
           </div>
         </motion.div>
-        <motion.p variants={item} className="text-[#FFFFF] text-[24px] mb-8 max-w-5xl mx-auto">
-          A hybrid Venture Studio and VC firm empowering startups and SMEs to scale faster
+        <motion.p
+          variants={item}
+          className="text-white text-[24px] mb-8 max-w-5xl mx-auto"
+        >
+          A hybrid Venture Studio and VC firm empowering startups and SMEs to
+          scale faster
         </motion.p>
-        <motion.div variants={item} className="flex flex-wrap items-center justify-center gap-4">
+        <motion.div
+          variants={item}
+          className="flex flex-wrap items-center justify-center gap-4"
+        >
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -91,29 +135,6 @@ export default function HeroSection() {
           </motion.button>
         </motion.div>
       </div>
-
-      {/* Stats Section */}
-      {/* <motion.div
-        variants={container}
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 relative z-10"
-      >
-        <motion.div variants={item} className="text-center">
-          <div className="text-4xl font-bold mb-2">1</div>
-          <div className="text-gray-400 text-sm">Metric</div>
-        </motion.div>
-        <motion.div variants={item} className="text-center">
-          <div className="text-4xl font-bold mb-2">6</div>
-          <div className="text-gray-400 text-sm">Metric</div>
-        </motion.div>
-        <motion.div variants={item} className="text-center">
-          <div className="text-4xl font-bold mb-2">$.5M</div>
-          <div className="text-gray-400 text-sm">Metric</div>
-        </motion.div>
-        <motion.div variants={item} className="text-center">
-          <div className="text-4xl font-bold mb-2">600k</div>
-          <div className="text-gray-400 text-sm">Metric</div>
-        </motion.div>
-      </motion.div> */}
     </motion.section>
   );
 }
