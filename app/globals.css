@@ -3,6 +3,34 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* ===== PrinciplesSection & ServiceSection Colors ===== */
+  
+  /* Primary Colors */
+  --color-primary-purple: #4F1AD6;
+  --color-primary-purple-light: #4E43FE;
+  --color-primary-green-start: #178F2B;
+  --color-primary-green-end: #34CB4D;
+  --color-primary-green-hover: #00C482;
+  
+  /* Card Backgrounds (PrinciplesSection) */
+  --color-card-bg: rgba(60, 60, 67, 0.30);
+  --color-card-overlay-start: rgba(0, 0, 0, 0.30);
+  --color-card-overlay-end: rgba(79, 26, 214, 0.15);
+  
+  /* Hover Overlays (PrinciplesSection) */
+  --color-hover-gradient-start: rgba(79, 26, 214, 0.95);
+  --color-hover-gradient-end: rgba(0, 0, 0, 0.95);
+  
+  /* Effects (PrinciplesSection Badge) */
+  --color-glow-purple: rgba(147, 51, 234, 0.3);
+  
+  /* Text & Borders (ServiceSection Button & Dividers) */
+  --color-text-dark: #0A0A0A;
+  --color-border-white-50: rgba(255, 255, 255, 0.50);
+  --color-divider-start: rgba(255, 255, 255, 0);
+  --color-divider-mid: rgba(255, 255, 255, 0.15);
+  --color-divider-end: rgba(255, 255, 255, 0);
 }
 
 @theme inline {
@@ -16,6 +44,34 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
+    /* ===== PrinciplesSection & ServiceSection Colors ===== */
+    
+    /* Primary Colors */
+    --color-primary-purple: #4F1AD6;
+    --color-primary-purple-light: #4E43FE;
+    --color-primary-green-start: #178F2B;
+    --color-primary-green-end: #34CB4D;
+    --color-primary-green-hover: #00C482;
+    
+    /* Card Backgrounds (PrinciplesSection) */
+    --color-card-bg: rgba(60, 60, 67, 0.30);
+    --color-card-overlay-start: rgba(0, 0, 0, 0.30);
+    --color-card-overlay-end: rgba(79, 26, 214, 0.15);
+    
+    /* Hover Overlays (PrinciplesSection) */
+    --color-hover-gradient-start: rgba(79, 26, 214, 0.95);
+    --color-hover-gradient-end: rgba(0, 0, 0, 0.95);
+    
+    /* Effects (PrinciplesSection Badge) */
+    --color-glow-purple: rgba(147, 51, 234, 0.3);
+    
+    /* Text & Borders (ServiceSection Button & Dividers) */
+    --color-text-dark: #0A0A0A;
+    --color-border-white-50: rgba(255, 255, 255, 0.50);
+    --color-divider-start: rgba(255, 255, 255, 0);
+    --color-divider-mid: rgba(255, 255, 255, 0.15);
+    --color-divider-end: rgba(255, 255, 255, 0);
   }
 }
 
