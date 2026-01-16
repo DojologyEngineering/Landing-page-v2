@@ -8,7 +8,7 @@ export default function Header(): React.ReactElement {
       <div className="max-w-7xl mx-auto px-6 relative flex items-center h-20">
         {/* Left: Logo */}
         <a href="#" className="flex items-center gap-3 z-10">
-          <Image src="/logo.svg" alt="DojoLogy" width={135} height={42} className="logo" />
+          <Image src="/logo.png" alt="DojoLogy" width={135} height={42} className="logo" />
         </a>
 
         {/* Center: Hamburger (2 bars) */}

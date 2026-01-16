@@ -4,11 +4,13 @@ import TechnologiesSection from "@/components/serviceSection";
 import TeamSection from "@/components/TeamSection";
 import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
+import StatsSection from "@/components/StatsSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-black">
       <HeroSection />
+      <StatsSection/>
       <PrinciplesSection />
       <TechnologiesSection />
       <TeamSection />
