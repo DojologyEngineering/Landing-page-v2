@@ -5,6 +5,7 @@ import TeamSection from "@/components/TeamSection";
 import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
 import StatsSection from "@/components/StatsSection";
+import PortfolioSection from "@/components/portfolioSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <StatsSection/>
       <PrinciplesSection />
       <TechnologiesSection />
+      <PortfolioSection />
       <TeamSection />
       <FAQSection />
       <FooterSection />

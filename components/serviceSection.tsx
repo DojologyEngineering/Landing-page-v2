@@ -90,7 +90,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Heading */}
-        <h2 className="relative z-10 text-center text-white text-[42px] leading-[50px] font-semibold">
+        <h2 className="relative z-10 text-center text-white text-[42px] leading-[50px]">
           Transform your business with
           <br />
           <span className="font-bold">Advanced Technologies</span>
