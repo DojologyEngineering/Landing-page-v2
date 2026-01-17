@@ -9,9 +9,9 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative -mt-2 md:-mt-8 flex items-center justify-center pointer-events-auto overflow-visible z-[9999]">
+    <section className="relative -mt-2 md:-mt-8 flex items-center justify-center pointer-events-auto overflow-visible z-[80]">
       <div className="max-w-6xl w-full px-4">
-        <div className="relative z-[10000] rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+        <div className="relative z-[81] rounded-[28px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
           {/* Glossy top strip */}
           <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/8 to-transparent pointer-events-none" />
           
