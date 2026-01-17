@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "./motion";
-import { fadeUp } from "./motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 const container = {
   hidden: { opacity: 0 },
@@ -15,30 +19,39 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, x: -20 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
-export default function FAQSection() {
+export default function FAQSection(): React.ReactElement {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
-      question: "How can you get started?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      question: "What do I need to get started?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      question: "What we should learn?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      question: "What do I need to get started?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      question: "How does we get paid?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      question: "What do I need to get started?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      question: "How much product rate?",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    }
+      question: "What do I need to get started?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      question: "What do I need to get started?",
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
   ];
 
   return (
@@ -47,65 +60,93 @@ export default function FAQSection() {
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className="py-20 px-4"
+      className="pt-20 pb-40 px-6"
+      style={{ background: "black url('/backImage.png') 0px -124.002px / 100% 129.63% no-repeat" }}
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Frequently</h2>
-          <p className="text-gray-400">ASKED QUESTIONS</p>
-        </div>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="space-y-4"
-        >
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className="bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-xl overflow-hidden"
+      <div className="max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start">
+          {/* Left Side - Header */}
+          <div className=" lg:top-24">
+            <div className="flex items-center gap-3 mb-1">
+              <img src="/Dotted%20Highlight%20Tag.png" alt="Dotted highlight" className="w-[100px] h-[44px] object-contain" />
+            </div>
+            <h2
+              className="text-[54px] md:text-[58px] font-normal text-white leading-tight mb-2"
+              style={{ fontFamily: 'Manrope, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial' }}
             >
-              <motion.button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                whileHover={{ backgroundColor: "rgba(31, 41, 55, 0.5)" }}
-                className="w-full px-6 py-4 flex items-center justify-between text-left transition-colors"
+              Frequently
+            </h2>
+            <p
+              className="text-2xl md:text-3xl text-gray-400 font-light"
+              style={{ fontFamily: 'Manrope, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial' }}
+            >
+              Asked Questions
+            </p>
+          </div>
+
+          {/* Right Side - FAQ Items */}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="space-y-3"
+          >
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                className="bg-gradient-to-br from-gray-900/50 to-gray-950/50 border border-gray-800/50 rounded-2xl overflow-hidden backdrop-blur-sm"
               >
-                <span className="font-medium">{faq.question}</span>
-                <motion.svg
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <motion.button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  whileHover={{ backgroundColor: "rgba(31, 41, 55, 0.3)" }}
+                  className="w-full px-6 py-5 flex items-center justify-between text-left transition-colors group"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </motion.svg>
-              </motion.button>
-              <AnimatePresence>
-                {openIndex === index && (
+                  <span className="font-medium text-white group-hover:text-purple-300 transition-colors">
+                    {faq.question}
+                  </span>
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
+                    animate={{ rotate: openIndex === index ? 45 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex-shrink-0 ml-4"
                   >
-                    <div className="px-6 pb-4 text-gray-400">{faq.answer}</div>
+                    <svg
+                      className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
-        </motion.div>
+                </motion.button>
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );
