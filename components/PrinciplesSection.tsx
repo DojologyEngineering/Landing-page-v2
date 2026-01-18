@@ -21,7 +21,7 @@ const item = {
 
 export default function PrinciplesSection() {
   return (
-    <motion.section
+    <motion.section id="about"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}

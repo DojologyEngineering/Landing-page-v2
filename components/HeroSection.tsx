@@ -27,7 +27,7 @@ const item = {
 
 export default function HeroSection() {
   return (
-    <motion.section
+    <motion.section id="home"
       initial="hidden"
       animate="show"
       variants={container}
