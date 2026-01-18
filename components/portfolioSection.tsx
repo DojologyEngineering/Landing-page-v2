@@ -45,7 +45,7 @@ export default function PortfolioSection() {
   };
 
   return (
-    <motion.section
+    <motion.section id="portfolio"
       variants={fadeUp}
       initial="hidden"
       whileInView="show"

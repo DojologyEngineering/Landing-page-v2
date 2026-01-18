@@ -28,34 +28,34 @@ export default function FAQSection(): React.ReactElement {
 
   const faqs = [
     {
-      question: "What do I need to get started?",
+      question: "Who can partner with Dojology?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "We work with startups, SMEs, and enterprises that are ready to scale and innovate.",
     },
     {
-      question: "What do I need to get started?",
+      question: "Do you work with client globally?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Yes, we work with clients worldwide and have experience in various international markets.",
     },
     {
-      question: "What do I need to get started?",
+      question: "Can you develop custom software?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "We specialize in custom software development tailored to your specific business needs.",
     },
     {
-      question: "What do I need to get started?",
+      question: "What is your investment model?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "We offer strategic investment in mature startups with proven products and growth potential.",
     },
     {
-      question: "What do I need to get started?",
+      question: "How do I get started?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "Simply book a call with us to discuss your needs and explore how we can help transform your business.",
     },
   ];
 
   return (
-    <motion.section
+    <motion.section id="faqs"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}

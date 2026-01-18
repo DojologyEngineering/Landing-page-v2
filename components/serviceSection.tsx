@@ -42,7 +42,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <motion.section
+    <motion.section id="services"
       variants={fadeUp}
       initial="hidden"
       whileInView="show"
