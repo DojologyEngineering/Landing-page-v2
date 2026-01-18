@@ -97,8 +97,11 @@ export default function ServicesSection() {
         </h2>
 
         {/* Book a call button */}
-        <button 
-          className="relative z-10 px-6 py-3 font-semibold rounded-lg transition-colors"
+        <motion.button 
+          onClick={() => {}}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative z-10 px-6 py-3 font-semibold rounded-lg transition-colors cursor-pointer hover:opacity-90"
           style={{
             borderRadius: '8px',
             border: '3px solid var(--color-border-white-50)',
@@ -107,7 +110,7 @@ export default function ServicesSection() {
           }}
         >
           Book a 15-min call
-        </button>
+        </motion.button>
 
         {/* Cards grid */}
         <div className="relative z-10 grid grid-cols-2 gap-[24px] w-full">

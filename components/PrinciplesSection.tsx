@@ -77,7 +77,6 @@ export default function PrinciplesSection() {
           {/* Card 1: Who we are ? */}
           <motion.div
             variants={item}
-            whileHover={{ scale: 1.02, y: -5, transition: { duration: 0.2 } }}
             className="relative flex items-center justify-center w-[462px] h-[428px] flex-shrink-0 rounded-[20px] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:rounded-t-[20px] before:pointer-events-none"
             style={{
               background: "var(--color-card-bg)"
@@ -122,7 +121,6 @@ export default function PrinciplesSection() {
           {/* Card 2: What we think ? */}
           <motion.div
             variants={item}
-            whileHover={{ scale: 1.02, y: -5, transition: { duration: 0.2 } }}
             className="relative flex items-center justify-center w-[562px] h-[428px] flex-shrink-0 rounded-[20px]"
             style={{
               background: "var(--color-card-bg)"
@@ -167,7 +165,6 @@ export default function PrinciplesSection() {
         {/* Second Row - Full Width Card */}
         <motion.div
           variants={item}
-          whileHover={{ scale: 1.01, y: -5, transition: { duration: 0.2 } }}
           className="relative flex items-center justify-center w-[1052px] h-[428px] flex-shrink-0 rounded-[20px]"
           style={{
             background: "var(--color-card-bg)"
