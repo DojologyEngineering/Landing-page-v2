@@ -60,7 +60,7 @@ export default function FAQSection(): React.ReactElement {
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className="pt-20 pb-40 px-6"
+      className="bg-black pt-[120px] pb-[120px] px-[159px]"
       style={{ background: "black url('/backImage.png') 0px -124.002px / 100% 129.63% no-repeat" }}
     >
       <div className="max-w-6xl mx-auto">

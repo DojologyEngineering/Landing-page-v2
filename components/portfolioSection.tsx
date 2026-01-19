@@ -85,7 +85,7 @@ export default function PortfolioSection() {
       <div className="w-full mt-[60px] overflow-hidden">
         <div 
           ref={scrollContainerRef}
-          className="flex gap-[32px] overflow-x-scroll overflow-y-hidden scrollbar-hide scroll-smooth px-[194px]"
+          className="flex gap-[32px] overflow-x-scroll overflow-y-hidden scrollbar-hide scroll-smooth px-[159px]"
         >
           {portfolios.map((portfolio, index) => (
             <motion.div

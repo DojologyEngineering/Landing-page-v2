@@ -18,8 +18,8 @@ export default function Header(): React.ReactElement {
 
   return (
     <>
-      <header className="site-header fixed top-0 left-0 right-0 text-white z-[100] border-b border-white/20" style={{ backdropFilter: 'blur(40px)', WebkitBackdropFilter: 'blur(40px)'}}>
-        <div className="max-w-7xl mx-auto px-6 relative flex items-center h-20">
+      <header className="site-header fixed top-0 left-0 right-0 px-[159px] text-white z-[100] border-b border-white/20" style={{ backdropFilter: 'blur(40px)', WebkitBackdropFilter: 'blur(40px)'}}>
+        <div className="w-full relative flex items-center h-20">
           {/* Left: Logo */}
           <a href="#" className="flex items-center gap-3 z-10">
             <Image src="/logo.png" alt="DojoLogy" width={135} height={42} className="logo" />
