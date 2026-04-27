@@ -240,6 +240,7 @@ export const circleIconStyle = ({ className }: { className?: string }) => (
     viewBox="0 0 1745 385"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
   >
     <g filter="url(#filter0_f_2120_6017)">
       <circle
@@ -272,7 +273,7 @@ export const circleIconStyle = ({ className }: { className?: string }) => (
           result="shape"
         />
         <feGaussianBlur
-          stdDeviation="40"
+          stdDeviation="30"
           result="effect1_foregroundBlur_2120_6017"
         />
       </filter>
@@ -293,7 +294,7 @@ export const circleIconStyle = ({ className }: { className?: string }) => (
           result="shape"
         />
         <feGaussianBlur
-          stdDeviation="22"
+          stdDeviation="16"
           result="effect1_foregroundBlur_2120_6017"
         />
       </filter>
@@ -699,4 +700,3 @@ const Icon = ({ name }: IconProps) => {
 };
 
 export default Icon;
-
