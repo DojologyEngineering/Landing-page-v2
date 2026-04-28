@@ -8,7 +8,6 @@ import {
   ServiceIconB,
   ServiceIconC,
   ServiceIconD,
-  CardDot,
   AbstractDot,
   PurpleSpotlight,
 } from "../assets/icons/icon-asset";
@@ -193,25 +192,32 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Bottom section - 4 items */}
-        <div className="w-full h-px bg-gradient-to-r from-[rgba(255,255,255,0.02)] via-[rgba(255,255,255,0.10)] to-[rgba(255,255,255,0.02)]" />
-        <div className="relative z-10 grid grid-cols-4 gap-8 w-full mt-8">
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white font-semibold text-sm">All-in-One Partner</h4>
-            <p className="text-white/60 text-xs">Funding, talent, and technology under one roof.</p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white font-semibold text-sm">Proven Expertise</h4>
-            <p className="text-white/60 text-xs">A track record of scaling businesses across industries.</p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white font-semibold text-sm">Global Reach</h4>
-            <p className="text-white/60 text-xs">Regional insights with international connections.</p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <h4 className="text-white font-semibold text-sm">Results That Matter</h4>
-            <p className="text-white/60 text-xs">Focused on measurable, long-term impact.</p>
-          </div>
+        {/* Bottom section - 3 Secondary Cards */}
+        <div className="w-full h-px bg-gradient-to-r from-[rgba(255,255,255,0.02)] via-[rgba(255,255,255,0.10)] to-[rgba(255,255,255,0.02)] my-8" />
+        <div className="relative z-10 flex flex-wrap justify-center gap-12 lg:gap-[100px] w-full">
+          {[
+            { title: "Equity Shares", icon: "/equity-share.svg" },
+            { title: "Revenue Share", icon: "/revenue_share.svg" },
+            { title: "Cashflow", icon: "/cashflow.svg" },
+          ].map((card, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * i, duration: 0.5 }}
+              className="flex flex-col items-center gap-3 w-full max-w-[203px] shrink-0"
+            >
+              <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
+                <img src={card.icon} alt={card.title} className="w-full h-full object-contain" />
+              </div>
+              <div className="relative flex w-full items-center justify-center rounded-[30px] bg-gradient-to-b from-[#4f1ad6] to-[#8059e3] py-3 px-4 border-2 border-white/15">
+                <span className="font-['Manrope'] font-semibold text-white text-center text-base leading-none">
+                  {card.title}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </motion.section>

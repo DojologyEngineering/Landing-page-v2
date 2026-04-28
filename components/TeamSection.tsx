@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, fadeUp } from "./motion";
 
 const container = {
@@ -18,78 +19,218 @@ const item = {
 };
 
 export default function TeamSection() {
-  const teamMembers = [
+  const [activeTab, setActiveTab] = useState<"founders" | "dojo">("founders");
+
+  const founders = [
     {
-      name: "Team Member 1",
-      role: "Position",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-      image: "/team/member1.jpg"
+      name: "Lymeng PEN",
+      role: "Founder & CEO",
+      description:
+        "Visionary leader with 10+ years in technology innovation and strategic growth",
+      linkedIn: "#",
+      image: "/ceo-image.png",
     },
     {
-      name: "Team Member 2",
-      role: "Position",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-      image: "/team/member2.jpg"
-    }
+      name: "Dalen SIENG",
+      role: "Co-founder & CFO",
+      description:
+        "Financial and operational expert driving efficiency and scaling excellence across the organization",
+      linkedIn: "#",
+      image: "/cfo-image.png",
+    },
+  ];
+
+  const dojoPlaceholders = [
+    {
+      id: "dojo-1",
+      name: "Thai Sodalin",
+      role: "IT Business Analyst",
+    },
+    {
+      id: "dojo-2",
+      name: "Dout Sophanha",
+      role: "UX/UI Designer",
+    },
+    {
+      id: "dojo-3",
+      name: "Ly Rassa",
+      role: "UX/UI Designer",
+    },
+    {
+      id: "dojo-4",
+      name: "Kumari Laxmi Sharma",
+      role: "Project Manager",
+    },
+    {
+      id: "dojo-6",
+      name: "Chandy Neath",
+      role: "Mobile Developer",
+    },
+    {
+      id: "dojo-7",
+      name: "Bin Sodina",
+      role: "Mobile Developer",
+    },
+    {
+      id: "dojo-8",
+      name: "Pak Maneth",
+      role: "Backend Lead",
+    },
+    {
+      id: "dojo-9",
+      name: "Ry Satya",
+      role: "Backend Developer",
+    },
+    {
+      id: "dojo-10",
+      name: "Dul Kimhak",
+      role: "Fullstack Developer",
+    },
+    {
+      id: "dojo-11",
+      name: "Nhek Chanpanha",
+      role: "Fullstack Developer",
+    },
   ];
 
   return (
     <motion.section
+      id="team"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className="py-20 px-4 bg-gradient-to-b from-purple-900/20 to-transparent"
+      className="bg-[#2F1893] px-4 py-24 md:px-10 lg:px-[194px] lg:py-[100px]"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Meet the Team behind <span className="text-yellow-400">YOUR SUCCESS</span>
+      <div className="mx-auto flex w-full max-w-[1052px] flex-col gap-16 text-white lg:gap-[100px]">
+        <div className="flex flex-col gap-5 md:gap-[30px]">
+          <h2 className="font-[family-name:var(--font-manrope)] font-bold leading-none tracking-[-0.4px] text-white">
+            <span className="text-[34px] leading-[1.22] md:text-[42px] md:leading-[52px]">
+              Meet the Team Behind
+            </span>
+            <span className="ml-2 text-[40px] leading-[1.05] text-[#34CB4D] md:text-[64px] md:leading-[52px]">
+              Your Success
+            </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt
+          <p className="max-w-[1052px] font-[family-name:var(--font-manrope)] text-base font-medium text-white/90 md:text-[22px] md:leading-[32px]">
+            Our team is made up of passionate professionals who bring their
+            expertise and creativity to every project.
           </p>
         </div>
 
-        {/* Team Photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 rounded-2xl overflow-hidden"
-        >
-          <div className="bg-gradient-to-br from-purple-900/50 to-purple-950/30 p-8 h-64 flex items-center justify-center">
-            <p className="text-gray-400">Team Photo Placeholder</p>
-          </div>
-        </motion.div>
+        <div className="flex flex-col items-center gap-10 lg:gap-[100px]">
+          <div className="w-full">
+            <div className="mx-auto w-full max-w-[806px]">
+              <img
+                src="/team-image.png"
+                alt="Dojology team"
+                className="block h-auto w-full object-contain"
+              />
+            </div>
 
-        {/* Team Member Cards */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid md:grid-cols-2 gap-8"
-        >
-          {teamMembers.map((member, index) => (
+            <div className="mt-0 w-screen border-b-2 border-white/10 bg-white/10 relative left-1/2 right-1/2 -mx-[50vw] px-4 sm:px-8 md:px-16 lg:px-[194px]">
+              <div className="mx-auto flex w-full max-w-[1052px] items-center justify-center gap-[40px] overflow-x-auto">
+                <button
+                  onClick={() => setActiveTab("founders")}
+                  className={`px-2 py-3 font-[family-name:var(--font-manrope)] text-sm font-semibold whitespace-nowrap md:text-base ${
+                    activeTab === "founders"
+                      ? "border-b-2 border-[#34CB4D] text-[#34CB4D]"
+                      : "text-white"
+                  }`}
+                >
+                  Founder &amp; Co-founder
+                </button>
+                <button
+                  onClick={() => setActiveTab("dojo")}
+                  className={`px-2 py-3 font-[family-name:var(--font-manrope)] text-sm font-semibold whitespace-nowrap md:text-base ${
+                    activeTab === "dojo"
+                      ? "border-b-2 border-[#34CB4D] text-[#34CB4D]"
+                      : "text-white"
+                  }`}
+                >
+                  Dojo Team
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {activeTab === "founders" ? (
             <motion.div
-              key={index}
-              variants={item}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              className="bg-gradient-to-br from-purple-900/30 to-transparent p-6 rounded-2xl border border-purple-500/20"
+              key="founders"
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="grid w-full min-h-[384px] gap-8 md:grid-cols-2 md:gap-10 lg:gap-20"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex-shrink-0"></div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                  <p className="text-purple-400 text-sm mb-2">{member.role}</p>
-                  <p className="text-gray-400 text-sm">{member.description}</p>
-                </div>
+              {founders.map((member) => (
+                <motion.div
+                  key={member.name}
+                  variants={item}
+                  className="flex min-h-[330px] flex-col items-center justify-center gap-6 px-2 py-4 text-center"
+                >
+                  <div className="relative h-32 w-32 overflow-hidden rounded-full bg-white/10 ring-1 ring-white/15">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <h3 className="font-[family-name:var(--font-manrope)] text-[20px] font-bold leading-7 text-white">
+                      {member.name}
+                    </h3>
+                    <p className="font-[family-name:var(--font-manrope)] text-base font-bold text-[#34CB4D]">
+                      {member.role}
+                    </p>
+                  </div>
+
+                  <p className="max-w-[420px] font-[family-name:var(--font-manrope)] text-sm leading-5 text-white/90">
+                    {member.description}
+                  </p>
+
+                  <div className="mt-1 flex items-center gap-3">
+                    <a
+                      href={member.linkedIn}
+                      aria-label={`${member.name} LinkedIn`}
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-sm font-semibold text-white transition-colors hover:bg-white/30"
+                    >
+                      in
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="dojo"
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="w-full min-h-[384px] pr-1"
+            >
+              <div className="grid w-full gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                {dojoPlaceholders.map((member) => (
+                  <motion.div
+                    key={member.id}
+                    variants={item}
+                    className="flex flex-col items-center justify-center gap-4 px-2 py-4 text-center"
+                  >
+                    <div className="relative h-24 w-24 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15"></div>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-manrope)] text-[16px] md:text-[18px] font-bold leading-7 text-white">
+                        {member.name}
+                      </h3>
+                      <p className="font-[family-name:var(--font-manrope)] text-[14px] text-white/80">
+                        {member.role}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+          )}
+        </div>
       </div>
     </motion.section>
   );

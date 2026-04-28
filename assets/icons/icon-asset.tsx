@@ -572,7 +572,6 @@ export const PillBackground = "/pill.png";
 export const Card3Image = "/card3_image.png";
 
 // Service Section Images
-export const CardDot = "/card_dot.png";
 export const AbstractDot = "/abstract_dot.png";
 export const PurpleSpotlight = "/purple-sportlight.png";
 

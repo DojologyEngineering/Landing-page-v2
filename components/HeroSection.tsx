@@ -135,7 +135,7 @@ export default function HeroSection() {
           </p>
         </motion.div>
 
-        <div className="pointer-events-none absolute left-1/2 top-[819px] z-[55] w-[430px] -translate-x-1/2">
+        <div className="pointer-events-none absolute left-1/2 top-[840px] z-[55] w-[430px] -translate-x-1/2">
           <div
             className="relative h-[80px] overflow-hidden pt-5"
             style={{
