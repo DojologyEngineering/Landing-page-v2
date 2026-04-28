@@ -36,7 +36,7 @@ export default function HeroSection() {
         <div className="absolute left-1/2 top-0 h-[495px] w-[1440px] -translate-x-1/2">
           <AngularBackground className="h-full w-full opacity-[0.92]" />
           <Image
-            src="/lighting.png"
+            src="/assets/lighting.png"
             alt=""
             fill
             priority
@@ -51,7 +51,7 @@ export default function HeroSection() {
 
       <div className="pointer-events-none absolute left-1/2 top-[-205px] z-[20] h-[1440px] w-[1440px] -translate-x-1/2 overflow-hidden">
         <Image
-          src="/Tunnel.svg"
+          src="/assets/Tunnel.svg"
           alt=""
           fill
           priority
@@ -66,7 +66,7 @@ export default function HeroSection() {
         }}
       >
         <Image
-          src="/earth-image.png"
+          src="/assets/earth-image.png"
           alt=""
           fill
           priority
@@ -85,16 +85,31 @@ export default function HeroSection() {
                 We build the tech.
               </span>
               <span className="mt-[10px] flex items-center justify-center gap-[10px] whitespace-nowrap text-[76px] tracking-[-4.56px]">
-                <span>You scale the </span>
-                <span className="bg-[linear-gradient(90.7deg,#FFFFFF_10.14%,#4F46E5_100.69%)] bg-clip-text text-transparent">
+                <span className="leading-[1.16]">You scale the </span>
+                <span 
+                  className="bg-clip-text text-transparent leading-[1.16]" 
+                  style={{ backgroundImage: "linear-gradient(90.7deg, #FFFFFF -100%, #4F46E5 100%)" }}
+                >
                   business.
                 </span>
-                <span className="relative inline-flex h-[52px] w-[52px] items-center justify-center rounded-full shadow-[0_0_8.4px_5px_#0022CC,0_0_114px_0_rgba(0,43,255,0.8)]">
-                  <span className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.6)_0%,rgba(255,255,255,0)_58%),linear-gradient(225deg,#CCEEFF_0%,#001EB3_77.37%)]" />
-                  <span className="absolute inset-0 rounded-full shadow-[inset_0_0_38px_-5px_#0022CC]" />
-                  <span className="relative scale-[0.66]">
-                    <Icon name="earth" />
-                  </span>
+                <span className="relative inline-flex h-[52px] w-[52px] items-center justify-center rounded-full overflow-hidden flex-shrink-0"
+                  style={{ boxShadow: "0 0 8.4px 5px #0022CC, 0 0 114px 0 rgba(0,43,255,0.8)" }}
+                >
+                  {/* Blue sphere gradient background */}
+                  <span className="absolute inset-0 rounded-full" style={{ background: "radial-gradient(circle at 38% 38%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%), linear-gradient(225deg, #CCEEFF 0%, #001EB3 77.37%)" }} />
+
+                  {/* Scrolling world map — 2 copies for seamless loop */}
+                  <motion.span
+                    className="absolute top-[5%] bottom-[1.5%] left-0 flex w-max"
+                    animate={{ x: ["0%", "-50%"] }}
+                    transition={{ ease: "linear", duration: 10, repeat: Infinity }}
+                  >
+                    <img src="/assets/world-map.svg" alt="" className="h-full w-auto max-w-none opacity-45 brightness-150 saturate-0" />
+                    <img src="/assets/world-map.svg" alt="" className="h-full w-auto max-w-none opacity-45 brightness-150 saturate-0" />
+                  </motion.span>
+
+                  {/* Inner glow for sphere depth */}
+                  <span className="absolute inset-0 rounded-full pointer-events-none" style={{ boxShadow: "inset 0 0 18px -3px #0022CC, inset -4px -4px 12px rgba(0,0,0,0.4)" }} />
                 </span>
               </span>
             </h1>
@@ -148,11 +163,11 @@ export default function HeroSection() {
             <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
             <LogoLoop
               logos={[
-                { src: "/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
-                { src: "/Prohose%20white%20logo.png", alt: "Prohose" },
-                { src: "/umami%20white%20logo.png", alt: "Umami" },
-                { src: "/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
-                { src: "/Prohose%20white%20logo.png", alt: "Prohose" },
+                { src: "/logo/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
+                { src: "/logo/Prohose%20white%20logo.png", alt: "Prohose" },
+                { src: "/logo/umami%20white%20logo.png", alt: "Umami" },
+                { src: "/logo/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
+                { src: "/logo/Prohose%20white%20logo.png", alt: "Prohose" },
               ]}
               speed={52}
               gap={40}

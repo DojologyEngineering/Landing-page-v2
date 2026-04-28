@@ -6,11 +6,15 @@ import FAQSection from "@/components/FAQSection";
 import FooterSection from "@/components/FooterSection";
 import StatsSection from "@/components/StatsSection";
 import PortfolioSection from "@/components/portfolioSection";
+import AdvisorCarousel from "@/components/AdvisorCarousel";
+import BlogSection from "@/components/BlogSection";
+import CTASection from "@/components/CTASection";
+import MissionSection from "@/components/MissionSection";
 import StudioModelSection from "@/components/StudioModelSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       <HeroSection />
       <StatsSection/>
       <PrinciplesSection />
@@ -18,7 +22,11 @@ export default function Home() {
       <TechnologiesSection />
       <StudioModelSection />
       <PortfolioSection />
+      <AdvisorCarousel />
+      <MissionSection />
+      <BlogSection />
       <FAQSection />
+      <CTASection />
       <FooterSection />
     </main>
   );

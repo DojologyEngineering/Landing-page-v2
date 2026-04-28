@@ -129,7 +129,7 @@ export default function ServicesSection() {
               {/* Card dot background */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src="/card_dot.png"
+                  src="/assets/card_dot.png"
                   alt=""
                   fill
                   className="object-cover"
@@ -194,11 +194,11 @@ export default function ServicesSection() {
 
         {/* Bottom section - 3 Secondary Cards */}
         <div className="w-full h-px bg-gradient-to-r from-[rgba(255,255,255,0.02)] via-[rgba(255,255,255,0.10)] to-[rgba(255,255,255,0.02)] my-8" />
-        <div className="relative z-10 flex flex-wrap justify-center gap-12 lg:gap-[100px] w-full">
+        <div className="relative z-10 flex flex-wrap items-start justify-between gap-8 w-full">
           {[
-            { title: "Equity Shares", icon: "/equity-share.svg" },
-            { title: "Revenue Share", icon: "/revenue_share.svg" },
-            { title: "Cashflow", icon: "/cashflow.svg" },
+            { title: "Equity Shares", icon: "/assets/equity-share.svg" },
+            { title: "Revenue Share", icon: "/assets/revenue_share.svg" },
+            { title: "Cashflow", icon: "/assets/cashflow.svg" },
           ].map((card, i) => (
             <motion.div
               key={i}
@@ -206,7 +206,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * i, duration: 0.5 }}
-              className="flex flex-col items-center gap-3 w-full max-w-[203px] shrink-0"
+              className="flex flex-col items-center gap-3 w-full max-w-[203px] shrink-0 mx-auto sm:mx-0"
             >
               <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
                 <img src={card.icon} alt={card.title} className="w-full h-full object-contain" />

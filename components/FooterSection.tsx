@@ -1,142 +1,242 @@
 "use client";
-import { motion } from "framer-motion";
-import Icon from "@/assets/icons/icon-asset";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+import Icon from "@/assets/icons/icon-asset";
 
 export default function FooterSection(): React.ReactElement {
   return (
-    <motion.footer
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.12 }}
-      variants={fadeUp}
-      className="px-[100] py-[30px] bg-[#2F1893] border-t border-white/10 footer-backdrop"
-      style={{ backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
+    <footer
+      style={{
+        background: "#2f1893",
+        width: "100%",
+        position: "relative",
+        zIndex: 10,
+        boxSizing: "border-box",
+        // paddingTop: 130px pushes the footer CONTENT (logo, links, etc.) below the CTA card's bottom half
+        paddingTop: "165px",
+      }}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-12 items-start">
-          {/* Left Side - Branding */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="branding">
-                Growth.
-                <br />
-                Agility.
-                <br />
-                Commitment.
-              </h2>
-            </div>
-            
-            {/* Logo */}
-            <div className="flex items-center">
-              <img src="/logo.png" alt="DojoLogy" width={227} height={69} className="logo" />
-            </div>
+      {/* ── Main footer content ── */}
+      <div
+        style={{
+          padding: "60px 100px 0",
+          boxSizing: "border-box",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr auto auto",
+            gap: "80px",
+            alignItems: "start",
+          }}
+        >
+          {/* Left: Logo + tagline */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <img
+              src="/logo/logo.png"
+              alt="Dojology"
+              style={{ width: "200px", height: "auto" }}
+            />
+            <p
+              className="branding"
+              style={{ fontSize: "56px", lineHeight: "1.1", margin: 0 }}
+            >
+              Growth.
+              <br />
+              Agility.
+              <br />
+              Commitment.
+            </p>
           </div>
 
-          {/* Spacer to shift columns right on md+ */}
-          <div className="hidden md:block" />
-
-          {/* Middle - Quick Links */}
-            <div className="space-y-6 md:pl-6 lg:pl-12 mt-2 md:mt-6">
-              <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">Quick Links</h3>
-            <nav className="flex flex-col gap-2">
-              <a href="#home" className="text-white/70 hover:text-white transition-colors">
-                Home
-              </a>
-              <a href="#about" className="text-white/70 hover:text-white transition-colors">
-                About Us
-              </a>
-              <a href="#services" className="text-white/70 hover:text-white transition-colors">
-                Services
-              </a>
-              <a href="#portfolio" className="text-white/70 hover:text-white transition-colors">
-                Portfolio
-              </a>
-              <a href="#faqs" className="text-white/70 hover:text-white transition-colors">
-                FAQ
-              </a>
+          {/* Middle: Important Links */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "32px",
+              minWidth: "170px",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 700,
+                fontSize: "24px",
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              Important Link
+            </p>
+            <nav style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {[
+                { label: "About us", href: "#about" },
+                { label: "Services", href: "#services" },
+                { label: "FAQs", href: "#faqs" },
+                { label: "Partnership", href: "#" },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontFamily: "Manrope, sans-serif",
+                    fontWeight: 500,
+                    fontSize: "18px",
+                    color: "#fff",
+                    textDecoration: "none",
+                    transition: "opacity 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+                >
+                  {link.label}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H7M17 7v10"
+                      stroke="white"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              ))}
             </nav>
           </div>
 
-          {/* Right Side - Get in Touch */}
-            <div className="space-y-6 md:pl-6 lg:pl-12 mt-2 md:mt-6">
-              <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">Get in Touch</h3>
-            <div className="flex flex-col gap-3">
-              {/* Phone */}
-              <div className="flex items-start gap-3 flex-nowrap">
-                <div className="mt-1">
-                  <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
+          {/* Right: Get in Touch */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "32px",
+              minWidth: "286px",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 700,
+                fontSize: "24px",
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              Get in Touch
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              {[
+                { label: "CONTACT", value: "(855) 98-992-895 / 89-992-895" },
+                { label: "EMAIL", value: "info@dojology.com" },
+                {
+                  label: "HEAD QUARTER",
+                  value: "TECHNICAL PERSPECTIVES ON THE DIGITAL FRONTIER.",
+                },
+                { label: "WORK HOUR", value: "Mon - Sat, 8:00AM - 5:00PM" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  style={{ display: "flex", flexDirection: "column", gap: "4px" }}
+                >
+                  <p
+                    style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 700,
+                      fontSize: "16px",
+                      color: "#fff",
+                      margin: 0,
+                    }}
+                  >
+                    {item.label}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      color: "rgba(255,255,255,0.7)",
+                      margin: 0,
+                    }}
+                  >
+                    {item.value}
+                  </p>
                 </div>
-                <p className="text-white/70 whitespace-nowrap">(855) 98-992-895 / 89-992-895</p>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-start gap-3">
-                <div className="mt-1">
-                  <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <p className="text-white/70">info@dojology.com</p>
-              </div>
-
-              {/* Location */}
-              <div className="flex items-start gap-3">
-                <div className="mt-1">
-                  <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <p className="text-white/70">Phnom Penh</p>
-              </div>
-
-              {/* Hours */}
-              <div className="flex items-start gap-3">
-                <div className="mt-1">
-                  <svg className="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <p className="text-white/70">Mon - Sat, 8:00AM - 5:00PM</p>
-              </div>
-
-              {/* Social Icons */}
-              <div className="flex items-center gap-3 mt-4 md:mt-6">
-                <a href="https://www.facebook.com/dojologytechandventures?mibextid=wwXIfr&rdid=Lajhg3JWusgyQQ5d&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FFBvVBNV3%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-95 transition-transform duration-200 transform hover:scale-105 shadow-sm focus:outline-none focus:ring-2 focus:ring-white/20">
-                  <Icon name="facebook" />
-                </a>
-
-                <a href="https://t.me/dojology" target="_blank" rel="noreferrer" aria-label="Telegram" className="w-10 h-10 rounded-full  flex items-center justify-center hover:opacity-95 transition-transform duration-200 transform hover:scale-105 shadow-sm focus:outline-none focus:ring-2 focus:ring-white/20">
-                  <Icon name="telegram" />
-                </a>
-
-                <a href="https://www.linkedin.com/company/dojology-tech-and-ventures/posts/?feedView=all" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-95 transition-transform duration-200 transform hover:scale-105 shadow-sm focus:outline-none focus:ring-2 focus:ring-white/20">
-                  <Icon name="linkedin" />
-                </a>
-              </div>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Footer */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-          <div className="text-white/70">
-            Dojology © 2025 All Rights Reserved.
-          </div>
-          <div className="text-white/70">
-            <a href="#" className="hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-          </div>
+      {/* ── Bottom bar ── */}
+      <div
+        style={{
+          margin: "48px 100px 0",
+          padding: "28px 0",
+          borderTop: "1px solid rgba(255,255,255,0.2)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 500,
+            fontSize: "16px",
+            color: "#fff",
+            margin: 0,
+          }}
+        >
+          Dojology © 2026 All Rights Reserved
+        </p>
+
+        {/* Social icons */}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <a
+            href="https://www.facebook.com/dojologytechandventures"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+            style={{ display: "flex", transition: "opacity 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            <Icon name="facebook" />
+          </a>
+          <a
+            href="https://t.me/dojology"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Telegram"
+            style={{ display: "flex", transition: "opacity 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            <Icon name="telegram" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/dojology-tech-and-ventures"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            style={{ display: "flex", transition: "opacity 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            <Icon name="linkedin" />
+          </a>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

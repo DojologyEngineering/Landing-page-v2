@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
 type MenuItem = {
@@ -11,11 +13,11 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   { label: "About us", href: "#about" },
-  { label: "Our Team" },
+  { label: "Our Team", href: "#team" },
   { label: "Service", href: "#services" },
-  { label: "Studio Model" },
+  { label: "Studio Model", href: "#studio" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Blogs" },
+  { label: "Blogs", href: "#blog" },
 ];
 
 function NavLabel({
@@ -49,6 +51,42 @@ function NavLabel({
 
 export default function Header(): React.ReactElement {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isBlogPage = pathname?.startsWith("/blog/");
+
+  if (isBlogPage) {
+    return (
+      <header className="absolute inset-x-0 top-0 z-[120] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
+        <div className="mx-auto w-full max-w-[1440px] h-[98px] flex items-center justify-between px-6 md:px-[112px]">
+          <Link href="/" aria-label="Dojology home">
+            <Image
+              src="/logo/logo.png"
+              alt="Dojology"
+              width={192}
+              height={52}
+              priority
+              className="h-[52px] w-auto"
+            />
+          </Link>
+          
+          <Link 
+            href="/#blog"
+            className="flex items-center gap-[10px] px-[12px] py-[6px] rounded-[40px] relative overflow-hidden group"
+            style={{ 
+              backgroundImage: "linear-gradient(0deg, rgba(79, 26, 214, 0.08) 0%, rgba(153, 153, 153, 0.1) 100%)",
+              border: "1px solid rgba(255,255,255,0.05)"
+            }}
+          >
+            <div className="absolute top-0 left-[14.34%] right-[14.34%] h-[1px] bg-gradient-to-r from-transparent via-[#4e43fe] to-transparent z-0 group-hover:via-white transition-colors duration-300"></div>
+            <div className="flex items-center justify-center p-[8px] rounded-[30px] bg-gradient-to-b from-[#4f1ad6] to-[#8059e3] border-[2px] border-white/15 z-10 relative">
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </div>
+            <span className="font-['Manrope'] font-normal text-[16px] text-white tracking-[-0.5px] leading-[26px] mr-2 z-10 relative">CLOSE</span>
+          </Link>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>
@@ -73,7 +111,7 @@ export default function Header(): React.ReactElement {
               aria-label="Dojology home"
             >
               <Image
-                src="/logo.png"
+                src="/logo/logo.png"
                 alt="Dojology"
                 width={186}
                 height={50}
@@ -98,7 +136,7 @@ export default function Header(): React.ReactElement {
           <div className="flex min-h-[64px] items-center justify-between rounded-[32px] bg-[rgba(255,255,255,0.05)] px-5 py-3 lg:hidden">
             <a href="#home" aria-label="Dojology home">
               <Image
-                src="/logo.png"
+                src="/logo/logo.png"
                 alt="Dojology"
                 width={148}
                 height={40}

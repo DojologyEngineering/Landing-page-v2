@@ -28,7 +28,7 @@ export default function TeamSection() {
       description:
         "Visionary leader with 10+ years in technology innovation and strategic growth",
       linkedIn: "#",
-      image: "/ceo-image.png",
+      image: "/image/ceo-image.png",
     },
     {
       name: "Dalen SIENG",
@@ -36,7 +36,7 @@ export default function TeamSection() {
       description:
         "Financial and operational expert driving efficiency and scaling excellence across the organization",
       linkedIn: "#",
-      image: "/cfo-image.png",
+      image: "/image/cfo-image.png",
     },
   ];
 
@@ -45,51 +45,61 @@ export default function TeamSection() {
       id: "dojo-1",
       name: "Thai Sodalin",
       role: "IT Business Analyst",
+      image: "/image/thai_darlin.png",
     },
     {
       id: "dojo-2",
       name: "Dout Sophanha",
       role: "UX/UI Designer",
+      image: "/image/dout_sophanha.png",
     },
     {
       id: "dojo-3",
       name: "Ly Rassa",
       role: "UX/UI Designer",
+      image: "/image/Ly_Rassa.png",
     },
     {
       id: "dojo-4",
       name: "Kumari Laxmi Sharma",
       role: "Project Manager",
+      image: "/image/Kumari-Laxmi-Sharma.png",
     },
     {
       id: "dojo-6",
       name: "Chandy Neath",
       role: "Mobile Developer",
+      image: "/image/Chandy_Neath.png",
     },
     {
       id: "dojo-7",
       name: "Bin Sodina",
       role: "Mobile Developer",
+      image: "/image/Bin_Sodina.png",
     },
     {
       id: "dojo-8",
       name: "Pak Maneth",
       role: "Backend Lead",
+      image: "/image/Pak_Maneth.png",
     },
     {
       id: "dojo-9",
       name: "Ry Satya",
       role: "Backend Developer",
+      image: "/image/Ry_Satya.png",
     },
     {
       id: "dojo-10",
       name: "Dul Kimhak",
       role: "Fullstack Developer",
+      image: "/image/dul_kimhak.png",
     },
     {
       id: "dojo-11",
       name: "Nhek Chanpanha",
       role: "Fullstack Developer",
+      image: "/image/Nhek_Chanpanha.png",
     },
   ];
 
@@ -122,7 +132,7 @@ export default function TeamSection() {
           <div className="w-full">
             <div className="mx-auto w-full max-w-[806px]">
               <img
-                src="/team-image.png"
+                src="/image/team-image.png"
                 alt="Dojology team"
                 className="block h-auto w-full object-contain"
               />
@@ -168,7 +178,7 @@ export default function TeamSection() {
                   variants={item}
                   className="flex min-h-[330px] flex-col items-center justify-center gap-6 px-2 py-4 text-center"
                 >
-                  <div className="relative h-32 w-32 overflow-hidden rounded-full bg-white/10 ring-1 ring-white/15">
+                  <div className="relative h-32 w-32 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15">
                     <img
                       src={member.image}
                       alt={member.name}
@@ -216,7 +226,15 @@ export default function TeamSection() {
                     variants={item}
                     className="flex flex-col items-center justify-center gap-4 px-2 py-4 text-center"
                   >
-                    <div className="relative h-24 w-24 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15"></div>
+                    <div className="relative h-24 w-24 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15">
+                      {member.image && (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="h-full w-full object-cover"
+                        />
+                      )}
+                    </div>
                     <div>
                       <h3 className="font-[family-name:var(--font-manrope)] text-[16px] md:text-[18px] font-bold leading-7 text-white">
                         {member.name}

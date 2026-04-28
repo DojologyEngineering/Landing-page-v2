@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Manrope, Russo_One } from "next/font/google";
+import { Geist, Geist_Mono, Manrope, Russo_One, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 
@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const russoOne = Russo_One({
@@ -25,9 +25,17 @@ const russoOne = Russo_One({
   weight: "400",
 });
 
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
-  title: "Landing Page - Growth, Agility, Commitment",
+  title: "Dojology Tech & Ventures",
   description: "Modern landing page built with Next.js, TypeScript, and Framer Motion",
+  icons: {
+    icon: "/logo/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${russoOne.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} ${russoOne.variable} ${inter.variable} antialiased`}
       >
         <Header />
         {children}

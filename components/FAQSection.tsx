@@ -1,153 +1,315 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
+// FAQ data
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-    },
+const faqs = [
+  {
+    question: "Who can partner with Dojology?",
+    answer:
+      "We work with startups, SMEs, and enterprises that are ready to scale and innovate.",
   },
-};
+  {
+    question: "Do you work with clients globally?",
+    answer:
+      "Yes, we work with clients worldwide and have experience in various international markets.",
+  },
+  {
+    question: "Can you develop custom software?",
+    answer:
+      "We specialize in custom software development tailored to your specific business needs.",
+  },
+  {
+    question: "What is your investment model?",
+    answer:
+      "We offer strategic investment in mature startups with proven products and growth potential.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Simply book a call with us to discuss your needs and explore how we can help transform your business.",
+  },
+];
 
-const item = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+// Accordion Item
 
-export default function FAQSection(): React.ReactElement {
+function FaqItem({
+  faq,
+  index,
+  isOpen,
+  onToggle,
+}: {
+  faq: (typeof faqs)[0];
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div
+      style={{
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "16px",
+        overflow: "hidden",
+      }}
+    >
+      <button
+        onClick={onToggle}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "22px 28px",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+          gap: "16px",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 500,
+            fontSize: "18px",
+            lineHeight: "normal",
+            color: "#fff",
+          }}
+        >
+          {faq.question}
+        </span>
+
+        {/* + / × icon */}
+        <motion.span
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            flexShrink: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "28px",
+            height: "28px",
+            color: "rgba(255,255,255,0.6)",
+          }}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 3v14M3 10h14"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </svg>
+        </motion.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            <div
+              style={{
+                padding: "0 28px 22px",
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "1.6",
+                color: "rgba(255,255,255,0.55)",
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+                paddingTop: "16px",
+              }}
+            >
+              {faq.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+// Main Section
+
+export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const faqs = [
-    {
-      question: "Who can partner with Dojology?",
-      answer:
-        "We work with startups, SMEs, and enterprises that are ready to scale and innovate.",
-    },
-    {
-      question: "Do you work with client globally?",
-      answer:
-        "Yes, we work with clients worldwide and have experience in various international markets.",
-    },
-    {
-      question: "Can you develop custom software?",
-      answer:
-        "We specialize in custom software development tailored to your specific business needs.",
-    },
-    {
-      question: "What is your investment model?",
-      answer:
-        "We offer strategic investment in mature startups with proven products and growth potential.",
-    },
-    {
-      question: "How do I get started?",
-      answer:
-        "Simply book a call with us to discuss your needs and explore how we can help transform your business.",
-    },
-  ];
-
   return (
-    <motion.section id="faqs"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
-      variants={fadeUp}
-      className="bg-black pt-[120px] pb-[120px] px-[159px]"
-      style={{ background: "black url('/backImage.png') 0px -124.002px / 100% 129.63% no-repeat" }}
+    <section
+      id="faqs"
+      style={{
+        position: "relative",
+        zIndex: 1,
+        background: "#000",
+        width: "100%",
+        padding: "120px 194px 285px",
+        boxSizing: "border-box",
+
+      }}
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-[300px_1fr] gap-12 items-start">
-          {/* Left Side - Header */}
-          <div className=" lg:top-24">
-            <div className="flex items-center gap-3 mb-1">
-              <img src="/Dotted%20Highlight%20Tag.png" alt="Dotted highlight" className="w-[100px] h-[44px] object-contain" />
-            </div>
-            <h2
-              className="text-[54px] md:text-[58px] font-normal text-white leading-tight mb-2"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial' }}
+      {/* Light rays background image */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          overflow: "hidden",
+          opacity: 0.7,
+        }}
+      >
+        <img
+          src="/assets/backImage.png"
+          alt=""
+          style={{
+            position: "absolute",
+            top: "-14.82%",
+            left: 0,
+            width: "100%",
+            height: "129.63%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+
+      {/* Content */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: "1052px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "280px 1fr",
+          gap: "80px",
+          alignItems: "start",
+        }}
+      >
+        {/* ── Left: heading ── */}
+        <div>
+          {/* FAQs pill */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              paddingTop: "6px",
+              paddingBottom: "6px",
+              paddingLeft: "6px",
+              paddingRight: "16px",
+              borderRadius: "40px",
+              background:
+                "linear-gradient(0.09deg, rgba(79,26,214,0.08) 0%, rgba(153,153,153,0.1) 100%)",
+              border: "1px solid rgba(255,255,255,0.05)",
+              position: "relative",
+              marginBottom: "24px",
+            }}
+          >
+            {/* shimmer line */}
+            <span
+              aria-hidden
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "14.34%",
+                right: "14.34%",
+                height: "1px",
+                background:
+                  "linear-gradient(90deg, rgba(79,26,214,0) 0%, #4e43fe 50%, rgba(79,26,214,0) 100%)",
+              }}
+            />
+            {/* icon */}
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "8px",
+                borderRadius: "30px",
+                background: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
+                border: "2px solid rgba(255,255,255,0.15)",
+              }}
             >
-              Frequently
-            </h2>
-            <p
-              className="text-2xl md:text-3xl text-gray-400 font-light"
-              style={{ fontFamily: 'Manrope, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial' }}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm-2 12H6v-2h12v2Zm0-3H6V9h12v2Zm0-3H6V6h12v2Z" />
+              </svg>
+            </span>
+            <span
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "26px",
+                letterSpacing: "-0.5px",
+                color: "#fff",
+                whiteSpace: "nowrap",
+              }}
             >
-              Asked Questions
-            </p>
+              FAQs
+            </span>
           </div>
 
-          {/* Right Side - FAQ Items */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            className="space-y-3"
+          {/* Heading */}
+          <h2
+            style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 400,
+              fontSize: "54px",
+              lineHeight: "1.1",
+              color: "#fff",
+              margin: "0 0 4px",
+            }}
           >
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                variants={item}
-                className="bg-gradient-to-br from-gray-900/50 to-gray-950/50 border border-gray-800/50 rounded-2xl overflow-hidden backdrop-blur-sm"
-              >
-                <motion.button
-                  onClick={() =>
-                    setOpenIndex(openIndex === index ? null : index)
-                  }
-                  whileHover={{ backgroundColor: "rgba(31, 41, 55, 0.3)" }}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left transition-colors group"
-                >
-                  <span className="font-medium text-white group-hover:text-purple-300 transition-colors">
-                    {faq.question}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: openIndex === index ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="flex-shrink-0 ml-4"
-                  >
-                    <svg
-                      className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 4v16m8-8H4"
-                      />
-                    </svg>
-                  </motion.div>
-                </motion.button>
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-5 text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </motion.div>
+            Frequently
+          </h2>
+          <p
+            style={{
+              fontFamily: "Manrope, sans-serif",
+              fontWeight: 300,
+              fontSize: "36px",
+              lineHeight: "1.1",
+              color: "rgba(255,255,255,0.55)",
+              margin: 0,
+            }}
+          >
+            Asked Questions
+          </p>
+        </div>
+
+        {/* ── Right: accordion ── */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          {faqs.map((faq, i) => (
+            <FaqItem
+              key={i}
+              faq={faq}
+              index={i}
+              isOpen={openIndex === i}
+              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+            />
+          ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

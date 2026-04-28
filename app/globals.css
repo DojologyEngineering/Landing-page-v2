@@ -171,3 +171,31 @@
     backdrop-filter: blur(8px);
   }
 }
+
+/* ── Hide global vertical scrollbar ── */
+@layer base {
+  body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+
+/* ── Hide scrollbar on horizontal scroll containers ── */
+@layer utilities {
+  .tags-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .tags-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Animated globe: world map horizontal scroll ── */
+@keyframes globe-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

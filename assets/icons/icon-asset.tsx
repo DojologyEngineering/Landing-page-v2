@@ -566,14 +566,14 @@ export const BackgroundSVG = ({ className }: { className?: string }) => (
 );
 
 // Principles Section Images
-export const AboutUsTag = "/aboutus_tag.svg";
-export const WhoWeAreIcon = "/who_we_are_icon.svg";
-export const PillBackground = "/pill.png";
-export const Card3Image = "/card3_image.png";
+export const AboutUsTag = "/assets/aboutus_tag.svg";
+export const WhoWeAreIcon = "/assets/who_we_are_icon.svg";
+export const PillBackground = "/assets/pill.png";
+export const Card3Image = "/assets/card3_image.png";
 
 // Service Section Images
-export const AbstractDot = "/abstract_dot.png";
-export const PurpleSpotlight = "/purple-sportlight.png";
+export const AbstractDot = "/assets/abstract_dot.png";
+export const PurpleSpotlight = "/assets/purple-sportlight.png";
 
 export const ServicesBadge = ({ className }: { className?: string }) => (
   <svg width="124" height="44" viewBox="0 0 124 44" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
