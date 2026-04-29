@@ -137,28 +137,27 @@ export default function BlogSection() {
           gap: "24px",
         }}
       >
-        {/* ── Top row: pill tag ── */}
         <div>
-          {/* "BLOGS" Pill */}
+          {/* "BLOGS" Pill — matches Figma Dotted Highlight Tag */}
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
+              justifyContent: "center",
               gap: "10px",
               paddingTop: "6px",
               paddingBottom: "6px",
               paddingLeft: "6px",
               paddingRight: "16px",
               borderRadius: "40px",
-              background:
+              backgroundImage:
                 "linear-gradient(0.09deg, rgba(79,26,214,0.08) 0%, rgba(153,153,153,0.1) 100%)",
-              border: "1px solid rgba(255,255,255,0.05)",
               position: "relative",
-              overflow: "visible",
+              overflow: "hidden",
             }}
           >
-            {/* Blue shimmer line on top */}
-            <span
+            {/* Blue shimmer line at top */}
+            <div
               aria-hidden
               style={{
                 position: "absolute",
@@ -170,21 +169,30 @@ export default function BlogSection() {
                   "linear-gradient(90deg, rgba(79,26,214,0) 0%, #4e43fe 50%, rgba(79,26,214,0) 100%)",
               }}
             />
-
-            {/* Icon bubble */}
-            <span
+            {/* Pill outer border overlay */}
+            <div
+              aria-hidden
               style={{
-                display: "inline-flex",
+                position: "absolute",
+                inset: 0,
+                borderRadius: "40px",
+                border: "1px solid rgba(255,255,255,0.05)",
+                pointerEvents: "none",
+              }}
+            />
+            {/* Icon — rounded square per Figma */}
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 padding: "8px",
                 borderRadius: "30px",
-                background: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
-                border: "2px solid rgba(255,255,255,0.15)",
-                position: "relative",
+                backgroundImage: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
+                flexShrink: 0,
               }}
             >
-              {/* Carbon blog icon as inline SVG */}
               <svg
                 width="16"
                 height="16"
@@ -195,8 +203,18 @@ export default function BlogSection() {
                 <path d="M28 4H4a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 22H4V6h24v20Z" />
                 <path d="M8 12h16v2H8zm0 6h10v2H8z" />
               </svg>
-            </span>
-
+              {/* Icon border overlay */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "30px",
+                  border: "2px solid rgba(255,255,255,0.15)",
+                  pointerEvents: "none",
+                }}
+              />
+            </div>
             {/* Label */}
             <span
               style={{

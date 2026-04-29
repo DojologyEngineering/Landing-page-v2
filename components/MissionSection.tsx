@@ -62,17 +62,21 @@ export default function MissionSection() {
           style={{
             display: "inline-flex",
             alignItems: "center",
+            justifyContent: "center",
             gap: "10px",
-            padding: "6px 16px 6px 6px",
+            paddingTop: "6px",
+            paddingBottom: "6px",
+            paddingLeft: "6px",
+            paddingRight: "16px",
             borderRadius: "40px",
-            background:
+            backgroundImage:
               "linear-gradient(0.07deg, rgba(79,26,214,0.08) 0%, rgba(153,153,153,0.1) 100%)",
-            border: "1px solid rgba(255,255,255,0.05)",
             position: "relative",
+            overflow: "hidden",
           }}
         >
-          {/* shimmer top line */}
-          <span
+          {/* Blue shimmer line at top */}
+          <div
             aria-hidden
             style={{
               position: "absolute",
@@ -84,17 +88,28 @@ export default function MissionSection() {
                 "linear-gradient(90deg, rgba(79,26,214,0) 0%, #4e43fe 50%, rgba(79,26,214,0) 100%)",
             }}
           />
-          {/* icon */}
-          <span
+          {/* Pill outer border overlay */}
+          <div
+            aria-hidden
             style={{
-              display: "inline-flex",
+              position: "absolute",
+              inset: 0,
+              borderRadius: "40px",
+              border: "1px solid rgba(255,255,255,0.05)",
+              pointerEvents: "none",
+            }}
+          />
+          {/* Icon — rounded square per Figma */}
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
               padding: "8px",
               borderRadius: "30px",
-              background: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
-              border: "2px solid rgba(255,255,255,0.15)",
-              position: "relative",
+              backgroundImage: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
+              flexShrink: 0,
             }}
           >
             <svg
@@ -107,7 +122,18 @@ export default function MissionSection() {
               <circle cx="12" cy="12" r="3" />
               <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="white" strokeWidth="2" strokeLinecap="round"/>
             </svg>
-          </span>
+            {/* Icon border overlay */}
+            <div
+              aria-hidden
+              style={{
+                position: "absolute",
+                inset: 0,
+                borderRadius: "30px",
+                border: "2px solid rgba(255,255,255,0.15)",
+                pointerEvents: "none",
+              }}
+            />
+          </div>
           <span
             style={{
               fontFamily: "Manrope, sans-serif",

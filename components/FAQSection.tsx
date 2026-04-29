@@ -202,26 +202,27 @@ export default function FAQSection() {
       >
         {/* ── Left: heading ── */}
         <div>
-          {/* FAQs pill */}
+          {/* FAQs pill — matches Figma node 435:17807 */}
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
+              justifyContent: "center",
               gap: "10px",
               paddingTop: "6px",
               paddingBottom: "6px",
               paddingLeft: "6px",
               paddingRight: "16px",
               borderRadius: "40px",
-              background:
+              backgroundImage:
                 "linear-gradient(0.09deg, rgba(79,26,214,0.08) 0%, rgba(153,153,153,0.1) 100%)",
-              border: "1px solid rgba(255,255,255,0.05)",
               position: "relative",
               marginBottom: "24px",
+              overflow: "hidden",
             }}
           >
-            {/* shimmer line */}
-            <span
+            {/* Blue shimmer line at top */}
+            <div
               aria-hidden
               style={{
                 position: "absolute",
@@ -233,16 +234,28 @@ export default function FAQSection() {
                   "linear-gradient(90deg, rgba(79,26,214,0) 0%, #4e43fe 50%, rgba(79,26,214,0) 100%)",
               }}
             />
-            {/* icon */}
-            <span
+            {/* Pill outer border overlay */}
+            <div
+              aria-hidden
               style={{
-                display: "inline-flex",
+                position: "absolute",
+                inset: 0,
+                borderRadius: "40px",
+                border: "1px solid rgba(255,255,255,0.05)",
+                pointerEvents: "none",
+              }}
+            />
+            {/* Icon — rounded square, not circle */}
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 padding: "8px",
                 borderRadius: "30px",
-                background: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
-                border: "2px solid rgba(255,255,255,0.15)",
+                backgroundImage: "linear-gradient(180deg, #4f1ad6 0%, #8059e3 100%)",
+                flexShrink: 0,
               }}
             >
               <svg
@@ -254,7 +267,18 @@ export default function FAQSection() {
               >
                 <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm-2 12H6v-2h12v2Zm0-3H6V9h12v2Zm0-3H6V6h12v2Z" />
               </svg>
-            </span>
+              {/* Icon border overlay */}
+              <div
+                aria-hidden
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "30px",
+                  border: "2px solid rgba(255,255,255,0.15)",
+                  pointerEvents: "none",
+                }}
+              />
+            </div>
             <span
               style={{
                 fontFamily: "Manrope, sans-serif",

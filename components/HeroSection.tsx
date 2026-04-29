@@ -33,14 +33,14 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[#010103]" />
 
       <div className="pointer-events-none absolute inset-x-0 top-[-100px] z-[12] h-[495px] overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[495px] w-[1440px] -translate-x-1/2">
+        <div className="absolute left-1/2 top-0 h-[495px] w-screen -translate-x-1/2">
           <AngularBackground className="h-full w-full opacity-[0.92]" />
           <Image
             src="/assets/lighting.png"
             alt=""
             fill
             priority
-            className="object-contain object-top opacity-[0.92] mix-blend-screen"
+            className="object-cover object-top opacity-[0.92] mix-blend-screen"
           />
         </div>
       </div>
@@ -164,10 +164,10 @@ export default function HeroSection() {
             <LogoLoop
               logos={[
                 { src: "/logo/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
-                { src: "/logo/Prohose%20white%20logo.png", alt: "Prohose" },
+                { src: "/logo/Prohose_white_logo.png", alt: "Prohose" },
                 { src: "/logo/umami%20white%20logo.png", alt: "Umami" },
                 { src: "/logo/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
-                { src: "/logo/Prohose%20white%20logo.png", alt: "Prohose" },
+                { src: "/logo/Prohose_white_logo.png", alt: "Prohose" },
               ]}
               speed={52}
               gap={40}

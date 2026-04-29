@@ -43,12 +43,12 @@ export default async function BlogDetailsPage({ params }: Props) {
             </p>
             
             {/* Hero Image */}
-            <div className="w-full bg-white h-[250px] md:h-[524px] overflow-hidden relative rounded-xl">
+            <div className="w-full h-[250px] md:h-[524px] overflow-hidden relative rounded-xl bg-[#0A0A0A]">
               <Image 
                 src={post.image} 
                 alt={post.title}
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
             </div>
