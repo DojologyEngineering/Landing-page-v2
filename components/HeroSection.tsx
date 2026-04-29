@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "./motion";
-import { AngularBackground } from "../assets/icons/icon-asset";
 import Icon from "../assets/icons/icon-asset";
 import LogoLoop from "@/components/LogoLoop";
 
@@ -32,17 +31,51 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 bg-[#010103]" />
 
+      {/* Angular perspective grid — pure CSS, fully responsive, no black bars */}
       <div className="pointer-events-none absolute inset-x-0 top-[-100px] z-[12] h-[495px] overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[495px] w-screen -translate-x-1/2">
-          <AngularBackground className="h-full w-full opacity-[0.92]" />
-          <Image
-            src="/assets/lighting.png"
-            alt=""
-            fill
-            priority
-            className="object-cover object-top opacity-[0.92] mix-blend-screen"
-          />
-        </div>
+        {/* Base dark background */}
+        <div className="absolute inset-0" style={{ background: "#08081E" }} />
+
+        {/* Left half — conic gradient centered at 25% from left */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "conic-gradient(from 90deg at 25% 0%, rgba(248,248,248,1) 0deg, rgba(1,1,3,1) 0deg, rgba(170,170,170,1) 108deg, rgba(248,248,248,1) 360deg)",
+            clipPath: "inset(0 50% 0 0)",
+            mixBlendMode: "color-dodge",
+            opacity: 0.92,
+          }}
+        />
+
+        {/* Right half — exact scaleX(-1) mirror of left half (matches SVG matrix(-0.1775…)) */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "conic-gradient(from 90deg at 25% 0%, rgba(248,248,248,1) 0deg, rgba(1,1,3,1) 0deg, rgba(170,170,170,1) 108deg, rgba(248,248,248,1) 360deg)",
+            clipPath: "inset(0 50% 0 0)",
+            transform: "scaleX(-1)",
+            transformOrigin: "center center",
+            mixBlendMode: "color-dodge",
+            opacity: 0.92,
+          }}
+        />
+
+        {/* Vertical fade overlay — fades top & bottom edges to #010103 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(180deg, #010103 0%, rgba(1,1,3,0) 50%, #010103 100%)",
+          }}
+        />
+
+        {/* Lighting overlay */}
+        <Image
+          src="/assets/lighting.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-top opacity-[0.92] mix-blend-screen"
+        />
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[13] h-[372px] bg-[radial-gradient(circle_at_top,rgba(77,84,255,0.22)_0%,rgba(77,84,255,0.08)_30%,rgba(1,1,3,0)_76%)]" />

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import Icon from "@/assets/icons/icon-asset";
 
 type MenuItem = {
   label: string;
@@ -52,9 +53,66 @@ function NavLabel({
 export default function Header(): React.ReactElement {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isBlogPage = pathname?.startsWith("/blog/");
+  const isPortfolioDetailPage = pathname?.startsWith("/portfolio/");
+  const isDetailPage = pathname?.startsWith("/blog/") || isPortfolioDetailPage;
 
-  if (isBlogPage) {
+  if (isDetailPage) {
+    if (isPortfolioDetailPage) {
+      return (
+        <header className="absolute inset-x-0 top-0 z-[120] h-[98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
+          <div className="relative mx-auto h-full w-full max-w-[1440px]">
+            <Link
+              href="/"
+              aria-label="Dojology home"
+              className="absolute left-[159px] top-7 block h-[42px] w-[157px]"
+            >
+              <Image
+                src="/assets/portfolio/header-logo-figma.png"
+                alt="Dojology"
+                width={157}
+                height={42}
+                priority
+                className="h-[42px] w-[157px] object-contain"
+              />
+            </Link>
+
+            <button
+              type="button"
+              aria-label="Open navigation"
+              className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]"
+            >
+              <span className="flex flex-col gap-[5px]">
+                <span className="block h-px w-4 bg-white" />
+                <span className="block h-px w-4 bg-white" />
+              </span>
+            </button>
+
+            <div className="absolute left-[1145px] top-[39px] flex h-5 w-[130px] items-center justify-between">
+              <a
+                href="https://www.facebook.com/dojologytechandventures"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
+                <Icon name="facebook" />
+              </a>
+              <a href="https://t.me/dojology" target="_blank" rel="noreferrer" aria-label="Telegram">
+                <Icon name="telegram" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/dojology-tech-and-ventures"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Icon name="linkedin" />
+              </a>
+            </div>
+          </div>
+        </header>
+      );
+    }
+
     return (
       <header className="absolute inset-x-0 top-0 z-[120] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
         <div className="mx-auto w-full max-w-[1440px] h-[98px] flex items-center justify-between px-6 md:px-[112px]">

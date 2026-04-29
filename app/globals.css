@@ -199,3 +199,9 @@
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+.portfolio-horizontal-scroll {
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+}

@@ -1,115 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
-// Project data
-
-type Project = {
-  id: string;
-  label: string;
-  bgColor: string;
-  logo: React.ReactNode;
-  title: string;
-  description: string;
-  services: string[];
-};
-
-// Umami SVG logo (green circle with fork-leaf)
-const UmamiLogo = () => (
-  <div className="flex items-center gap-3">
-    <Image src="/logo/umami white logo.png" alt="Umami Logo" width={303} height={80} style={{ objectFit: "contain", width: "auto", height: "80px" }} />
-  </div>
-);
-
-// Prohose logo
-const ProhoseLogo = () => (
-  <Image src="/logo/Prohose_white_logo.png" alt="Prohose Logo" width={300} height={200} style={{ objectFit: "contain", width: "300px", height: "200px" }} />
-);
-
-// CashGrow logo
-const CashGrowLogo = () => (
-  <Image src="/logo/cashgrow68.png" alt="CashGrow Logo" width={200} height={200} style={{ objectFit: "contain", width: "200px", height: "200px" }} />
-);
-
-// Feng Shui / My Destiny logo
-const FengShuiLogo = () => (
-  <Image src="/logo/Feng shui white logo.png" alt="Feng Shui Logo" width={200} height={200} style={{ objectFit: "contain", width: "200px", height: "200px" }} />
-);
-
-// Generic placeholder icon for projects without local logos
-const GenericIcon = ({ color = "#ffffff" }: { color?: string }) => (
-  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="40" cy="40" r="36" stroke={color} strokeWidth="3" />
-    <path d="M28 40h24M40 28v24" stroke={color} strokeWidth="3" strokeLinecap="round" />
-  </svg>
-);
-
-const projects: Project[] = [
-  {
-    id: "umami",
-    label: "UMAMI",
-    bgColor: "#003223",
-    logo: <UmamiLogo />,
-    title: "UMAMI",
-    description:
-      "Umami is a FoodTech platform dedicated to reducing food waste across Cambodia by connecting consumers with local restaurants and food vendors. Umami allows businesses to sell their surplus food at the end of the day.",
-    services: ["Engineering", "UX/UI Design", "Web and Mobile Development", "Cloud Infrastructure"],
-  },
-  {
-    id: "cashgrow",
-    label: "CASHGROW68",
-    bgColor: "#f59245",
-    logo: <CashGrowLogo />,
-    title: "CashGrow68",
-    description:
-      "A comprehensive digital ecosystem featuring a robust web portal for administrative teams and a user-friendly mobile app, empowering customers to seamlessly apply for low-interest, collateral-backed loans.",
-    services: ["Engineering", "UX/UI Design", "Web and Mobile Development", "Cloud Infrastructure"],
-  },
-  {
-    id: "prohose",
-    label: "PROHOSE",
-    bgColor: "#6cc51d",
-    logo: <ProhoseLogo />,
-    title: "Prohose Official",
-    description:
-      "A professional landing page showcasing Prohose's mission and story, dedicated to bringing Khmer agricultural produce to the digital marketplace.",
-    services: ["Engineering", "UX/UI Design", "Web and Mobile Development", "Cloud Infrastructure"],
-  },
-  {
-    id: "agritrace",
-    label: "KHMER AGRITRACE",
-    bgColor: "#006d30",
-    logo: <UmamiLogo />,
-    title: "Khmer Agritrace",
-    description:
-      "AgriTrace is an end-to-end agricultural management ecosystem designed to digitize the farming lifecycle in Cambodia. By connecting physical field data—such as land plots and crop cycles—to a digital marketplace.",
-    services: ["Engineering", "UX/UI Design", "Web and Mobile Development", "Cloud Infrastructure"],
-  },
-  {
-    id: "nsgcable",
-    label: "NGS CABLE",
-    bgColor: "#4f1ad6",
-    logo: <GenericIcon color="#ffffff" />,
-    title: "NSG Cable",
-    description:
-      "A comprehensive, dual-platform management ecosystem connecting field agents, warehouse operations, and retailers through a Telegram-based Field Intelligence Bot and a Centralized Command Center web portal.",
-    services: ["Engineering", "UX/UI Design", "Web and Mobile Development", "Cloud Infrastructure"],
-  },
-  {
-    id: "ecochef",
-    label: "GREENSPROUT",
-    bgColor: "#1a1a2e",
-    logo: <FengShuiLogo />,
-    title: "ECOCHEF",
-    description:
-      "EcoChef is an AI-powered meal planner that helps users minimize food waste by suggesting recipes based on ingredients they already have at home.",
-    services: ["Data Science", "Interaction Design", "Backend Development", "Machine Learning"],
-  },
-];
-
-const filterLabels = ["All", "UMAMI", "PROHOSE", "NGS CABLE", "CASHGROW68", "KHMER AGRITRACE", "GREENSPROUT", "ZENITH TECH"];
+import {
+  portfolioFilterLabels,
+  portfolioProjects,
+  type PortfolioProject,
+} from "@/lib/portfolio-data";
 
 // Service tag chips
 function ServiceTag({ label }: { label: string }) {
@@ -138,101 +37,133 @@ function ServiceTag({ label }: { label: string }) {
   );
 }
 
-// Single Project Card
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectLogo({ project }: { project: PortfolioProject }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.55, delay: index * 0.08 }}
+    <Image
+      src={project.logo.src}
+      alt={project.logo.alt}
+      width={project.logo.width}
+      height={project.logo.height}
       style={{
-        background: "#10131c",
-        borderRadius: "24px",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        paddingTop: "16px",
-        paddingLeft: "16px",
-        paddingRight: "16px",
-        paddingBottom: "32px",
-        gap: "32px",
+        height: "auto",
+        maxHeight: project.id === "umami" || project.id === "agritrace" ? "80px" : "200px",
+        maxWidth: "82%",
+        objectFit: "contain",
+        width: "auto",
+      }}
+    />
+  );
+}
+
+// Single Project Card
+function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
+  return (
+    <Link
+      href={`/portfolio/${project.id}`}
+      aria-label={`View ${project.title} project details`}
+      style={{
         width: "460px",
         flexShrink: 0,
+        color: "inherit",
+        display: "block",
+        textDecoration: "none",
       }}
     >
-      {/* Image / Logo area */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        whileHover={{ y: -8 }}
+        transition={{ duration: 0.55, delay: index * 0.08 }}
         style={{
-          position: "relative",
-          width: "428px",
-          height: "308px",
-          borderRadius: "12px",
-          background: project.bgColor,
+          background: "#10131c",
+          borderRadius: "24px",
           overflow: "hidden",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          flexDirection: "column",
+          paddingTop: "16px",
+          paddingLeft: "16px",
+          paddingRight: "16px",
+          paddingBottom: "32px",
+          gap: "32px",
+          width: "460px",
           flexShrink: 0,
+          cursor: "pointer",
         }}
       >
-        {project.logo}
-      </div>
-
-      {/* Text + Tags — 428px inner width matching Figma */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "36px", width: "428px" }}>
-        {/* Title + Description */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <p
-            style={{
-              fontFamily: "'Nunito Sans', Manrope, sans-serif",
-              fontWeight: 700,
-              fontSize: "36px",
-              lineHeight: "normal",
-              color: "#fff",
-              margin: 0,
-            }}
-          >
-            {project.title}
-          </p>
-          <p
-            style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 400,
-              fontSize: "16px",
-              lineHeight: "24.375px",
-              letterSpacing: "-0.2344px",
-              color: "rgba(255,255,255,0.6)",
-              margin: 0,
-            }}
-          >
-            {project.description}
-          </p>
-        </div>
-
-        {/* Service tags — natural height, horizontal scroll, no scrollbar */}
+        {/* Image / Logo area */}
         <div
-          className="tags-scroll"
           style={{
-            overflowX: "auto",
+            position: "relative",
+            width: "428px",
+            height: "308px",
+            borderRadius: "12px",
+            background: project.bgColor,
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             flexShrink: 0,
           }}
         >
+          <ProjectLogo project={project} />
+        </div>
+
+        {/* Text + Tags — 428px inner width matching Figma */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "36px", width: "428px" }}>
+          {/* Title + Description */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <p
+              style={{
+                fontFamily: "'Nunito Sans', Manrope, sans-serif",
+                fontWeight: 700,
+                fontSize: "36px",
+                lineHeight: "normal",
+                color: "#fff",
+                margin: 0,
+              }}
+            >
+              {project.title}
+            </p>
+            <p
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "24.375px",
+                letterSpacing: "-0.2344px",
+                color: "rgba(255,255,255,0.6)",
+                margin: 0,
+              }}
+            >
+              {project.description}
+            </p>
+          </div>
+
+          {/* Service tags — natural height, horizontal scroll, no scrollbar */}
           <div
+            className="tags-scroll"
             style={{
-              display: "flex",
-              gap: "12px",
-              alignItems: "center",
-              width: "max-content",
+              overflowX: "auto",
+              flexShrink: 0,
             }}
           >
-            {project.services.map((s) => (
-              <ServiceTag key={s} label={s} />
-            ))}
+            <div
+              style={{
+                display: "flex",
+                gap: "12px",
+                alignItems: "center",
+                width: "max-content",
+              }}
+            >
+              {project.services.map((s) => (
+                <ServiceTag key={s} label={s} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 }
 
@@ -240,7 +171,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filteredProjects = projects.filter((p) => {
+  const filteredProjects = portfolioProjects.filter((p) => {
     if (activeFilter === "All") return true;
     return p.label === activeFilter;
   });
@@ -369,7 +300,7 @@ export default function PortfolioSection() {
                 overflow: "visible",
               }}
             >
-              {filterLabels.map((label) => {
+              {portfolioFilterLabels.map((label) => {
                 const isActive = activeFilter === label;
                 return (
                   <button
