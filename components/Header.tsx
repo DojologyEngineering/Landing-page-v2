@@ -59,7 +59,7 @@ export default function Header(): React.ReactElement {
   if (isDetailPage) {
     if (isPortfolioDetailPage) {
       return (
-        <header className="absolute inset-x-0 top-0 z-[120] h-[98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
+        <header className="sticky inset-x-0 top-0 z-[120] mb-[-98px] h-[98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
           <div className="relative mx-auto h-full w-full max-w-[1440px]">
             <Link
               href="/"
@@ -114,7 +114,7 @@ export default function Header(): React.ReactElement {
     }
 
     return (
-      <header className="absolute inset-x-0 top-0 z-[120] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
+      <header className="sticky inset-x-0 top-0 z-[120] mb-[-98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
         <div className="mx-auto w-full max-w-[1440px] h-[98px] flex items-center justify-between px-6 md:px-[112px]">
           <Link href="/" aria-label="Dojology home">
             <Image
@@ -148,7 +148,7 @@ export default function Header(): React.ReactElement {
 
   return (
     <>
-      <header className="absolute inset-x-0 top-4 z-[120] px-4 md:top-8 md:px-8">
+      <header className="sticky inset-x-0 top-0 z-[120] mb-[-80px] px-4 pt-4 md:mb-[-106px] md:px-8 md:pt-8">
         <div className="mx-auto max-w-[1274px]">
           <div className="hidden h-[74px] items-center justify-between rounded-[72px] bg-[rgba(255,255,255,0.05)] px-12 py-3 text-[20px] font-light tracking-[0.4px] text-white lg:flex">
             <NavLabel

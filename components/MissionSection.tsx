@@ -199,7 +199,8 @@ export default function MissionSection() {
               return (
                 <button
                   key={i}
-                  onClick={() => setActiveIndex(i)}
+                  onFocus={() => setActiveIndex(i)}
+                  onPointerEnter={() => setActiveIndex(i)}
                   style={{
                     width: "100%",
                     display: "flex",
