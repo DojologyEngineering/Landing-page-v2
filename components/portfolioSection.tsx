@@ -109,7 +109,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
           <ProjectLogo project={project} />
         </div>
 
-        {/* Text + Tags — 428px inner width matching Figma */}
+        {/* Text and tags use 428px inner width matching Figma */}
         <div style={{ display: "flex", flexDirection: "column", gap: "36px", width: "428px" }}>
           {/* Title + Description */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -140,7 +140,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             </p>
           </div>
 
-          {/* Service tags — natural height, horizontal scroll, no scrollbar */}
+          {/* Service tags use natural height, horizontal scroll, no scrollbar */}
           <div
             className="tags-scroll"
             style={{
@@ -199,7 +199,7 @@ export default function PortfolioSection() {
           gap: "64px",
         }}
       >
-        {/* ── Header ── */}
+        {/* Header */}
         <div
           style={{
             display: "flex",
@@ -331,7 +331,7 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* ── Two-column Project Grid ── */}
+        {/* Two-column Project Grid */}
         <div
           style={{
             display: "grid",
@@ -348,7 +348,7 @@ export default function PortfolioSection() {
               <ProjectCard key={project.id} project={project} index={i * 2} />
             ))}
           </div>
-          {/* Right column — offset downward like Figma's stagger */}
+          {/* Right column offset downward like Figma stagger */}
           <div style={{ display: "flex", flexDirection: "column", gap: "60px" }}>
             {rightCol.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i * 2 + 1} />

@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   
-  /* ===== PrinciplesSection & ServiceSection Colors ===== */
+  /* PrinciplesSection and ServiceSection colors */
   
   /* Primary Colors */
   --color-primary-purple: #4F1AD6;
@@ -172,7 +172,7 @@
   }
 }
 
-/* ── Hide global vertical scrollbar ── */
+/* Hide global vertical scrollbar */
 @layer base {
   body {
     -ms-overflow-style: none; /* IE and Edge */
@@ -183,7 +183,7 @@
   }
 }
 
-/* ── Hide scrollbar on horizontal scroll containers ── */
+/* Hide scrollbar on horizontal scroll containers */
 @layer utilities {
   .tags-scroll {
     -ms-overflow-style: none;
@@ -194,7 +194,7 @@
   }
 }
 
-/* ── Animated globe: world map horizontal scroll ── */
+/* Animated globe: world map horizontal scroll */
 @keyframes globe-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

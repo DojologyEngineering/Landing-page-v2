@@ -200,9 +200,9 @@ export default function FAQSection() {
           alignItems: "start",
         }}
       >
-        {/* ── Left: heading ── */}
+        {/* Left: heading */}
         <div>
-          {/* FAQs pill — matches Figma node 435:17807 */}
+          {/* FAQs pill matches Figma node 435:17807 */}
           <div
             style={{
               display: "inline-flex",
@@ -245,7 +245,7 @@ export default function FAQSection() {
                 pointerEvents: "none",
               }}
             />
-            {/* Icon — rounded square, not circle */}
+            {/* Icon is rounded square, not circle */}
             <div
               style={{
                 position: "relative",
@@ -321,7 +321,7 @@ export default function FAQSection() {
           </p>
         </div>
 
-        {/* ── Right: accordion ── */}
+        {/* Right: accordion */}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {faqs.map((faq, i) => (
             <FaqItem

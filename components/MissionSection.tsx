@@ -56,7 +56,7 @@ export default function MissionSection() {
         gap: "30px",
       }}
     >
-      {/* ── "Our Mission" pill tag ── */}
+      {/* "Our Mission" pill tag */}
       <div style={{ display: "inline-flex", alignItems: "center" }}>
         <div
           style={{
@@ -99,7 +99,7 @@ export default function MissionSection() {
               pointerEvents: "none",
             }}
           />
-          {/* Icon — rounded square per Figma */}
+          {/* Icon is rounded square per Figma */}
           <div
             style={{
               position: "relative",
@@ -150,7 +150,7 @@ export default function MissionSection() {
         </div>
       </div>
 
-      {/* ── Mission card ── */}
+      {/* Mission card */}
       <div
         style={{
           position: "relative",
@@ -192,7 +192,7 @@ export default function MissionSection() {
             boxSizing: "border-box",
           }}
         >
-          {/* ── Left: step list ── */}
+          {/* Left: step list */}
           <div style={{ width: "305px", flexShrink: 0 }}>
             {steps.map((step, i) => {
               const isActive = i === activeIndex;
@@ -271,7 +271,7 @@ export default function MissionSection() {
             })}
           </div>
 
-          {/* ── Right: active content ── */}
+          {/* Right: active content */}
           <div
             style={{
               width: "561px",

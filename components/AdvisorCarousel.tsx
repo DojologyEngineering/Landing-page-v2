@@ -144,7 +144,7 @@ function MemberCard({ member }: { member: Member }) {
   );
 }
 
-// Per-card slide — derives ALL visual state from shared MotionValue
+// Per-card slide derives all visual state from shared MotionValue
 
 function CarouselSlide({
   member, cardIndex, total, indexMV, onActivate,
@@ -170,7 +170,7 @@ function CarouselSlide({
     return a < 0.5 ? 10 : a < 1.5 ? 5 : 1;
   });
 
-  // isActive is only used for cursor — no state, no re-render
+  // isActive is only used for cursor with no state and no re-render
   const isAdjacent = useTransform(dist, (v) => Math.abs(v) > 0.3);
 
   return (
@@ -241,7 +241,7 @@ export default function AdvisorCarousel() {
         overflow: "hidden",
       }}
     >
-      {/* ── Slides ── */}
+      {/* Slides */}
       <div
         style={{
           position: "relative",
@@ -271,7 +271,7 @@ export default function AdvisorCarousel() {
         ))}
       </div>
 
-      {/* ── Navigation ── */}
+      {/* Navigation */}
       <div style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px" }}>
         <button onClick={prev} aria-label="Previous"
           style={{ width: "40px", height: "40px", display: "flex", alignItems: "center", justifyContent: "center", background: "transparent", border: "none", cursor: "pointer", padding: "8px" }}>

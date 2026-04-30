@@ -7,7 +7,7 @@ import {
   Wrench, Rocket, TrendingUp,
 } from "lucide-react";
 
-// ── CSS keyframe for the neon border spin ─────────────────────────────────────
+// CSS keyframe for the neon border spin
 const NEON_CSS = `
 @keyframes neon-spin {
   from { transform: rotate(0deg); }
@@ -15,11 +15,11 @@ const NEON_CSS = `
 }
 `;
 
-// ── Neon border card wrapper ──────────────────────────────────────────────────
+// Neon border card wrapper
 function NeonCard({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
     <div style={{ position: "relative", padding: "1.5px", borderRadius: "20px", overflow: "hidden", height: "184px" }}>
-      {/* Rotating indigo border beam — exact Figma colors */}
+      {/* Rotating indigo border beam with exact Figma colors */}
       <div
         style={{
           position: "absolute",
@@ -30,7 +30,7 @@ function NeonCard({ children, delay = 0 }: { children: React.ReactNode; delay?: 
           animationDelay: `${delay}s`,
         }}
       />
-      {/* Inner card surface — solid dark bg so ONLY the 1.5px gap shows the neon */}
+      {/* Inner card surface uses solid dark bg so only the 1.5px gap shows the neon */}
       <div
         className="group relative p-8 flex flex-col justify-end overflow-hidden transition-all"
         style={{ borderRadius: "18.5px", background: "#0d0d10", height: "100%" }}
@@ -41,7 +41,7 @@ function NeonCard({ children, delay = 0 }: { children: React.ReactNode; delay?: 
   );
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// Main component
 export default function StudioModelSection() {
   const [activePhase, setActivePhase] = useState(0);
   const [beamKey, setBeamKey] = useState(0);
@@ -70,7 +70,7 @@ export default function StudioModelSection() {
     { number: "03", title: "Scale",  desc: "We support growth, strengthen product stability, and prepare for investment rounds.",                        label: "HYPERGROWTH",        icon: TrendingUp },
   ];
 
-  // Timeline geometry — dots centered over each of the 3 equal columns
+  // Timeline geometry with dots centered over each of the 3 equal columns
   const DOT_SIZE     = 14;
   const CONNECTOR_H  = 90;
   const DOT_X        = ["16.67%", "50%", "83.33%"];
@@ -82,7 +82,7 @@ export default function StudioModelSection() {
 
       <div className="max-w-[1052px] mx-auto flex flex-col items-center gap-16 lg:gap-32">
 
-        {/* ── Header ── */}
+        {/* Header */}
         <div className="flex flex-col items-center text-center gap-8">
           <h2 className="font-[family-name:var(--font-manrope)] font-extrabold text-[64px] md:text-[128px] leading-[1.1] md:leading-[102.4px] flex flex-col md:inline-grid pb-6 overflow-visible text-left md:text-left">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-[#4f46e5] to-white md:col-start-1 md:row-start-1 md:z-10 pb-4 tracking-[-3px] md:tracking-[-7px]">Tech for</span>
@@ -98,7 +98,7 @@ export default function StudioModelSection() {
           </div>
         </div>
 
-        {/* ── Tech for Equity cards — each wrapped in NeonCard ── */}
+        {/* Tech for Equity cards, each wrapped in NeonCard */}
         <div className="w-full flex flex-col gap-6">
           <div className="flex items-center justify-between border-b border-white/5 pb-4">
             <h3 className="text-[#6a7282] text-xs font-extrabold tracking-[0.4em] uppercase font-[family-name:var(--font-manrope)]">What Founders Receive:</h3>
@@ -127,17 +127,17 @@ export default function StudioModelSection() {
           </p>
         </div>
 
-        {/* ── Studio Phases ── */}
+        {/* Studio Phases */}
         <div className="w-full flex flex-col items-center gap-8 md:gap-16">
           <h2 className="text-4xl md:text-[72px] font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-white to-[#4f46e5] text-center tracking-[-2px] md:tracking-[-4.2px] leading-tight md:leading-[72px] pb-6 overflow-visible">
             Studio Phases
           </h2>
 
           <div className="w-full relative">
-            {/* ── Timeline row ── */}
+            {/* Timeline row */}
             <div style={{ position: "relative", width: "100%", height: DOT_SIZE + CONNECTOR_H }}>
 
-              {/* ── Horizontal line bloom ── */}
+              {/* Horizontal line bloom */}
               {/* Outer wide diffuse glow */}
               <div style={{ position: "absolute", top: DOT_SIZE / 2 - 16, left: DOT_X[0], right: DOT_X[0], height: "32px", background: "rgba(79,70,229,0.10)", filter: "blur(16px)", borderRadius: "50%", pointerEvents: "none" }} />
               {/* Mid tighter glow */}
@@ -145,14 +145,14 @@ export default function StudioModelSection() {
               {/* The line itself */}
               <div style={{ position: "absolute", top: DOT_SIZE / 2 - 0.5, left: DOT_X[0], right: DOT_X[0], height: "1.5px", background: "rgba(255,255,255,0.75)", boxShadow: "0 0 4px 1px rgba(255,255,255,0.4), 0 0 12px 2px rgba(100,90,240,0.5), 0 0 24px 4px rgba(79,70,229,0.2)", pointerEvents: "none" }} />
 
-              {/* Animated fill from phase 0 → activePhase */}
+              {/* Animated fill from phase 0 to activePhase */}
               <motion.div
                 animate={{ width: `${fillPct * (1 - 2 * 0.1667)}%` }}
                 transition={{ type: "spring", stiffness: 200, damping: 30 }}
                 style={{ position: "absolute", top: DOT_SIZE / 2 - 1, left: DOT_X[0], height: "2px", background: "linear-gradient(90deg, rgba(79,70,229,0.9), rgba(255,255,255,0.85))", boxShadow: "0 0 10px rgba(255,255,255,0.5)" }}
               />
 
-              {/* Horizontal travel beam — from prevPhase dot → activePhase dot */}
+              {/* Horizontal travel beam from prevPhase dot to activePhase dot */}
               <AnimatePresence>
                 {activePhase !== prevPhaseRef.current && (
                   <motion.div
@@ -171,7 +171,7 @@ export default function StudioModelSection() {
                 return (
                   <div key={i} style={{ position: "absolute", top: 0, left: DOT_X[i], transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center" }}>
 
-                    {/* Checkpoint dot — outer ring + inner white fill */}
+                    {/* Checkpoint dot with outer ring and inner white fill */}
                     <button
                       onClick={() => selectPhase(i)}
                       aria-label={`Select phase ${i + 1}`}
@@ -206,7 +206,7 @@ export default function StudioModelSection() {
               })}
             </div>
 
-            {/* ── Phase cards ── */}
+            {/* Phase cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative z-10 mt-2">
               {phases.map((phase, i) => {
                 const Icon = phase.icon;

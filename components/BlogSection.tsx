@@ -138,7 +138,7 @@ export default function BlogSection() {
         }}
       >
         <div>
-          {/* "BLOGS" Pill — matches Figma Dotted Highlight Tag */}
+          {/* "BLOGS" pill matches Figma Dotted Highlight Tag */}
           <div
             style={{
               display: "inline-flex",
@@ -180,7 +180,7 @@ export default function BlogSection() {
                 pointerEvents: "none",
               }}
             />
-            {/* Icon — rounded square per Figma */}
+            {/* Icon is rounded square per Figma */}
             <div
               style={{
                 position: "relative",
@@ -232,7 +232,7 @@ export default function BlogSection() {
           </div>
         </div>
 
-        {/* ── Second row: Headline + View All link ── */}
+        {/* Second row: Headline + View All link */}
         <div
           style={{
             display: "flex",
@@ -302,7 +302,7 @@ export default function BlogSection() {
           </a>
         </div>
 
-        {/* ── Blog Cards ── */}
+        {/* Blog Cards */}
         <div
           style={{
             display: "flex",

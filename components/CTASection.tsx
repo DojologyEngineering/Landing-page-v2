@@ -24,7 +24,7 @@ export default function CTASection() {
           padding: "32px 40px",
           boxSizing: "border-box",
           overflow: "hidden",
-          // Exact Figma gradient: indigo → indigo 60% → pure white
+          // Exact Figma gradient: indigo to indigo 60% to pure white
           background:
             "linear-gradient(89.9618deg, rgb(79,70,229) 0%, rgba(79,70,229,0.6) 24.064%, rgb(255,255,255) 82.033%)",
           display: "flex",
@@ -32,7 +32,7 @@ export default function CTASection() {
           gap: "32px",
         }}
       >
-        {/* Conic vignette — full-card black fade matching Figma */}
+        {/* Conic vignette with full-card black fade matching Figma */}
         <div
           aria-hidden
           style={{

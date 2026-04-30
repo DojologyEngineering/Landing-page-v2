@@ -49,7 +49,7 @@ export default function FooterSection(): React.ReactElement {
         />
       </div>
 
-      {/* ── Main footer content ── */}
+      {/* Main footer content */}
       <div
         style={{
           position: "relative",
@@ -213,7 +213,7 @@ export default function FooterSection(): React.ReactElement {
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
+      {/* Bottom bar */}
       <div
         style={{
           position: "relative",

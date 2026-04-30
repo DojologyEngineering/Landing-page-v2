@@ -31,12 +31,12 @@ export default function HeroSection() {
     >
       <div className="absolute inset-0 bg-[#010103]" />
 
-      {/* Angular perspective grid — pure CSS, fully responsive, no black bars */}
+      {/* Angular perspective grid using pure CSS, fully responsive, no black bars */}
       <div className="pointer-events-none absolute inset-x-0 top-[-100px] z-[12] h-[495px] overflow-hidden">
         {/* Base dark background */}
         <div className="absolute inset-0" style={{ background: "#08081E" }} />
 
-        {/* Left half — conic gradient centered at 25% from left */}
+        {/* Left half conic gradient centered at 25% from left */}
         <div
           className="absolute inset-0"
           style={{
@@ -47,7 +47,7 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Right half — exact scaleX(-1) mirror of left half (matches SVG matrix(-0.1775…)) */}
+        {/* Right half exact scaleX(-1) mirror of left half */}
         <div
           className="absolute inset-0"
           style={{
@@ -60,7 +60,7 @@ export default function HeroSection() {
           }}
         />
 
-        {/* Vertical fade overlay — fades top & bottom edges to #010103 */}
+        {/* Vertical fade overlay fades top and bottom edges to #010103 */}
         <div
           className="absolute inset-0"
           style={{
@@ -131,7 +131,7 @@ export default function HeroSection() {
                   {/* Blue sphere gradient background */}
                   <span className="absolute inset-0 rounded-full" style={{ background: "radial-gradient(circle at 38% 38%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 55%), linear-gradient(225deg, #CCEEFF 0%, #001EB3 77.37%)" }} />
 
-                  {/* Scrolling world map — 2 copies for seamless loop */}
+                  {/* Scrolling world map with 2 copies for seamless loop */}
                   <motion.span
                     className="absolute top-[5%] bottom-[1.5%] left-0 flex w-max"
                     animate={{ x: ["0%", "-50%"] }}
