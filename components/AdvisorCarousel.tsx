@@ -27,14 +27,14 @@ const members: Member[] = [
     role: "Founder & CEO",
     bio: "Visionary leader with 10+ years in technology innovation and strategic growth, driving Dojology's mission to empower startups through equity-based partnerships.",
     image: "/image/ceo-image.png",
-    linkedIn: "#",
+    linkedIn: "https://www.linkedin.com/in/penlymeng/",
   },
   {
     name: "Dalen SIENG",
     role: "Co-founder & CFO",
     bio: "Financial and operational expert driving efficiency and scaling excellence across the organization, ensuring sustainable growth for every portfolio company.",
     image: "/image/cfo-image.png",
-    linkedIn: "#",
+    linkedIn: "https://www.linkedin.com/in/dalen-sieng-930769131/",
   },
   {
     name: "Thai Sodalin",
@@ -50,9 +50,10 @@ const members: Member[] = [
   },
   {
     name: "Pak Maneth",
-    role: "Backend Lead",
-    bio: "Architects robust, scalable server-side systems and APIs, championing best practices in cloud infrastructure and database design.",
-    linkedIn: "#",
+    role: "Co-Founder & CTO",
+    bio: "Great products come from systems that stay reliable when the pressure rises. He leads the technical architecture behind scalable platforms, APIs, cloud infrastructure, and engineering standards.",
+    image: "/image/Pak_Maneth.png",
+    linkedIn: "https://www.linkedin.com/in/maneth-pak/",
   },
 ];
 

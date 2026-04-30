@@ -69,7 +69,7 @@ export default function FooterSection(): React.ReactElement {
           {/* Left: Logo + tagline */}
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
             <img
-              src="/logo/logo.png"
+              src="/assets/portfolio/footer-logo-figma.png"
               alt="Dojology"
               style={{ width: "200px", height: "auto" }}
             />

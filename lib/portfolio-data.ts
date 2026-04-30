@@ -14,7 +14,10 @@ export type PortfolioProject = {
   detailDescription: string;
   services: string[];
   tasks: string[];
-  links: string[];
+  links: {
+    label: string;
+    url?: string;
+  }[];
   other: string[];
   metrics: {
     label: string;
@@ -63,7 +66,17 @@ export const portfolioProjects: PortfolioProject[] = [
       "Mobile App",
       "Cloud Infrastructure",
     ],
-    links: ["Social Media", "App Store", "Play Store"],
+    links: [
+      { label: "Social Media" },
+      {
+        label: "Umami: Save Food, Save Money",
+        url: "https://apps.apple.com/kh/app/umami-save-food-save-money/id6760289489",
+      },
+      {
+        label: "Umami: Save Food, Save Money",
+        url: "https://play.google.com/store/apps/details?id=com.dojo.umami&pcampaignid=web_share",
+      },
+    ],
     other: ["Industry: FoodTech", "Model: Co-founder & Technology Partner"],
     metrics: [
       { label: "Revenue Growth", value: "+588%", caption: "Marketplace traction", tone: "dark" },
@@ -84,7 +97,7 @@ export const portfolioProjects: PortfolioProject[] = [
     detailTitle: "CashGrow68",
     bgColor: "#f59245",
     logo: {
-      src: "/logo/cashgrow68.png",
+      src: "/logo/cashgrow68-figma.png",
       alt: "CashGrow68 Logo",
       width: 200,
       height: 200,
@@ -102,7 +115,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "Loan Workflow Automation",
       "Cloud Infrastructure",
     ],
-    links: ["Admin Portal", "Mobile App", "Customer Support"],
+    links: [
+      { label: "Play Store: CashGrow68 - Secure Asset Loan", url: "https://play.google.com/store/apps/details?id=com.cashgrow.pawnshop&pcampaignid=web_share" },
+      { label: "Website: cashgrow68.shop", url: "http://cashgrow68.shop/" },
+      { label: "Customer Support" },
+    ],
     other: ["Industry: FinTech", "Model: Technology Partner"],
     metrics: [
       { label: "Processing Speed", value: "4x", caption: "Faster application review", tone: "dark" },
@@ -123,7 +140,7 @@ export const portfolioProjects: PortfolioProject[] = [
     detailTitle: "Prohose Official",
     bgColor: "#6cc51d",
     logo: {
-      src: "/logo/Prohose_white_logo.png",
+      src: "/logo/prohose-figma.png",
       alt: "Prohose Logo",
       width: 300,
       height: 200,
@@ -140,7 +157,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "Content Structure",
       "Deployment",
     ],
-    links: ["Website", "Social Media", "Partner Inquiry"],
+    links: [
+      { label: "Website: prohose-official.com", url: "https://prohose-official.com/" },
+      { label: "Social Media" },
+      { label: "Partner Inquiry" },
+    ],
     other: ["Industry: Agriculture", "Model: Web Technology Partner"],
     metrics: [
       { label: "Brand Presence", value: "Full Digital", caption: "From offline to online", tone: "dark" },
@@ -178,7 +199,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "Marketplace Workflow",
       "Cloud Infrastructure",
     ],
-    links: ["Field Portal", "Marketplace", "Partner Dashboard"],
+    links: [
+      { label: "Field Portal" },
+      { label: "Marketplace" },
+      { label: "Partner Dashboard" },
+    ],
     other: ["Industry: AgriTech", "Model: Venture Technology Partner"],
     metrics: [
       { label: "Traceability", value: "100%", caption: "Crop lifecycle visibility", tone: "dark" },
@@ -194,20 +219,20 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: "nsgcable",
-    label: "NGS CABLE",
+    label: "NSG CABLE",
     title: "NSG Cable",
-    detailTitle: "NGS Cable",
+    detailTitle: "NSG Cable",
     bgColor: "#4f1ad6",
     logo: {
-      src: "/logo/logo.png",
-      alt: "NGS Cable Logo",
+      src: "/logo/nsg-card-figma.png",
+      alt: "NSG Cable Logo",
       width: 200,
-      height: 54,
+      height: 200,
     },
     description:
       "A comprehensive, dual-platform management ecosystem connecting field agents, warehouse operations, and retailers through a Telegram-based Field Intelligence Bot and a Centralized Command Center web portal.",
     detailDescription:
-      "NGS Cable connects field agents, warehouse teams, and retailer workflows through a Telegram-based field intelligence bot and centralized command center.",
+      "NSG Cable connects field agents, warehouse teams, and retailer workflows through a Telegram-based field intelligence bot and centralized command center.",
     services: commonServices,
     tasks: [
       "Telegram Bot",
@@ -216,7 +241,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "Warehouse Operations",
       "Cloud Infrastructure",
     ],
-    links: ["Command Center", "Field Bot", "Operations Dashboard"],
+    links: [
+      { label: "Command Center" },
+      { label: "Field Bot" },
+      { label: "Operations Dashboard" },
+    ],
     other: ["Industry: Telecom Operations", "Model: Systems Partner"],
     metrics: [
       { label: "Field Coverage", value: "3x", caption: "More visible operations", tone: "dark" },
@@ -226,7 +255,7 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
     quote: {
       body: "Operations moved from scattered updates into a single command flow the team could act on.",
-      name: "NGS Cable Team",
+      name: "NSG Cable Team",
       role: "Field Operations",
     },
   },
@@ -235,12 +264,13 @@ export const portfolioProjects: PortfolioProject[] = [
     label: "GREENSPROUT",
     title: "ECOCHEF",
     detailTitle: "ECOCHEF",
-    bgColor: "#1a1a2e",
+    bgColor:
+      "linear-gradient(141.406deg, rgba(59, 193, 74, 0) 25.99%, #3bc14a 114.56%), linear-gradient(180deg, rgba(46, 75, 66, 0) 0%, rgba(46, 75, 66, 0.2) 100%), #2e4b42",
     logo: {
-      src: "/logo/Feng shui white logo.png",
-      alt: "GreenSprout Logo",
-      width: 200,
-      height: 200,
+      src: "/logo/umami-mark-figma.svg",
+      alt: "EcoChef Logo",
+      width: 80,
+      height: 80,
     },
     description:
       "EcoChef is an AI-powered meal planner that helps users minimize food waste by suggesting recipes based on ingredients they already have at home.",
@@ -254,7 +284,11 @@ export const portfolioProjects: PortfolioProject[] = [
       "Ingredient Matching",
       "Machine Learning",
     ],
-    links: ["Prototype", "Recipe Engine", "User Testing"],
+    links: [
+      { label: "Prototype" },
+      { label: "Recipe Engine" },
+      { label: "User Testing" },
+    ],
     other: ["Industry: Consumer Sustainability", "Model: Product Build Partner"],
     metrics: [
       { label: "Recipe Matches", value: "12k", caption: "Generated suggestions", tone: "dark" },
@@ -274,7 +308,7 @@ export const portfolioFilterLabels = [
   "All",
   "UMAMI",
   "PROHOSE",
-  "NGS CABLE",
+  "NSG CABLE",
   "CASHGROW68",
   "KHMER AGRITRACE",
   "GREENSPROUT",

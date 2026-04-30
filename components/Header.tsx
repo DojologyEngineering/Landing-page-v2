@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import Icon from "@/assets/icons/icon-asset";
 
 type MenuItem = {
   label: string;
@@ -30,7 +29,7 @@ function NavLabel({
   className?: string;
   onActivate?: () => void;
 }): React.ReactElement {
-  const sharedClassName = `whitespace-nowrap text-white/95 transition-colors duration-200 hover:text-white ${className ?? ""}`;
+  const sharedClassName = `relative z-10 whitespace-nowrap text-white/95 transition-colors duration-200 hover:text-white ${className ?? ""}`;
 
   if (!item.href) {
     return (
@@ -57,68 +56,14 @@ export default function Header(): React.ReactElement {
   const isDetailPage = pathname?.startsWith("/blog/") || isPortfolioDetailPage;
 
   if (isDetailPage) {
-    if (isPortfolioDetailPage) {
-      return (
-        <header className="sticky inset-x-0 top-0 z-[120] mb-[-98px] h-[98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
-          <div className="relative mx-auto h-full w-full max-w-[1440px]">
-            <Link
-              href="/"
-              aria-label="Dojology home"
-              className="absolute left-[159px] top-7 block h-[42px] w-[157px]"
-            >
-              <Image
-                src="/assets/portfolio/header-logo-figma.png"
-                alt="Dojology"
-                width={157}
-                height={42}
-                priority
-                className="h-[42px] w-[157px] object-contain"
-              />
-            </Link>
-
-            <button
-              type="button"
-              aria-label="Open navigation"
-              className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]"
-            >
-              <span className="flex flex-col gap-[5px]">
-                <span className="block h-px w-4 bg-white" />
-                <span className="block h-px w-4 bg-white" />
-              </span>
-            </button>
-
-            <div className="absolute left-[1145px] top-[39px] flex h-5 w-[130px] items-center justify-between">
-              <a
-                href="https://www.facebook.com/dojologytechandventures"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-              >
-                <Icon name="facebook" />
-              </a>
-              <a href="https://t.me/dojology" target="_blank" rel="noreferrer" aria-label="Telegram">
-                <Icon name="telegram" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/dojology-tech-and-ventures"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Icon name="linkedin" />
-              </a>
-            </div>
-          </div>
-        </header>
-      );
-    }
+    const closeHref = isPortfolioDetailPage ? "/#portfolio" : "/#blog";
 
     return (
       <header className="sticky inset-x-0 top-0 z-[120] mb-[-98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
         <div className="mx-auto w-full max-w-[1440px] h-[98px] flex items-center justify-between px-6 md:px-[112px]">
           <Link href="/" aria-label="Dojology home">
             <Image
-              src="/logo/logo.png"
+              src="/assets/portfolio/footer-logo-figma.png"
               alt="Dojology"
               width={192}
               height={52}
@@ -128,18 +73,34 @@ export default function Header(): React.ReactElement {
           </Link>
           
           <Link 
-            href="/#blog"
-            className="flex items-center gap-[10px] px-[12px] py-[6px] rounded-[40px] relative overflow-hidden group"
+            href={closeHref}
+            className="group relative flex items-center justify-center gap-[10px] overflow-hidden rounded-[40px] py-[6px] pl-[6px] pr-4"
             style={{ 
-              backgroundImage: "linear-gradient(0deg, rgba(79, 26, 214, 0.08) 0%, rgba(153, 153, 153, 0.1) 100%)",
-              border: "1px solid rgba(255,255,255,0.05)"
+              backgroundImage: "linear-gradient(0.09deg, rgba(79,26,214,0.08) 0%, rgba(153,153,153,0.1) 100%)",
             }}
           >
-            <div className="absolute top-0 left-[14.34%] right-[14.34%] h-[1px] bg-gradient-to-r from-transparent via-[#4e43fe] to-transparent z-0 group-hover:via-white transition-colors duration-300"></div>
-            <div className="flex items-center justify-center p-[8px] rounded-[30px] bg-gradient-to-b from-[#4f1ad6] to-[#8059e3] border-[2px] border-white/15 z-10 relative">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <div className="absolute left-[14.34%] right-[14.34%] top-0 h-px bg-gradient-to-r from-transparent via-[#4e43fe] to-transparent transition-colors duration-300 group-hover:via-white" />
+            <div className="pointer-events-none absolute inset-0 rounded-[40px] border border-white/[0.05]" />
+            <div className="relative z-10 flex shrink-0 items-center justify-center rounded-[30px] bg-gradient-to-b from-[#4f1ad6] to-[#8059e3] p-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <div className="pointer-events-none absolute inset-0 rounded-[30px] border-2 border-white/15" />
             </div>
-            <span className="font-['Manrope'] font-normal text-[16px] text-white tracking-[-0.5px] leading-[26px] mr-2 z-10 relative">CLOSE</span>
+            <span className="relative z-10 whitespace-nowrap font-[family-name:var(--font-manrope)] text-[16px] font-normal leading-[26px] tracking-[-0.5px] text-white">
+              CLOSE
+            </span>
           </Link>
         </div>
       </header>
@@ -150,7 +111,10 @@ export default function Header(): React.ReactElement {
     <>
       <header className="sticky inset-x-0 top-0 z-[120] mb-[-80px] px-4 pt-4 md:mb-[-106px] md:px-8 md:pt-8">
         <div className="mx-auto max-w-[1274px]">
-          <div className="hidden h-[74px] items-center justify-between rounded-[72px] bg-[rgba(255,255,255,0.05)] px-12 py-3 text-[20px] font-light tracking-[0.4px] text-white lg:flex">
+          <div className="relative hidden h-[74px] items-center justify-between overflow-hidden rounded-[72px] border border-white/20 bg-white/[0.04] px-12 py-3 text-[20px] font-light tracking-[0.4px] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(255,255,255,0.08)] backdrop-blur-[12px] lg:flex">
+            <div className="pointer-events-none absolute inset-0 rounded-[72px] bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0%,rgba(255,255,255,0)_55%)]" />
+            <div className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 rounded-[72px] ring-1 ring-inset ring-white/10" />
             <NavLabel
               item={menuItems[0]}
               className="font-[family-name:var(--font-manrope)] leading-[1.16]"
@@ -165,11 +129,11 @@ export default function Header(): React.ReactElement {
             />
             <a
               href="#home"
-              className="flex shrink-0 items-center justify-center rounded-full px-2"
+              className="relative z-10 flex shrink-0 items-center justify-center rounded-full px-2"
               aria-label="Dojology home"
             >
               <Image
-                src="/logo/logo.png"
+                src="/assets/portfolio/footer-logo-figma.png"
                 alt="Dojology"
                 width={186}
                 height={50}
@@ -194,7 +158,7 @@ export default function Header(): React.ReactElement {
           <div className="flex min-h-[64px] items-center justify-between rounded-[32px] bg-[rgba(255,255,255,0.05)] px-5 py-3 lg:hidden">
             <a href="#home" aria-label="Dojology home">
               <Image
-                src="/logo/logo.png"
+                src="/assets/portfolio/footer-logo-figma.png"
                 alt="Dojology"
                 width={148}
                 height={40}

@@ -46,7 +46,10 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
       height={project.logo.height}
       style={{
         height: "auto",
-        maxHeight: project.id === "umami" || project.id === "agritrace" ? "80px" : "200px",
+        maxHeight:
+          project.id === "umami" || project.id === "agritrace" || project.id === "ecochef"
+            ? "80px"
+            : "200px",
         maxWidth: "82%",
         objectFit: "contain",
         width: "auto",
