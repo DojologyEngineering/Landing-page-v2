@@ -27,7 +27,7 @@ export default function TeamSection() {
       role: "Founder & CEO",
       description:
         "Visionary leader with 10+ years in technology innovation and strategic growth",
-      linkedIn: "#",
+      linkedIn: "https://www.linkedin.com/in/penlymeng/",
       image: "/image/ceo-image.png",
     },
     {
@@ -35,8 +35,16 @@ export default function TeamSection() {
       role: "Co-founder & CFO",
       description:
         "Financial and operational expert driving efficiency and scaling excellence across the organization",
-      linkedIn: "#",
+      linkedIn: "https://www.linkedin.com/in/dalen-sieng-930769131/",
       image: "/image/cfo-image.png",
+    },
+    {
+      name: "Pak Maneth",
+      role: "Co-Founder & CTO",
+      description:
+        "Great products come from systems that stay reliable when the pressure rises.",
+      linkedIn: "https://www.linkedin.com/in/maneth-pak/",
+      image: "/image/Pak_Maneth.png",
     },
   ];
 
@@ -76,12 +84,6 @@ export default function TeamSection() {
       name: "Bin Sodina",
       role: "Mobile Developer",
       image: "/image/Bin_Sodina.png",
-    },
-    {
-      id: "dojo-8",
-      name: "Pak Maneth",
-      role: "Backend Lead",
-      image: "/image/Pak_Maneth.png",
     },
     {
       id: "dojo-9",
@@ -148,7 +150,7 @@ export default function TeamSection() {
                       : "text-white"
                   }`}
                 >
-                  Founder &amp; Co-founder
+                  Founding Team
                 </button>
                 <button
                   onClick={() => setActiveTab("dojo")}
@@ -170,13 +172,13 @@ export default function TeamSection() {
               variants={container}
               initial="hidden"
               animate="show"
-              className="grid w-full min-h-[384px] gap-8 md:grid-cols-2 md:gap-10 lg:gap-20"
+              className="grid w-full min-h-[384px] items-stretch gap-8 md:grid-cols-3 md:gap-8 lg:gap-12"
             >
               {founders.map((member) => (
                 <motion.div
                   key={member.name}
                   variants={item}
-                  className="flex min-h-[330px] flex-col items-center justify-center gap-6 px-2 py-4 text-center"
+                  className="flex h-full min-h-[360px] flex-col items-center gap-6 px-2 py-4 text-center"
                 >
                   <div className="relative h-32 w-32 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15">
                     <img
@@ -186,20 +188,20 @@ export default function TeamSection() {
                     />
                   </div>
 
-                  <div>
+                  <div className="flex min-h-[64px] flex-col items-center justify-start">
                     <h3 className="font-[family-name:var(--font-manrope)] text-[20px] font-bold leading-7 text-white">
                       {member.name}
                     </h3>
-                    <p className="font-[family-name:var(--font-manrope)] text-base font-bold text-[#34CB4D]">
+                    <p className="font-[family-name:var(--font-manrope)] text-base font-bold leading-6 text-[#34CB4D]">
                       {member.role}
                     </p>
                   </div>
 
-                  <p className="max-w-[420px] font-[family-name:var(--font-manrope)] text-sm leading-5 text-white/90">
+                  <p className="min-h-[80px] max-w-[420px] font-[family-name:var(--font-manrope)] text-sm leading-5 text-white/90">
                     {member.description}
                   </p>
 
-                  <div className="mt-1 flex items-center gap-3">
+                  <div className="mt-auto flex items-center gap-3">
                     <a
                       href={member.linkedIn}
                       aria-label={`${member.name} LinkedIn`}

@@ -17,6 +17,13 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
+type DetailColumnItem =
+  | string
+  | {
+      label: string;
+      url?: string;
+    };
+
 export function generateStaticParams() {
   return portfolioProjects.map((project) => ({ id: project.id }));
 }
@@ -42,7 +49,7 @@ function DetailColumn({
   items,
 }: {
   title: string;
-  items: string[];
+  items: DetailColumnItem[];
 }) {
   return (
     <div className="flex w-[329px] flex-col gap-3">
@@ -50,11 +57,30 @@ function DetailColumn({
         {title}
       </p>
       <div className="flex flex-col font-[family-name:var(--font-manrope)] text-[20px] font-normal leading-normal text-white">
-        {items.map((item) => (
-          <p key={item} className="m-0">
-            {item}
-          </p>
-        ))}
+        {items.map((item) => {
+          const label = typeof item === "string" ? item : item.label;
+          const url = typeof item === "string" ? undefined : item.url;
+
+          if (url) {
+            return (
+              <a
+                key={label}
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className="m-0 text-white no-underline transition-opacity hover:opacity-75"
+              >
+                {label}
+              </a>
+            );
+          }
+
+          return (
+            <p key={label} className="m-0">
+              {label}
+            </p>
+          );
+        })}
       </div>
     </div>
   );
@@ -391,17 +417,19 @@ export default async function PortfolioDetailPage({ params }: Props) {
           </h1>
           <div className="flex w-full items-start justify-between">
             <DetailColumn title="PROJECTS TASK" items={project.tasks} />
-            <DetailColumn title="LINK" items={project.links.map((link) => `${link}:`)} />
+            <DetailColumn title="LINK" items={project.links} />
             <DetailColumn title="OTHER" items={project.other} />
           </div>
         </div>
 
         <ImagePanel
-          className="left-0 top-[583px] h-[750px] w-[1440px]"
+          className="left-0 top-[650px] h-[750px] w-[1440px]"
           src="/assets/portfolio/project-hero-bg.png"
           crop="hero"
           rounded={false}
         />
+
+        <div className="absolute left-0 top-[1340px] h-[134px] w-[1440px] bg-black" />
 
         <p className="absolute left-1/2 top-[1363px] m-0 w-[1052px] -translate-x-1/2 text-center font-[family-name:var(--font-manrope)] text-[20px] font-normal leading-normal text-white">
           {project.detailDescription}

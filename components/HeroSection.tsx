@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "./motion";
-import Icon from "../assets/icons/icon-asset";
 import LogoLoop from "@/components/LogoLoop";
 
 const container = {
@@ -196,15 +195,14 @@ export default function HeroSection() {
             <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
             <LogoLoop
               logos={[
-                { src: "/logo/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
-                { src: "/logo/Prohose_white_logo.png", alt: "Prohose" },
-                { src: "/logo/umami%20white%20logo.png", alt: "Umami" },
-                { src: "/logo/Feng%20shui%20white%20logo.png", alt: "Fengshui" },
-                { src: "/logo/Prohose_white_logo.png", alt: "Prohose" },
+                { src: "/logo/yeac-figma.png", alt: "YEAC" },
+                { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
+                { src: "/logo/yeac-figma.png", alt: "YEAC" },
+                { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
               ]}
               speed={52}
-              gap={40}
-              logoHeight={44}
+              gap={56}
+              logoHeight={52}
               fadeOut={false}
               className="mx-auto opacity-40"
             />
