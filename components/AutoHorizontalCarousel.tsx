@@ -19,6 +19,7 @@ type AutoHorizontalCarouselProps = {
   logicalCount: number;
   showIndicators?: boolean;
   indicatorsClassName?: string;
+  allowTrailingSpacer?: boolean;
 };
 
 export default function AutoHorizontalCarousel({
@@ -30,6 +31,7 @@ export default function AutoHorizontalCarousel({
   logicalCount,
   showIndicators = false,
   indicatorsClassName = "",
+  allowTrailingSpacer = true,
 }: AutoHorizontalCarouselProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -72,7 +74,7 @@ export default function AutoHorizontalCarousel({
     setActiveIndex((currentIndex) => (currentIndex === nextIndex ? currentIndex : nextIndex));
   }, [itemSpan, logicalCount]);
 
-  const trailingSpacerWidth = Math.max(0, viewportWidth - itemWidth);
+  const trailingSpacerWidth = allowTrailingSpacer ? Math.max(0, viewportWidth - itemWidth) : 0;
 
   return (
     <>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
+import Icon from "@/assets/icons/icon-asset";
 import {
   getPortfolioProject,
   portfolioFilterLabels,
@@ -335,13 +336,35 @@ function DetailFooter() {
         <p className="m-0 font-[family-name:var(--font-manrope)] text-[16px] font-medium text-white">
           Dojology © 2025 All Rights Reserved
         </p>
-        <Image
-          src="/assets/portfolio/footer-socials-figma.svg"
-          alt="Dojology social links"
-          width={145}
-          height={27}
-          className="h-[27px] w-[145px] object-contain"
-        />
+        <div className="flex items-center gap-4">
+          <a
+            href="https://www.facebook.com/dojologytechandventures"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Facebook"
+            className="flex transition-opacity hover:opacity-75"
+          >
+            <Icon name="facebook" />
+          </a>
+          <a
+            href="https://t.me/dojology"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Telegram"
+            className="flex transition-opacity hover:opacity-75"
+          >
+            <Icon name="telegram" />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/dojology-tech-and-ventures"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="flex transition-opacity hover:opacity-75"
+          >
+            <Icon name="linkedin" />
+          </a>
+        </div>
       </div>
     </footer>
   );
@@ -355,7 +378,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
     notFound();
   }
 
-  const relatedProjects = portfolioProjects.filter((item) => item.id !== project.id).slice(0, 3);
+  const relatedProjects = portfolioProjects.filter((item) => item.id !== project.id);
   const [metricOne, metricTwo, metricThree, metricFour] = project.metrics;
   const screenshotCards = Array.from({ length: 5 }, (_, index) => index);
 
@@ -510,6 +533,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
           logicalCount={screenshotCards.length}
           showIndicators
           indicatorsClassName="absolute left-[194px] top-[4683px]"
+          allowTrailingSpacer={false}
         >
           {screenshotCards.map((item) => (
             <ScreenshotCarouselCard key={item} index={item} />
@@ -547,6 +571,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
           itemSpan={490}
           itemWidth={460}
           logicalCount={relatedProjects.length}
+          allowTrailingSpacer={false}
         >
           {relatedProjects.map((relatedProject) => (
             <RelatedProjectCard key={relatedProject.id} project={relatedProject} />

@@ -1,6 +1,7 @@
 "use client";
 
 import Icon from "@/assets/icons/icon-asset";
+import Image from "next/image";
 
 export default function FooterSection(): React.ReactElement {
   return (
@@ -11,13 +12,48 @@ export default function FooterSection(): React.ReactElement {
         position: "relative",
         zIndex: 10,
         boxSizing: "border-box",
+        overflow: "hidden",
         // paddingTop: 130px pushes the footer CONTENT (logo, links, etc.) below the CTA card's bottom half
         paddingTop: "165px",
       }}
     >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          right: 0,
+          top: "50%",
+          width: "514px",
+          height: "612px",
+          transform: "translateY(-50%)",
+          overflow: "hidden",
+          opacity: 0.05,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      >
+        <Image
+          src="/assets/portfolio/footer-logo-figma.png"
+          alt=""
+          width={2279}
+          height={612}
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "2279px",
+            height: "612px",
+            maxWidth: "none",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+
       {/* ── Main footer content ── */}
       <div
         style={{
+          position: "relative",
+          zIndex: 1,
           padding: "60px 100px 0",
           boxSizing: "border-box",
         }}
@@ -180,6 +216,8 @@ export default function FooterSection(): React.ReactElement {
       {/* ── Bottom bar ── */}
       <div
         style={{
+          position: "relative",
+          zIndex: 1,
           margin: "48px 100px 0",
           padding: "28px 0",
           borderTop: "1px solid rgba(255,255,255,0.2)",
