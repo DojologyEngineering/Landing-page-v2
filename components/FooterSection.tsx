@@ -120,7 +120,8 @@ export default function FooterSection(): React.ReactElement {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    justifyContent: "flex-start",
+                    gap: "8px",
                     fontFamily: "Manrope, sans-serif",
                     fontWeight: 500,
                     fontSize: "18px",

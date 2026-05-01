@@ -73,11 +73,11 @@ export default function PrinciplesSection() {
         className="flex flex-col items-center gap-6 w-full"
       >
         {/* First Row - Two Cards */}
-        <div className="flex flex-col gap-6 w-full lg:flex-row">
+        <div className="flex flex-col gap-6 w-full xl:flex-row xl:justify-center max-w-[1052px]">
           {/* Card 1: Who we are ? */}
           <motion.div
             variants={item}
-            className="relative flex items-center justify-center w-full lg:w-[462px] h-[300px] sm:h-[360px] lg:h-[428px] flex-shrink-0 rounded-[20px] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:rounded-t-[20px] before:pointer-events-none"
+            className="relative flex items-center justify-center w-full xl:w-[462px] h-[300px] sm:h-[360px] lg:h-[428px] flex-shrink-0 rounded-[20px] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:rounded-t-[20px] before:pointer-events-none"
             style={{
               background: "var(--color-card-bg)"
             }}
@@ -86,7 +86,7 @@ export default function PrinciplesSection() {
               background: "linear-gradient(90deg, transparent 0%, var(--color-primary-purple-light) 50%, transparent 100%)"
             }} />
             <div 
-              className="flex flex-col justify-center items-center relative w-full lg:w-[422px] h-full lg:h-[388px] absolute rounded-xl overflow-hidden group"
+              className="flex flex-col justify-center items-center relative w-full xl:w-[422px] h-full lg:h-[388px] absolute rounded-xl overflow-hidden group"
               style={{
                 background: "linear-gradient(0deg, var(--color-card-overlay-start) 0%, var(--color-card-overlay-end) 100%)"
               }}
@@ -121,7 +121,7 @@ export default function PrinciplesSection() {
           {/* Card 2: What we think ? */}
           <motion.div
             variants={item}
-            className="relative flex items-center justify-center w-full lg:w-[562px] h-[300px] sm:h-[360px] lg:h-[428px] flex-shrink-0 rounded-[20px]"
+            className="relative flex items-center justify-center w-full xl:w-[562px] h-[300px] sm:h-[360px] lg:h-[428px] flex-shrink-0 rounded-[20px]"
             style={{
               background: "var(--color-card-bg)"
             }}
@@ -130,7 +130,7 @@ export default function PrinciplesSection() {
               background: "linear-gradient(90deg, transparent 0%, var(--color-primary-purple-light) 50%, transparent 100%)"
             }} />
             <div 
-              className="flex flex-col justify-center items-center relative overflow-hidden w-full lg:w-[530px] h-full lg:h-[388px] gap-0.5 rounded-xl bg-cover bg-center bg-no-repeat group"
+              className="flex flex-col justify-center items-center relative overflow-hidden w-full xl:w-[530px] h-full lg:h-[388px] gap-0.5 rounded-xl bg-cover bg-center bg-no-repeat group"
               style={{
                 backgroundImage: `url(${PillBackground})`
               }}
@@ -165,7 +165,7 @@ export default function PrinciplesSection() {
         {/* Second Row - Full Width Card */}
         <motion.div
           variants={item}
-          className="relative flex items-center justify-center w-full lg:w-[1052px] h-auto lg:h-[428px] flex-shrink-0 rounded-[20px]"
+          className="relative flex items-center justify-center w-full xl:w-[1052px] max-w-[1052px] h-auto lg:h-[428px] flex-shrink-0 rounded-[20px]"
           style={{
             background: "var(--color-card-bg)"
           }}
@@ -174,7 +174,7 @@ export default function PrinciplesSection() {
             background: "linear-gradient(90deg, transparent 0%, var(--color-primary-purple-light) 50%, transparent 100%)"
           }} />
           <div 
-            className="flex flex-col lg:flex-row items-start lg:items-center justify-between px-6 lg:px-12 w-full lg:w-[1012px] py-8 lg:py-0 lg:h-[388px] rounded-xl overflow-hidden group relative"
+            className="flex flex-col lg:flex-row items-start lg:items-center justify-between px-6 lg:px-12 w-full xl:w-[1012px] py-8 lg:py-0 lg:h-[388px] rounded-xl overflow-hidden group relative"
             style={{
               background: "linear-gradient(0deg, var(--color-card-overlay-start) 0%, var(--color-card-overlay-end) 100%)"
             }}

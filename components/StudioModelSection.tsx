@@ -173,7 +173,7 @@ export default function StudioModelSection() {
 
                     {/* Checkpoint dot with outer ring and inner white fill */}
                     <button
-                      onClick={() => selectPhase(i)}
+                      onMouseEnter={() => selectPhase(i)}
                       aria-label={`Select phase ${i + 1}`}
                       style={{
                         width: DOT_SIZE, height: DOT_SIZE, borderRadius: "50%", border: "none", padding: 0, cursor: "pointer",
@@ -215,6 +215,7 @@ export default function StudioModelSection() {
                   <motion.div
                     key={i}
                     onClick={() => selectPhase(i)}
+                    onMouseEnter={() => selectPhase(i)}
                     animate={{ opacity: isActive ? 1 : 0.4 }}
                     whileHover={{ opacity: isActive ? 1 : 0.75 }}
                     transition={{ duration: 0.3 }}

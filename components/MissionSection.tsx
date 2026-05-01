@@ -46,18 +46,10 @@ export default function MissionSection() {
   return (
     <section
       id="mission"
-      style={{
-        background: "#000",
-        width: "100%",
-        padding: "80px 16px",
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
-        gap: "30px",
-      }}
-      className="lg:!p-[120px_194px]"
+      className="w-full flex flex-col gap-[30px] p-[80px_16px] md:p-[100px_40px] xl:p-[120px_194px] box-border bg-[#000] items-center"
     >
-      {/* "Our Mission" pill tag */}
+      <div className="w-full max-w-[1052px] flex flex-col gap-[30px]">
+        {/* "Our Mission" pill tag */}
       <div style={{ display: "inline-flex", alignItems: "center" }}>
         <div
           style={{
@@ -153,17 +145,7 @@ export default function MissionSection() {
 
       {/* Mission card */}
       <div
-        style={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "1052px",
-          height: "auto",
-          minHeight: "auto",
-          borderRadius: "20px",
-          overflow: "hidden",
-          border: "1px solid rgba(255,255,255,0.08)",
-          background: "#0a0a14",
-        }}
+        className="relative w-full max-w-[1052px] h-auto min-h-auto rounded-[20px] overflow-hidden border border-white/10 bg-[#0a0a14]"
       >
         {/* bg-mission nebula image */}
         <div
@@ -184,10 +166,10 @@ export default function MissionSection() {
 
         {/* Card content */}
         <div
-          className="relative z-10 flex flex-row items-center justify-between h-full p-[24px_16px] md:p-[0_32px] gap-2 md:gap-8 min-h-[300px] md:min-h-[469px] w-full box-border"
+          className="relative z-10 flex flex-row items-center justify-between h-full p-[24px_16px] md:p-[40px_32px] gap-4 md:gap-12 min-h-[300px] md:min-h-[469px] w-full box-border"
         >
           {/* Left: step list */}
-          <div className="w-[45%] lg:w-[305px] flex-shrink-0">
+          <div className="w-[45%] xl:w-[305px] flex-shrink-0">
             {steps.map((step, i) => {
               const isActive = i === activeIndex;
               return (
@@ -252,7 +234,7 @@ export default function MissionSection() {
           </div>
 
           {/* Right: active content */}
-          <div className="w-[55%] lg:w-[561px] flex-shrink-0 relative overflow-hidden pt-0 pl-4 md:pl-0">
+          <div className="w-[50%] xl:w-[561px] flex-shrink-0 relative overflow-hidden pt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -292,6 +274,7 @@ export default function MissionSection() {
             </AnimatePresence>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
