@@ -12,16 +12,17 @@ export default function CTASection() {
         zIndex: 20,
         marginTop: "-100px",
         marginBottom: "-130px",
-        padding: "0 100px",
+        padding: "0 16px",
         boxSizing: "border-box",
       }}
+      className="sm:!px-[40px] lg:!px-[100px]"
     >
       {/* Banner card */}
       <div
         style={{
           position: "relative",
           borderRadius: "20px",
-          padding: "32px 40px",
+          padding: "32px 24px",
           boxSizing: "border-box",
           overflow: "hidden",
           // Exact Figma gradient: indigo to indigo 60% to pure white
@@ -31,6 +32,7 @@ export default function CTASection() {
           flexDirection: "column",
           gap: "32px",
         }}
+        className="sm:!p-[32px_40px]"
       >
         {/* Conic vignette with full-card black fade matching Figma */}
         <div
@@ -54,9 +56,10 @@ export default function CTASection() {
               fontSize: "36px",
               lineHeight: "normal",
               color: "#fff",
-              margin: "0 0 32px",
+              margin: "0 0 16px",
               maxWidth: "592px",
             }}
+            className="sm:!mb-[32px]"
           >
             Ready to Unlock Your Business Potential?
           </p>
@@ -68,6 +71,7 @@ export default function CTASection() {
               alignItems: "center",
               justifyContent: "space-between",
               gap: "24px",
+              flexWrap: "wrap",
             }}
           >
             <p

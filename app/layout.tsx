@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   title: "Dojology Tech & Ventures",
   description: "Modern landing page built with Next.js, TypeScript, and Framer Motion",
   icons: {
-    icon: "/assets/portfolio/header-logo-figma.png",
+    icon: "/logo/favcon-dojo.svg",
   },
 };
 

@@ -54,17 +54,19 @@ export default function FooterSection(): React.ReactElement {
         style={{
           position: "relative",
           zIndex: 1,
-          padding: "60px 100px 0",
+          padding: "60px 16px 0",
           boxSizing: "border-box",
         }}
+        className="sm:!px-8 lg:!px-[100px]"
       >
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr auto auto",
-            gap: "80px",
+            gridTemplateColumns: "1fr",
+            gap: "48px",
             alignItems: "start",
           }}
+          className="lg:!grid-cols-[1fr_auto_auto] lg:!gap-[80px]"
         >
           {/* Left: Logo + tagline */}
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -74,8 +76,8 @@ export default function FooterSection(): React.ReactElement {
               style={{ width: "200px", height: "auto" }}
             />
             <p
-              className="branding"
-              style={{ fontSize: "56px", lineHeight: "1.1", margin: 0 }}
+              className="branding text-[36px] sm:!text-[46px] lg:!text-[56px]"
+              style={{ lineHeight: "1.1", margin: 0 }}
             >
               Growth.
               <br />
@@ -109,8 +111,8 @@ export default function FooterSection(): React.ReactElement {
               {[
                 { label: "About us", href: "#about" },
                 { label: "Services", href: "#services" },
-                { label: "FAQs", href: "#faqs" },
                 { label: "Partnership", href: "#" },
+                { label: "FAQs", href: "#faqs" },
               ].map((link) => (
                 <a
                   key={link.label}
@@ -118,7 +120,8 @@ export default function FooterSection(): React.ReactElement {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    justifyContent: "flex-start",
+                    gap: "8px",
                     fontFamily: "Manrope, sans-serif",
                     fontWeight: 500,
                     fontSize: "18px",
@@ -218,13 +221,16 @@ export default function FooterSection(): React.ReactElement {
         style={{
           position: "relative",
           zIndex: 1,
-          margin: "48px 100px 0",
+          margin: "48px 16px 0",
           padding: "28px 0",
           borderTop: "1px solid rgba(255,255,255,0.2)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "16px",
         }}
+        className="sm:!mx-8 lg:!mx-[100px]"
       >
         <p
           style={{

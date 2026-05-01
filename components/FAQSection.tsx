@@ -157,10 +157,10 @@ export default function FAQSection() {
         zIndex: 1,
         background: "#000",
         width: "100%",
-        padding: "120px 194px 285px",
+        padding: "80px 16px 140px",
         boxSizing: "border-box",
-
       }}
+      className="sm:!px-8 lg:!px-[194px] lg:!pb-[285px] lg:!pt-[120px]"
     >
       {/* Light rays background image */}
       <div
@@ -195,10 +195,11 @@ export default function FAQSection() {
           maxWidth: "1052px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "280px 1fr",
-          gap: "80px",
+          gridTemplateColumns: "1fr",
+          gap: "40px",
           alignItems: "start",
         }}
+        className="lg:!grid-cols-[280px_1fr] lg:!gap-[80px]"
       >
         {/* Left: heading */}
         <div>

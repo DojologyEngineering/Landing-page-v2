@@ -173,7 +173,7 @@ export default function StudioModelSection() {
 
                     {/* Checkpoint dot with outer ring and inner white fill */}
                     <button
-                      onClick={() => selectPhase(i)}
+                      onMouseEnter={() => selectPhase(i)}
                       aria-label={`Select phase ${i + 1}`}
                       style={{
                         width: DOT_SIZE, height: DOT_SIZE, borderRadius: "50%", border: "none", padding: 0, cursor: "pointer",
@@ -207,7 +207,7 @@ export default function StudioModelSection() {
             </div>
 
             {/* Phase cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative z-10 mt-2">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 relative z-10 mt-2">
               {phases.map((phase, i) => {
                 const Icon = phase.icon;
                 const isActive = i === activePhase;
@@ -215,10 +215,11 @@ export default function StudioModelSection() {
                   <motion.div
                     key={i}
                     onClick={() => selectPhase(i)}
+                    onMouseEnter={() => selectPhase(i)}
                     animate={{ opacity: isActive ? 1 : 0.4 }}
                     whileHover={{ opacity: isActive ? 1 : 0.75 }}
                     transition={{ duration: 0.3 }}
-                    className={`relative rounded-[32px] p-8 min-h-[290px] flex flex-col justify-between overflow-hidden border cursor-pointer ${
+                    className={`relative rounded-[16px] md:rounded-[32px] p-3 sm:p-5 md:p-8 min-h-[220px] md:min-h-[290px] flex flex-col justify-between overflow-hidden border cursor-pointer ${
                       isActive
                         ? "bg-[linear-gradient(rgba(255,255,255,0.05)_0%,rgba(0,0,0,0)_100%),#0a0a0a] border-[#615fff]/30 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.8)]"
                         : "bg-white/[0.01] border-white/5"
@@ -227,20 +228,20 @@ export default function StudioModelSection() {
                     {isActive && <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#615fff]/50 to-transparent" />}
 
                     <div className="flex justify-between items-start w-full">
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${isActive ? "bg-[#4f39f6]/20" : "bg-white/5"}`}>
-                        <Icon className="w-[20px] h-[20px]" strokeWidth={1.5} />
+                      <div className={`w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-2xl flex items-center justify-center ${isActive ? "bg-[#4f39f6]/20" : "bg-white/5"}`}>
+                        <Icon className="w-[14px] h-[14px] md:w-[20px] md:h-[20px]" strokeWidth={1.5} />
                       </div>
-                      <span className={`text-[20px] font-extrabold ${isActive ? "text-white" : "text-white/5"}`}>{phase.number}</span>
+                      <span className={`text-[12px] md:text-[20px] font-extrabold ${isActive ? "text-white" : "text-white/5"}`}>{phase.number}</span>
                     </div>
 
-                    <div className="flex flex-col gap-3 mt-8">
-                      <h3 className={`text-[24px] font-bold ${isActive ? "text-white" : "text-white/40"}`}>{phase.title}</h3>
-                      <p className={`text-[12px] leading-[19.5px] ${isActive ? "text-white/60" : "text-white/20"}`}>{phase.desc}</p>
+                    <div className="flex flex-col gap-2 md:gap-3 mt-4 md:mt-8">
+                      <h3 className={`text-[14px] md:text-[24px] font-bold ${isActive ? "text-white" : "text-white/40"}`}>{phase.title}</h3>
+                      <p className={`text-[9px] md:text-[12px] leading-[1.4] md:leading-[19.5px] line-clamp-4 md:line-clamp-none ${isActive ? "text-white/60" : "text-white/20"}`}>{phase.desc}</p>
                     </div>
 
-                    <div className="flex justify-between items-center mt-12 w-full">
-                      <span className={`text-[9px] uppercase tracking-[1.8px] ${isActive ? "text-[#7c86ff]" : "text-white/20"}`}>{phase.label}</span>
-                      {isActive && <Icon className="w-4 h-4 text-white" strokeWidth={1.5} />}
+                    <div className="flex justify-between items-center mt-6 md:mt-12 w-full">
+                      <span className={`text-[7px] md:text-[9px] uppercase tracking-[1px] md:tracking-[1.8px] truncate pr-1 ${isActive ? "text-[#7c86ff]" : "text-white/20"}`}>{phase.label}</span>
+                      {isActive && <Icon className="w-3 h-3 md:w-4 md:h-4 text-white flex-shrink-0" strokeWidth={1.5} />}
                     </div>
                   </motion.div>
                 );

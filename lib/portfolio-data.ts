@@ -261,7 +261,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: "ecochef",
-    label: "GREENSPROUT",
+    label: "ECOCHEF",
     title: "ECOCHEF",
     detailTitle: "ECOCHEF",
     bgColor:
@@ -311,8 +311,7 @@ export const portfolioFilterLabels = [
   "NSG CABLE",
   "CASHGROW68",
   "KHMER AGRITRACE",
-  "GREENSPROUT",
-  "ZENITH TECH",
+  "ECOCHEF",
 ];
 
 export function getPortfolioProject(id: string): PortfolioProject | undefined {

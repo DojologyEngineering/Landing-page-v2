@@ -26,7 +26,7 @@ export default function HeroSection() {
       initial="hidden"
       animate="show"
       variants={container}
-      className="relative h-[1024px] overflow-hidden bg-[#010103] text-white"
+      className="relative min-h-[600px] h-auto lg:h-[1024px] overflow-hidden bg-[#010103] text-white"
     >
       <div className="absolute inset-0 bg-[#010103]" />
 
@@ -69,7 +69,7 @@ export default function HeroSection() {
 
         {/* Lighting overlay */}
         <Image
-          src="/assets/lighting.png"
+          src="/assets/ligtningv2.png"
           alt=""
           fill
           priority
@@ -81,9 +81,9 @@ export default function HeroSection() {
 
       <div className="pointer-events-none absolute inset-0 z-[19] bg-[linear-gradient(180deg,rgba(54,63,179,0.16)_0%,rgba(1,1,3,0)_22%)]" />
 
-      <div className="pointer-events-none absolute left-1/2 top-[-205px] z-[20] h-[1440px] w-[1440px] -translate-x-1/2 overflow-hidden">
+      <div className="pointer-events-none absolute left-1/2 top-[-205px] z-[20] h-[1440px] w-[1440px] -translate-x-1/2 scale-[2.1] overflow-hidden">
         <Image
-          src="/assets/Tunnel.svg"
+          src="/assets/Tunnelv2.svg"
           alt=""
           fill
           priority
@@ -92,7 +92,7 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="pointer-events-none absolute left-[calc(50%-14px)] top-[646px] z-[25] h-[2279px] w-[2228px] -translate-x-1/2 overflow-hidden"
+        className="pointer-events-none absolute left-[calc(50%-14px)] z-[25] -translate-x-1/2 overflow-hidden top-[400px] h-[1200px] w-[1200px] sm:top-[500px] sm:h-[1600px] sm:w-[1600px] lg:top-[646px] lg:h-[2279px] lg:w-[2228px]"
         style={{
           clipPath: "ellipse(50% 50% at 50% 50%)",
         }}
@@ -107,16 +107,16 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-[40] mx-auto h-full w-full max-w-[1440px]">
-        <div className="absolute left-1/2 top-[315px] flex w-[867px] -translate-x-1/2 flex-col items-center text-center">
+        <div className="px-4 pt-[180px] pb-[80px] sm:px-8 sm:pt-[220px] lg:absolute lg:left-1/2 lg:top-[315px] lg:flex lg:w-[867px] lg:-translate-x-1/2 lg:flex-col lg:items-center lg:text-center lg:px-0 lg:pt-0 lg:pb-0 flex flex-col items-center text-center">
           <motion.div
             variants={item}
             className="flex flex-col items-center gap-[10px]"
           >
-            <h1 className="font-[family-name:var(--font-russo-one)] text-[86px] leading-[1.16] tracking-[-5.16px] text-white">
+            <h1 className="font-[family-name:var(--font-russo-one)] text-[40px] leading-[1.16] tracking-[-2px] text-white sm:text-[56px] sm:tracking-[-3px] lg:text-[86px] lg:tracking-[-5.16px]">
               <span className="block whitespace-nowrap">
                 We build the tech.
               </span>
-              <span className="mt-[10px] flex items-center justify-center gap-[10px] whitespace-nowrap text-[76px] tracking-[-4.56px]">
+              <span className="mt-[6px] flex flex-wrap items-center justify-center gap-[6px] text-[36px] tracking-[-2px] sm:mt-[10px] sm:gap-[10px] sm:text-[50px] sm:tracking-[-3px] lg:mt-[10px] lg:gap-[10px] lg:whitespace-nowrap lg:text-[76px] lg:tracking-[-4.56px]">
                 <span className="leading-[1.16]">You scale the </span>
                 <span 
                   className="bg-clip-text text-transparent leading-[1.16]" 
@@ -124,7 +124,7 @@ export default function HeroSection() {
                 >
                   business.
                 </span>
-                <span className="relative inline-flex h-[52px] w-[52px] items-center justify-center rounded-full overflow-hidden flex-shrink-0"
+                <span className="relative inline-flex h-[36px] w-[36px] items-center justify-center rounded-full overflow-hidden flex-shrink-0 sm:h-[44px] sm:w-[44px] lg:h-[52px] lg:w-[52px]"
                   style={{ boxShadow: "0 0 8.4px 5px #0022CC, 0 0 114px 0 rgba(0,43,255,0.8)" }}
                 >
                   {/* Blue sphere gradient background */}
@@ -149,7 +149,7 @@ export default function HeroSection() {
 
           <motion.p
             variants={item}
-            className="mt-8 w-[810px] font-[family-name:var(--font-manrope)] text-[24px] font-medium leading-[1.16] tracking-[0.48px] text-white/80"
+            className="mt-6 w-full max-w-[600px] font-[family-name:var(--font-manrope)] text-[16px] font-medium leading-[1.4] tracking-[0.48px] text-white/80 sm:text-[18px] lg:mt-8 lg:w-[810px] lg:max-w-none lg:text-[24px] lg:leading-[1.16]"
           >
             Dojology Tech &amp; Ventures partners with startups and SMEs to
             deliver real technology — in exchange for equity, revenue share, or
@@ -158,7 +158,21 @@ export default function HeroSection() {
 
           <motion.div
             variants={item}
-            className="mt-8 flex items-center justify-center"
+            className="pointer-events-none mt-4 w-full flex flex-col items-center lg:m-0 lg:absolute lg:left-[732.5px] lg:top-[292px] lg:block lg:w-[126px] lg:p-0"
+          >
+            <div className="text-left">
+              <p className="whitespace-nowrap font-[family-name:var(--font-manrope)] text-[16px] font-semibold tracking-[-0.5px] text-white/60">
+                -PEN Lymeng
+              </p>
+              <p className="whitespace-nowrap pl-[11px] font-[family-name:var(--font-manrope)] text-[10px] text-white/45">
+                CEO &amp; Founder
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={item}
+            className="mt-8 flex items-center justify-center lg:mt-[50px]"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -170,19 +184,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        <motion.div
-          variants={item}
-          className="pointer-events-none absolute left-[1019px] top-[607px] w-[126px] text-left"
-        >
-          <p className="whitespace-nowrap font-[family-name:var(--font-manrope)] text-[16px] font-semibold tracking-[-0.5px] text-white/60">
-            -PEN Lymeng
-          </p>
-          <p className="whitespace-nowrap pl-[11px] font-[family-name:var(--font-manrope)] text-[10px] text-white/45">
-            CEO &amp; Founder
-          </p>
-        </motion.div>
-
-        <div className="pointer-events-none absolute left-1/2 top-[840px] z-[55] w-[430px] -translate-x-1/2">
+        <div className="pointer-events-none absolute left-1/2 top-[500px] z-[55] w-[90vw] max-w-[430px] -translate-x-1/2 sm:top-[620px] lg:top-[840px] lg:w-[430px]">
           <div
             className="relative h-[80px] overflow-hidden pt-5"
             style={{

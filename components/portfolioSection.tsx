@@ -65,7 +65,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
       href={`/portfolio/${project.id}`}
       aria-label={`View ${project.title} project details`}
       style={{
-        width: "460px",
+        width: "100%",
         flexShrink: 0,
         color: "inherit",
         display: "block",
@@ -89,7 +89,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
           paddingRight: "16px",
           paddingBottom: "32px",
           gap: "32px",
-          width: "460px",
+          width: "100%",
           flexShrink: 0,
           cursor: "pointer",
         }}
@@ -98,8 +98,8 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
         <div
           style={{
             position: "relative",
-            width: "428px",
-            height: "308px",
+            width: "100%",
+            height: "250px",
             borderRadius: "12px",
             background: project.bgColor,
             overflow: "hidden",
@@ -108,12 +108,13 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             justifyContent: "center",
             flexShrink: 0,
           }}
+          className="sm:!h-[308px]"
         >
           <ProjectLogo project={project} />
         </div>
 
-        {/* Text and tags use 428px inner width matching Figma */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "36px", width: "428px" }}>
+        {/* Text and tags use full inner width */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "36px", width: "100%" }}>
           {/* Title + Description */}
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <p
@@ -189,9 +190,10 @@ export default function PortfolioSection() {
       style={{
         background: "#010103",
         width: "100%",
-        padding: "120px 194px",
+        padding: "80px 16px",
         boxSizing: "border-box",
       }}
+      className="sm:!px-8 lg:!px-[194px] lg:!py-[120px]"
     >
       <div
         style={{
@@ -217,9 +219,9 @@ export default function PortfolioSection() {
             style={{
               fontFamily: "Manrope, sans-serif",
               fontWeight: 800,
-              fontSize: "128px",
-              lineHeight: "102.4px",
-              letterSpacing: "-7px",
+              fontSize: "clamp(48px, 10vw, 128px)",
+              lineHeight: "1.0",
+              letterSpacing: "clamp(-3px, -0.55vw, -7px)",
               color: "transparent",
               display: "grid",
               gridTemplateColumns: "max-content",
@@ -238,10 +240,10 @@ export default function PortfolioSection() {
                 backgroundClip: "text",
                 gridColumn: 1,
                 gridRow: 1,
-                marginLeft: "187px",
+                marginLeft: "clamp(0px, 18vw, 187px)",
                 marginTop: 0,
-                letterSpacing: "-7px",
-                lineHeight: "102.4px",
+                letterSpacing: "clamp(-3px, -0.55vw, -7px)",
+                lineHeight: "1.0",
               }}
             >
               OUR{" "}
@@ -255,10 +257,10 @@ export default function PortfolioSection() {
                 backgroundClip: "text",
                 gridColumn: 1,
                 gridRow: 1,
-                marginLeft: "76px",
-                marginTop: "100px",
-                letterSpacing: "-5px",
-                lineHeight: "102.4px",
+                marginLeft: "clamp(0px, 7.5vw, 76px)",
+                marginTop: "clamp(60px, 9.8vw, 100px)",
+                letterSpacing: "clamp(-2px, -0.4vw, -5px)",
+                lineHeight: "1.0",
               }}
             >
               RECENT
@@ -273,9 +275,9 @@ export default function PortfolioSection() {
                 gridColumn: 1,
                 gridRow: 1,
                 marginLeft: 0,
-                marginTop: "200px",
-                letterSpacing: "-5px",
-                lineHeight: "102.4px",
+                marginTop: "clamp(120px, 19.6vw, 200px)",
+                letterSpacing: "clamp(-2px, -0.4vw, -5px)",
+                lineHeight: "1.0",
               }}
             >
               PROJECTS
@@ -336,23 +338,19 @@ export default function PortfolioSection() {
 
         {/* Two-column Project Grid */}
         <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-y-[40px] gap-x-[40px] lg:gap-x-[120px] lg:gap-y-[60px] w-full"
           style={{
-            display: "grid",
-            gridTemplateColumns: "460px 460px",
-            columnGap: "120px",
-            rowGap: "60px",
             alignItems: "start",
-            width: "100%",
           }}
         >
           {/* Left column */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "60px" }}>
+          <div className="flex flex-col gap-[40px] lg:gap-[60px]">
             {leftCol.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i * 2} />
             ))}
           </div>
           {/* Right column offset downward like Figma stagger */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "60px" }}>
+          <div className="flex flex-col gap-[40px] lg:gap-[60px]">
             {rightCol.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i * 2 + 1} />
             ))}

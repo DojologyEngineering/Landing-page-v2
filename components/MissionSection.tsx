@@ -46,17 +46,10 @@ export default function MissionSection() {
   return (
     <section
       id="mission"
-      style={{
-        background: "#000",
-        width: "100%",
-        padding: "120px 194px",
-        boxSizing: "border-box",
-        display: "flex",
-        flexDirection: "column",
-        gap: "30px",
-      }}
+      className="w-full flex flex-col gap-[30px] p-[80px_16px] md:p-[100px_40px] xl:p-[120px_194px] box-border bg-[#000] items-center"
     >
-      {/* "Our Mission" pill tag */}
+      <div className="w-full max-w-[1052px] flex flex-col gap-[30px]">
+        {/* "Our Mission" pill tag */}
       <div style={{ display: "inline-flex", alignItems: "center" }}>
         <div
           style={{
@@ -152,15 +145,7 @@ export default function MissionSection() {
 
       {/* Mission card */}
       <div
-        style={{
-          position: "relative",
-          width: "1052px",
-          height: "469px",
-          borderRadius: "20px",
-          overflow: "hidden",
-          border: "1px solid rgba(255,255,255,0.08)",
-          background: "#0a0a14",
-        }}
+        className="relative w-full max-w-[1052px] h-auto min-h-auto rounded-[20px] overflow-hidden border border-white/10 bg-[#0a0a14]"
       >
         {/* bg-mission nebula image */}
         <div
@@ -181,19 +166,10 @@ export default function MissionSection() {
 
         {/* Card content */}
         <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: "100%",
-            padding: "0 32px",
-            boxSizing: "border-box",
-          }}
+          className="relative z-10 flex flex-row items-center justify-between h-full p-[24px_16px] md:p-[40px_32px] gap-4 md:gap-12 min-h-[300px] md:min-h-[469px] w-full box-border"
         >
           {/* Left: step list */}
-          <div style={{ width: "305px", flexShrink: 0 }}>
+          <div className="w-[45%] xl:w-[305px] flex-shrink-0">
             {steps.map((step, i) => {
               const isActive = i === activeIndex;
               return (
@@ -201,24 +177,9 @@ export default function MissionSection() {
                   key={i}
                   onFocus={() => setActiveIndex(i)}
                   onPointerEnter={() => setActiveIndex(i)}
+                  className="w-full flex items-center gap-[6px] md:gap-[12px] p-[12px_0_12px_12px] md:p-[20px_0_20px_24px] border-b border-white/5 bg-transparent cursor-pointer text-left relative box-border transition-opacity duration-200"
                   style={{
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    padding: "20px 0 20px 24px",
-                    borderBottom: "1px solid rgba(255,255,255,0.05)",
-                    background: "transparent",
-                    border: "none",
-                    borderBottomWidth: "1px",
-                    borderBottomStyle: "solid",
-                    borderBottomColor: "rgba(255,255,255,0.05)",
-                    cursor: "pointer",
-                    textAlign: "left",
                     opacity: isActive ? 1 : 0.4,
-                    transition: "opacity 0.2s",
-                    position: "relative",
-                    boxSizing: "border-box",
                   }}
                 >
                   {/* Active dot */}
@@ -242,8 +203,8 @@ export default function MissionSection() {
                       style={{
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 400,
-                        fontSize: "9px",
-                        lineHeight: "13.5px",
+                        fontSize: "clamp(6px, 1.5vw, 9px)",
+                        lineHeight: "1.2",
                         letterSpacing: "0.9px",
                         color: isActive ? "#4f39f6" : "rgba(255,255,255,0.4)",
                         margin: "0 0 4px",
@@ -256,9 +217,9 @@ export default function MissionSection() {
                       style={{
                         fontFamily: "Inter, sans-serif",
                         fontWeight: 800,
-                        fontSize: "20px",
-                        lineHeight: "28px",
-                        letterSpacing: "-0.95px",
+                        fontSize: "clamp(12px, 3vw, 20px)",
+                        lineHeight: "1.2",
+                        letterSpacing: "-0.5px",
                         color: isActive ? "#fff" : "rgba(255,255,255,0.2)",
                         margin: 0,
                         textTransform: "uppercase",
@@ -273,14 +234,7 @@ export default function MissionSection() {
           </div>
 
           {/* Right: active content */}
-          <div
-            style={{
-              width: "561px",
-              flexShrink: 0,
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
+          <div className="w-[50%] xl:w-[561px] flex-shrink-0 relative overflow-hidden pt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -294,9 +248,9 @@ export default function MissionSection() {
                   style={{
                     fontFamily: "Manrope, sans-serif",
                     fontWeight: 800,
-                    fontSize: "48px",
-                    lineHeight: "54px",
-                    letterSpacing: "-2.74px",
+                    fontSize: "clamp(16px, 4vw, 48px)",
+                    lineHeight: "1.2",
+                    letterSpacing: "-1.5px",
                     color: "#fff",
                     margin: 0,
                     textTransform: "uppercase",
@@ -308,8 +262,8 @@ export default function MissionSection() {
                   style={{
                     fontFamily: "Manrope, sans-serif",
                     fontWeight: 400,
-                    fontSize: "20px",
-                    lineHeight: "normal",
+                    fontSize: "clamp(10px, 2.5vw, 20px)",
+                    lineHeight: "1.5",
                     color: "rgba(255,255,255,0.9)",
                     margin: 0,
                   }}
@@ -320,6 +274,7 @@ export default function MissionSection() {
             </AnimatePresence>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

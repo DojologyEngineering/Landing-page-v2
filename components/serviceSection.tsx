@@ -52,9 +52,9 @@ export default function ServicesSection() {
       <div
         className="
           relative
-          w-[1052px]
+          w-full max-w-[1052px]
           flex flex-col items-center
-          px-[43px] py-[120px]
+          px-4 sm:px-8 py-[60px] sm:py-[80px] lg:px-[43px] lg:py-[120px]
           gap-[60px]
           rounded-[20px]
           border border-white/5
@@ -112,7 +112,7 @@ export default function ServicesSection() {
         </motion.button>
 
         {/* Cards grid */}
-        <div className="relative z-10 grid grid-cols-2 gap-[24px] w-full">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-[24px] w-full">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -160,31 +160,25 @@ export default function ServicesSection() {
               />
 
               {/* Content */}
-              <div className="relative z-10 h-full pt-[29.51px] pl-[30px] pr-6 pb-6 flex flex-col gap-[22px]">
+              <div className="relative z-10 h-full pt-[29.51px] px-[24px] pb-[24px] flex flex-col items-center justify-start gap-[22px]">
                 {/* Icon */}
-                {index === 0 && <ServiceIconA />}
-                {index === 1 && <ServiceIconB />}
-                {index === 2 && <ServiceIconC />}
-                {index === 3 && <ServiceIconD />}
+                <div className="w-full flex justify-center">
+                  {index === 0 && <ServiceIconA />}
+                  {index === 1 && <ServiceIconB />}
+                  {index === 2 && <ServiceIconC />}
+                  {index === 3 && <ServiceIconD />}
+                </div>
 
                 {/* Title */}
-                <h3 className="text-white text-lg font-semibold leading-snug">
+                <h3 className="font-[family-name:var(--font-manrope)] text-[18px] font-medium leading-[26px] tracking-[-0.5px] text-white text-center m-0">
                   {service.title}
                 </h3>
 
                 {/* Divider */}
-                <div
-                  className="
-                    w-[230px] h-px
-                    bg-gradient-to-r
-                    from-[var(--color-divider-start)]
-                    via-[var(--color-divider-mid)]
-                    to-[var(--color-divider-end)]
-                  "
-                />
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent shrink-0" />
 
                 {/* Description */}
-                <p className="text-white/60 text-sm leading-relaxed">
+                <p className="font-[family-name:var(--font-manrope)] text-[16px] font-normal leading-[26px] tracking-[-0.2px] text-[rgba(255,255,255,0.5)] text-center m-0">
                   {service.description}
                 </p>
               </div>
