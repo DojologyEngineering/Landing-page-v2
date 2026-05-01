@@ -70,21 +70,17 @@ const LinkedInIcon = () => (
 
 // Avatar
 
-function Avatar({ image, name, size }: { image?: string; name: string; size: number }) {
+function Avatar({ image, name, size, className }: { image?: string; name: string; size?: number; className?: string }) {
   const initials = name.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase();
   return (
     <div
-      style={{
-        width: size, height: size, borderRadius: "9999px",
-        background: "linear-gradient(135deg, #9333ea 0%, #4338ca 70.711%)",
-        overflow: "hidden", flexShrink: 0, position: "relative",
-        display: "flex", alignItems: "center", justifyContent: "center",
-      }}
+      className={`rounded-full overflow-hidden flex-shrink-0 relative flex items-center justify-center bg-[linear-gradient(135deg,#9333ea_0%,#4338ca_70.711%)] ${className || ""}`}
+      style={size ? { width: size, height: size } : {}}
     >
       {image ? (
-        <img src={image} alt={name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src={image} alt={name} className="absolute inset-0 w-full h-full object-cover" />
       ) : (
-        <span style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: size * 0.28, color: "rgba(255,255,255,0.9)", position: "relative", zIndex: 1 }}>
+        <span className="font-[family-name:var(--font-manrope)] font-bold text-white/90 relative z-10 text-[inherit]">
           {initials}
         </span>
       )}
@@ -97,44 +93,38 @@ function Avatar({ image, name, size }: { image?: string; name: string; size: num
 function MemberCard({ member }: { member: Member }) {
   return (
     <div
+      className="w-[85vw] max-w-[800px] h-[480px] sm:h-[400px] rounded-[24px] overflow-hidden relative shadow-[0px_25px_50px_0px_rgba(0,0,0,0.25)] flex items-center justify-center flex-shrink-0"
       style={{
-        width: 800, height: 400, borderRadius: "24px",
         background: "linear-gradient(153.435deg, #9333ea 0%, #4338ca 70.711%)",
-        overflow: "hidden", position: "relative",
-        boxShadow: "0px 25px 50px 0px rgba(0,0,0,0.25)",
-        display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
       }}
     >
       {/* decorative blobs */}
-      <div style={{ position: "absolute", left: "640px", top: "-128px", width: "256px", height: "256px", borderRadius: "9999px", background: "rgba(255,255,255,0.1)" }} />
-      <div style={{ position: "absolute", left: "-96px", top: "254px", width: "192px", height: "192px", borderRadius: "9999px", background: "rgba(255,255,255,0.05)" }} />
+      <div className="absolute left-[80%] top-[-30%] w-[256px] h-[256px] rounded-full bg-white/10" />
+      <div className="absolute left-[-12%] top-[60%] w-[192px] h-[192px] rounded-full bg-white/5" />
 
       {/* Content */}
-      <div
-        style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          width: "688px", height: "216px", position: "relative", zIndex: 1,
-        }}
-      >
-        <Avatar image={member.image} name={member.name} size={160} />
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px", width: 496, flexShrink: 0 }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: "30px", lineHeight: "36px", color: "#fff", margin: 0 }}>
+      <div className="flex flex-col md:flex-row items-center md:justify-between w-[90%] md:w-[688px] max-w-full h-auto md:h-[216px] relative z-10 gap-6 md:gap-0 px-4 md:px-0 text-center md:text-left">
+        <div className="flex-shrink-0">
+          <Avatar image={member.image} name={member.name} className="w-[100px] h-[100px] text-[28px] md:w-[160px] md:h-[160px] md:text-[45px]" />
+        </div>
+        <div className="flex flex-col gap-4 w-full md:w-[496px] flex-shrink-0 items-center md:items-start">
+          <div className="flex flex-col gap-2 md:gap-[14px] w-full">
+            <div className="flex flex-col gap-1 md:gap-[4px]">
+              <p className="font-[family-name:var(--font-manrope)] font-bold text-[20px] md:text-[30px] leading-[1.2] text-white m-0">
                 {member.name}
               </p>
-              <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: "16px", lineHeight: "28px", color: "#34cb4d", margin: 0 }}>
+              <p className="font-[family-name:var(--font-manrope)] font-bold text-[14px] md:text-[16px] leading-[1.2] text-[#34cb4d] m-0">
                 {member.role}
               </p>
             </div>
-            <p style={{ fontFamily: "Manrope, sans-serif", fontWeight: 400, fontSize: "16px", lineHeight: "26px", color: "rgba(243,232,255,0.9)", margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+            <p className="font-[family-name:var(--font-manrope)] font-normal text-[14px] md:text-[16px] leading-[1.5] text-white/90 m-0 line-clamp-4 md:line-clamp-3">
               {member.bio}
             </p>
           </div>
-          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+          <div className="flex gap-3 items-center justify-center md:justify-start">
             {member.linkedIn && (
               <a href={member.linkedIn} aria-label={`${member.name} LinkedIn`}
-                style={{ width: "40px", height: "40px", borderRadius: "9999px", background: "rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, textDecoration: "none" }}>
+                className="w-[40px] h-[40px] rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 no-underline transition-colors hover:bg-white/30">
                 <LinkedInIcon />
               </a>
             )}
@@ -158,7 +148,7 @@ function CarouselSlide({
     return raw > total / 2 ? raw - total : raw;
   });
 
-  const xPx      = useTransform(dist, [-2, -1, 0, 1, 2], [-680, -380, 0, 380, 680]);
+  const xPx      = useTransform(dist, [-2, -1, 0, 1, 2], ["-85%", "-47.5%", "0%", "47.5%", "85%"]);
   const scale     = useTransform(dist, [-2, -1, 0, 1, 2], [0.55, 0.75, 1, 0.75, 0.55]);
   // Fade to 0 beyond ±1.5 so wrapping teleport is invisible
   const opacity   = useTransform(dist, [-1.6, -1, 0, 1, 1.6], [0, 1, 1, 1, 0]);
@@ -244,10 +234,10 @@ export default function AdvisorCarousel() {
     >
       {/* Slides */}
       <div
+        className="h-[480px] sm:h-[420px]"
         style={{
           position: "relative",
           width: "100%",
-          height: "420px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

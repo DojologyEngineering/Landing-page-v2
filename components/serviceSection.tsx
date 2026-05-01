@@ -52,9 +52,9 @@ export default function ServicesSection() {
       <div
         className="
           relative
-          w-[1052px]
+          w-full max-w-[1052px]
           flex flex-col items-center
-          px-[43px] py-[120px]
+          px-4 sm:px-8 py-[60px] sm:py-[80px] lg:px-[43px] lg:py-[120px]
           gap-[60px]
           rounded-[20px]
           border border-white/5
@@ -112,7 +112,7 @@ export default function ServicesSection() {
         </motion.button>
 
         {/* Cards grid */}
-        <div className="relative z-10 grid grid-cols-2 gap-[24px] w-full">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-[24px] w-full">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -162,10 +162,12 @@ export default function ServicesSection() {
               {/* Content */}
               <div className="relative z-10 h-full pt-[29.51px] pl-[30px] pr-6 pb-6 flex flex-col gap-[22px]">
                 {/* Icon */}
-                {index === 0 && <ServiceIconA />}
-                {index === 1 && <ServiceIconB />}
-                {index === 2 && <ServiceIconC />}
-                {index === 3 && <ServiceIconD />}
+                <div className="w-full flex justify-center">
+                  {index === 0 && <ServiceIconA />}
+                  {index === 1 && <ServiceIconB />}
+                  {index === 2 && <ServiceIconC />}
+                  {index === 3 && <ServiceIconD />}
+                </div>
 
                 {/* Title */}
                 <h3 className="text-white text-lg font-semibold leading-snug">

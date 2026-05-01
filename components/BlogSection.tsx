@@ -120,9 +120,10 @@ export default function BlogSection() {
       style={{
         background: "#000",
         width: "100%",
-        padding: "120px 194px",
+        padding: "80px 16px",
         boxSizing: "border-box",
       }}
+      className="sm:!px-8 lg:!px-[194px] lg:!py-[120px]"
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -239,6 +240,8 @@ export default function BlogSection() {
             alignItems: "flex-end",
             justifyContent: "space-between",
             width: "100%",
+            flexWrap: "wrap",
+            gap: "24px"
           }}
         >
           {/* Gradient headline */}
@@ -303,13 +306,7 @@ export default function BlogSection() {
         </div>
 
         {/* Blog Cards */}
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            width: "100%",
-          }}
-        >
+        <div className="flex flex-col gap-3 md:flex-row md:gap-3 w-full">
           {blogPosts.map((post, i) => (
             <BlogCard key={post.title} post={post} index={i} />
           ))}
