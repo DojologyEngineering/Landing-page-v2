@@ -48,6 +48,7 @@ export default async function BlogDetailsPage({ params }: Props) {
                 src={post.image} 
                 alt={post.title}
                 fill
+                sizes="(max-width: 1052px) 100vw, 1052px"
                 className="object-contain"
                 priority
               />

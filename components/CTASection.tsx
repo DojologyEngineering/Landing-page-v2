@@ -90,6 +90,7 @@ export default function CTASection() {
 
             <a
               href="#"
+              onClick={(e) => { e.preventDefault(); window.dispatchEvent(new Event('open-collaborate-modal')); }}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -103,6 +104,7 @@ export default function CTASection() {
                 whiteSpace: "nowrap",
                 flexShrink: 0,
                 transition: "opacity 0.2s",
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
