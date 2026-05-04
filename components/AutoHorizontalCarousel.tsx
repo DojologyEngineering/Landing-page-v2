@@ -20,12 +20,14 @@ type AutoHorizontalCarouselProps = {
   showIndicators?: boolean;
   indicatorsClassName?: string;
   allowTrailingSpacer?: boolean;
+  trackStyle?: React.CSSProperties;
 };
 
 export default function AutoHorizontalCarousel({
   children,
   className = "",
   trackClassName = "",
+  trackStyle,
   itemSpan,
   itemWidth = itemSpan,
   logicalCount,
@@ -66,10 +68,15 @@ export default function AutoHorizontalCarousel({
 
     const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
     const currentScroll = Math.min(viewport.scrollLeft, maxScroll);
-    const nextIndex = Math.min(
+    let nextIndex = Math.min(
       logicalCount - 1,
       Math.max(0, Math.round(currentScroll / itemSpan)),
     );
+
+    // If we've scrolled to the end (allowing a small 5px margin for rounding errors), force the last index
+    if (currentScroll >= maxScroll - 5) {
+      nextIndex = logicalCount - 1;
+    }
 
     setActiveIndex((currentIndex) => (currentIndex === nextIndex ? currentIndex : nextIndex));
   }, [itemSpan, logicalCount]);
@@ -83,7 +90,7 @@ export default function AutoHorizontalCarousel({
         className={`portfolio-horizontal-scroll tags-scroll overflow-x-auto overflow-y-hidden ${className}`}
         onScroll={syncActiveIndex}
       >
-        <div className={`flex h-full w-max ${trackClassName}`}>
+        <div className={`flex h-full w-max ${trackClassName}`} style={trackStyle}>
           {items.map((item, index) => (
             <div key={index} className="shrink-0">
               {item}

@@ -259,49 +259,6 @@ export const portfolioProjects: PortfolioProject[] = [
       role: "Field Operations",
     },
   },
-  {
-    id: "ecochef",
-    label: "ECOCHEF",
-    title: "ECOCHEF",
-    detailTitle: "ECOCHEF",
-    bgColor:
-      "linear-gradient(141.406deg, rgba(59, 193, 74, 0) 25.99%, #3bc14a 114.56%), linear-gradient(180deg, rgba(46, 75, 66, 0) 0%, rgba(46, 75, 66, 0.2) 100%), #2e4b42",
-    logo: {
-      src: "/logo/umami-mark-figma.svg",
-      alt: "EcoChef Logo",
-      width: 80,
-      height: 80,
-    },
-    description:
-      "EcoChef is an AI-powered meal planner that helps users minimize food waste by suggesting recipes based on ingredients they already have at home.",
-    detailDescription:
-      "EcoChef helps households reduce food waste with AI-powered meal planning, ingredient-aware recipes, and practical guidance for what to cook next.",
-    services: ["Data Science", "Interaction Design", "Backend Development", "Machine Learning"],
-    tasks: [
-      "AI Recipe Logic",
-      "Interaction Design",
-      "Backend Development",
-      "Ingredient Matching",
-      "Machine Learning",
-    ],
-    links: [
-      { label: "Prototype" },
-      { label: "Recipe Engine" },
-      { label: "User Testing" },
-    ],
-    other: ["Industry: Consumer Sustainability", "Model: Product Build Partner"],
-    metrics: [
-      { label: "Recipe Matches", value: "12k", caption: "Generated suggestions", tone: "dark" },
-      { label: "Waste Reduction", value: "28%", caption: "Pilot household target", tone: "light" },
-      { label: "Ingredient Types", value: "640", caption: "Mapped pantry items", tone: "dark" },
-      { label: "AI Flow", value: "Live", caption: "Recommendation logic", tone: "dark" },
-    ],
-    quote: {
-      body: "The product turned scattered ingredients into a clear cooking path for users.",
-      name: "EcoChef Team",
-      role: "AI Meal Planning",
-    },
-  },
 ];
 
 export const portfolioFilterLabels = [
@@ -311,7 +268,6 @@ export const portfolioFilterLabels = [
   "NSG CABLE",
   "CASHGROW68",
   "KHMER AGRITRACE",
-  "ECOCHEF",
 ];
 
 export function getPortfolioProject(id: string): PortfolioProject | undefined {

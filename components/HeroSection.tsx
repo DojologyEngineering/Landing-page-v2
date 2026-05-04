@@ -72,6 +72,7 @@ export default function HeroSection() {
           src="/assets/ligtningv2.png"
           alt=""
           fill
+          sizes="100vw"
           priority
           className="object-cover object-top opacity-[0.92] mix-blend-screen"
         />
@@ -86,6 +87,7 @@ export default function HeroSection() {
           src="/assets/Tunnelv2.svg"
           alt=""
           fill
+          sizes="100vw"
           priority
           className="object-contain"
         />
@@ -101,6 +103,7 @@ export default function HeroSection() {
           src="/assets/earth-image.png"
           alt=""
           fill
+          sizes="100vw"
           priority
           className="object-fill"
         />
@@ -177,6 +180,7 @@ export default function HeroSection() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.dispatchEvent(new Event('open-collaborate-modal'))}
               className="h-12 w-[219px] rounded-[8px] bg-[#34CB4D] px-6 py-3 font-[family-name:var(--font-manrope)] text-base font-normal text-[#0A0A0A] transition-colors hover:bg-[#2fb846]"
             >
               Start Your Journey Now

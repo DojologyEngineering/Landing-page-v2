@@ -67,6 +67,7 @@ export default function ServicesSection() {
             src={AbstractDot}
             alt=""
             fill
+            sizes="1052px"
             className="object-cover opacity-60"
             priority
           />
@@ -78,6 +79,7 @@ export default function ServicesSection() {
             src={PurpleSpotlight}
             alt=""
             fill
+            sizes="(max-width: 1052px) 100vw, 1052px"
             className="object-cover"
             priority
           />
@@ -132,6 +134,7 @@ export default function ServicesSection() {
                   src="/assets/card_dot.png"
                   alt=""
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                   unoptimized
                 />

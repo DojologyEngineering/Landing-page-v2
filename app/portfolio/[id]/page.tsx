@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
+import CollaborateButton from "@/components/CollaborateButton";
 import Icon from "@/assets/icons/icon-asset";
 import {
   getPortfolioProject,
@@ -268,15 +269,14 @@ function DetailCta() {
         <p className="m-0 w-full md:w-[534px] font-[family-name:var(--font-manrope)] text-[18px] md:text-[24px] font-normal leading-normal text-white">
           Let's collaborate to innovate, grow, and transform your business for lasting success.
         </p>
-        <Link
-          href="/#contact"
-          className="flex h-[52px] w-full md:w-auto items-center justify-center gap-4 rounded-[30px] bg-[linear-gradient(180deg,#2f1893_17.081%,#190c39_73.835%)] px-8 md:px-12 text-[#fbfbfd] no-underline whitespace-nowrap"
+        <CollaborateButton
+          className="flex h-[52px] w-full md:w-auto items-center justify-center gap-4 rounded-[30px] bg-[linear-gradient(180deg,#2f1893_17.081%,#190c39_73.835%)] px-8 md:px-12 text-[#fbfbfd] no-underline whitespace-nowrap cursor-pointer transition-opacity hover:opacity-85"
         >
           <span className="font-[family-name:var(--font-manrope)] text-[18px] md:text-[20px] font-medium">
             Start Your Journey
           </span>
           <ArrowUpRight size={24} />
-        </Link>
+        </CollaborateButton>
       </div>
     </div>
   );
@@ -290,6 +290,7 @@ function DetailFooter() {
           src="/assets/portfolio/footer-logo-figma.png"
           alt=""
           fill
+          sizes="514px"
           className="object-cover"
         />
       </div>
@@ -566,10 +567,14 @@ export default async function PortfolioDetailPage({ params }: Props) {
         </div>
 
         {/* Screenshots Carousel */}
-        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-24 max-w-[1440px]">
+        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-24">
           <AutoHorizontalCarousel
-            className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-[194px] pb-10"
+            className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-0 pb-10"
             trackClassName="gap-4 md:gap-[30px]"
+            trackStyle={{
+              paddingLeft: 'max(194px, calc(50vw - 526px))',
+              paddingRight: 'max(194px, calc(50vw - 526px))',
+            }}
             itemSpan={544}
             itemWidth={514}
             logicalCount={screenshotCards.length}
@@ -611,10 +616,14 @@ export default async function PortfolioDetailPage({ params }: Props) {
         </div>
 
         {/* Related Projects Carousel */}
-        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-32 max-w-[1440px]">
+        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-32">
           <AutoHorizontalCarousel
-            className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-[194px] py-4"
+            className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-0 py-4"
             trackClassName="gap-4 md:gap-[30px]"
+            trackStyle={{
+              paddingLeft: 'max(194px, calc(50vw - 526px))',
+              paddingRight: 'max(194px, calc(50vw - 526px))',
+            }}
             itemSpan={490}
             itemWidth={460}
             logicalCount={relatedProjects.length}
