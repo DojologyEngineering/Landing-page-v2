@@ -91,27 +91,11 @@ export default function ServicesSection() {
         </div>
 
         {/* Heading */}
-        <div className="relative z-10 flex flex-col items-center gap-6">
-          <div
-            className="relative inline-flex flex-col items-start"
-            style={{ lineHeight: 0.8 }}
-          >
-            <p
-              className="m-0 bg-gradient-to-b from-white to-[#4f46e5] bg-clip-text font-[family-name:var(--font-manrope)] text-[clamp(56px,9vw,128px)] font-extrabold leading-[0.8] tracking-[-0.04em] text-transparent"
-            >
-              Equity.
-            </p>
-            <p
-              className="m-0 ml-[clamp(24px,4vw,56px)] bg-gradient-to-b from-[#4f46e5] to-white bg-clip-text font-[family-name:var(--font-manrope)] text-[clamp(56px,9vw,128px)] font-extrabold leading-[0.8] tracking-[-0.05em] text-transparent"
-              style={{ marginTop: "clamp(-6px, -0.5vw, 0px)" }}
-            >
-              Tech for
-            </p>
-          </div>
-          <p className="m-0 max-w-[720px] text-center font-[family-name:var(--font-manrope)] text-[16px] sm:text-[18px] font-light leading-[1.375] tracking-[-0.024em] text-[#99a1af]">
-            &quot;We don&apos;t just back founders; we build the core of their vision as technical partners.&quot;
-          </p>
-        </div>
+        <h2 className="relative z-10 text-center text-white text-[42px] leading-[50px]">
+          Transform your business with
+          <br />
+          <span className="font-bold">Advanced Technologies</span>
+        </h2>
 
         {/* Book a call button */}
         <motion.button 
