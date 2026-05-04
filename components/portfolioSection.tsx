@@ -38,23 +38,41 @@ function ServiceTag({ label }: { label: string }) {
 }
 
 function ProjectLogo({ project }: { project: PortfolioProject }) {
+  const logoMaxSize =
+    project.id === "umami" || project.id === "agritrace"
+      ? 130
+      : project.id === "nsgcable"
+        ? 150
+      : project.id === "prohose"
+        ? 240
+        : 200;
+
   return (
-    <Image
-      src={project.logo.src}
-      alt={project.logo.alt}
-      width={project.logo.width}
-      height={project.logo.height}
+    <div
       style={{
-        height: "auto",
-        maxHeight:
-          project.id === "umami" || project.id === "agritrace"
-            ? "80px"
-            : "200px",
+        width: "200px",
+        height: "200px",
         maxWidth: "82%",
-        objectFit: "contain",
-        width: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
       }}
-    />
+    >
+      <Image
+        src={project.logo.src}
+        alt={project.logo.alt}
+        width={project.logo.width}
+        height={project.logo.height}
+        style={{
+          height: "auto",
+          maxHeight: `${logoMaxSize}px`,
+          maxWidth: `${logoMaxSize}px`,
+          objectFit: "contain",
+          width: "auto",
+        }}
+      />
+    </div>
   );
 }
 

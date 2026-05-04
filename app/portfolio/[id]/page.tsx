@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import CollaborateButton from "@/components/CollaborateButton";
 import FooterSection from "@/components/FooterSection";
+import PortfolioMoreProjectsSection from "@/components/PortfolioMoreProjectsSection";
 import {
   getPortfolioProject,
   portfolioFilterLabels,
   portfolioProjects,
-  type PortfolioProject,
 } from "@/lib/portfolio-data";
 
 type Props = {
@@ -58,14 +57,15 @@ function DetailColumn({
         {title}
       </p>
       <div className="flex flex-col font-[family-name:var(--font-manrope)] text-[20px] font-normal leading-normal text-white">
-        {items.map((item) => {
+        {items.map((item, index) => {
           const label = typeof item === "string" ? item : item.label;
           const url = typeof item === "string" ? undefined : item.url;
+          const itemKey = `${label}-${url ?? index}`;
 
           if (url) {
             return (
               <a
-                key={label}
+                key={itemKey}
                 href={url}
                 target="_blank"
                 rel="noreferrer"
@@ -77,7 +77,7 @@ function DetailColumn({
           }
 
           return (
-            <p key={label} className="m-0">
+            <p key={itemKey} className="m-0">
               {label}
             </p>
           );
@@ -203,39 +203,6 @@ function FigmaMetricCard({
   );
 }
 
-function RelatedProjectCard({ project }: { project: PortfolioProject }) {
-  return (
-    <Link
-      href={`/portfolio/${project.id}`}
-      className="relative block h-[500px] md:h-[610px] w-[320px] md:w-[460px] shrink-0 overflow-hidden rounded-[24px] bg-[#10131c] p-4 text-white no-underline transition-transform duration-200 hover:-translate-y-1"
-    >
-      <div
-        className="flex h-[200px] md:h-[308px] items-center justify-center rounded-[12px]"
-        style={{ background: project.bgColor }}
-      >
-        <Image
-          src={project.logo.src}
-          alt={project.logo.alt}
-          width={project.logo.width}
-          height={project.logo.height}
-          className="h-auto max-h-[120px] w-auto max-w-[78%] object-contain"
-        />
-      </div>
-      <div className="mt-6 md:mt-8 flex w-[100%] md:w-[428px] max-w-full flex-col gap-4">
-        <div className="flex items-start justify-between gap-4">
-          <p className="m-0 font-[family-name:var(--font-manrope)] text-[22px] md:text-[28px] font-bold leading-normal">
-            {project.title}
-          </p>
-          <ArrowUpRight className="mt-2 shrink-0 text-white/50" size={22} />
-        </div>
-        <p className="m-0 line-clamp-4 font-[family-name:var(--font-manrope)] text-[14px] md:text-[16px] font-normal leading-[1.5] tracking-[-0.2344px] text-white/60">
-          {project.description}
-        </p>
-      </div>
-    </Link>
-  );
-}
-
 function ScreenshotCarouselCard({ index }: { index: number }) {
   return (
     <div
@@ -291,6 +258,13 @@ export default async function PortfolioDetailPage({ params }: Props) {
   }
 
   const relatedProjects = portfolioProjects.filter((item) => item.id !== project.id);
+  const relatedFilterLabels = [
+    "All",
+    ...portfolioFilterLabels.filter(
+      (label) =>
+        label !== "All" && relatedProjects.some((relatedProject) => relatedProject.label === label),
+    ),
+  ];
   const [metricOne, metricTwo, metricThree, metricFour] = project.metrics;
   const screenshotCards = Array.from({ length: 5 }, (_, index) => index);
 
@@ -482,52 +456,10 @@ export default async function PortfolioDetailPage({ params }: Props) {
           </AutoHorizontalCarousel>
         </div>
 
-        {/* More Projects Header */}
-        <div className="w-full max-w-[1052px] mx-auto flex flex-col items-center gap-10 md:gap-[60px] mb-12">
-          <div className="relative text-center font-[family-name:var(--font-manrope)] text-[clamp(64px,10vw,128px)] font-extrabold leading-[0.8] text-transparent">
-            <p className="m-0 bg-gradient-to-b from-[#4f46e5] to-white bg-clip-text tracking-[-2px] md:tracking-[-7px] ml-[10%]">
-              MORE
-            </p>
-            <p className="m-0 bg-gradient-to-b from-white to-[#4f46e5] bg-clip-text tracking-[-2px] md:tracking-[-5px] mr-[10%]">
-              PROJECTS
-            </p>
-          </div>
-          
-          <div className="w-full overflow-x-auto pb-4 scrollbar-hide">
-            <div className="flex gap-3 w-max mx-auto bg-white/[0.05] rounded-[90px] p-2 md:px-6 md:py-3">
-              {portfolioFilterLabels.slice(0, 7).map((label, index) => (
-                <span
-                  key={label}
-                  className={`flex h-[40px] md:h-[47px] shrink-0 items-center justify-center rounded-[40px] px-4 md:px-[31px] font-[family-name:var(--font-manrope)] text-[14px] md:text-[16px] leading-normal tracking-[-0.23px] text-white ${
-                    index === 0 ? "bg-[#4f1ad6] font-bold" : "border border-white/20 font-normal"
-                  }`}
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Related Projects Carousel */}
-        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-32">
-          <AutoHorizontalCarousel
-            className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-0 py-4"
-            trackClassName="gap-4 md:gap-[30px]"
-            trackStyle={{
-              paddingLeft: 'max(194px, calc(50vw - 526px))',
-              paddingRight: 'max(194px, calc(50vw - 526px))',
-            }}
-            itemSpan={490}
-            itemWidth={460}
-            logicalCount={relatedProjects.length}
-            allowTrailingSpacer={false}
-          >
-            {relatedProjects.map((relatedProject) => (
-              <RelatedProjectCard key={relatedProject.id} project={relatedProject} />
-            ))}
-          </AutoHorizontalCarousel>
-        </div>
+        <PortfolioMoreProjectsSection
+          filterLabels={relatedFilterLabels}
+          projects={relatedProjects}
+        />
 
         {/* CTA */}
         <div className="w-[100vw] relative left-1/2 -translate-x-1/2 max-w-[1440px] px-4 md:px-10 lg:px-[194px]">
