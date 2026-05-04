@@ -47,7 +47,7 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
       style={{
         height: "auto",
         maxHeight:
-          project.id === "umami" || project.id === "agritrace" || project.id === "ecochef"
+          project.id === "umami" || project.id === "agritrace"
             ? "80px"
             : "200px",
         maxWidth: "82%",

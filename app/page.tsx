@@ -12,6 +12,8 @@ import CTASection from "@/components/CTASection";
 import MissionSection from "@/components/MissionSection";
 import StudioModelSection from "@/components/StudioModelSection";
 
+const SHOW_ADVISOR_CAROUSEL = false;
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
@@ -22,7 +24,7 @@ export default function Home() {
       <TechnologiesSection />
       <StudioModelSection />
       <PortfolioSection />
-      <AdvisorCarousel />
+      {SHOW_ADVISOR_CAROUSEL ? <AdvisorCarousel /> : null}
       <MissionSection />
       <BlogSection />
       <FAQSection />
