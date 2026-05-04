@@ -87,7 +87,7 @@ export default function CollaborateModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="hide-scrollbar fixed inset-0 z-[200] overflow-y-auto p-4 sm:p-6">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -103,7 +103,7 @@ export default function CollaborateModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="relative w-full max-w-[480px] overflow-hidden rounded-[24px] bg-[#10131c] border border-white/10 p-6 sm:p-8 shadow-2xl"
+            className="hide-scrollbar relative mx-auto my-6 w-full max-w-[480px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-[24px] border border-white/10 bg-[#10131c] p-6 shadow-2xl sm:my-10 sm:max-h-[calc(100dvh-5rem)] sm:p-8"
           >
             {/* Close Button */}
             <button

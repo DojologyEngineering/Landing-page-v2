@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import CollaborateButton from "@/components/CollaborateButton";
-import Icon from "@/assets/icons/icon-asset";
+import FooterSection from "@/components/FooterSection";
 import {
   getPortfolioProject,
   portfolioFilterLabels,
@@ -282,112 +282,6 @@ function DetailCta() {
   );
 }
 
-function DetailFooter() {
-  return (
-    <footer className="w-[100vw] relative left-1/2 -translate-x-1/2 overflow-hidden bg-[#2f1893]">
-      <div className="absolute right-0 top-1/2 h-full w-[514px] -translate-y-1/2 opacity-5 pointer-events-none hidden lg:block">
-        <Image
-          src="/assets/portfolio/footer-logo-figma.png"
-          alt=""
-          fill
-          sizes="514px"
-          className="object-cover"
-        />
-      </div>
-
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[100px] py-[60px] md:py-[100px] flex flex-col lg:flex-row gap-[60px] lg:gap-[150px] justify-between relative z-10">
-        
-        {/* Left Column */}
-        <div className="flex flex-col gap-[40px] md:gap-[60px]">
-          <Image
-            src="/assets/portfolio/footer-logo-figma.png"
-            alt="Dojology"
-            width={257}
-            height={69}
-            className="h-[50px] md:h-[69px] w-auto object-contain"
-          />
-          <p className="m-0 font-['Alexandria',sans-serif] text-[40px] md:text-[64px] font-medium leading-[1.1] text-white">
-            Growth.
-            <br />
-            Agility.
-            <br />
-            Commitment.
-          </p>
-        </div>
-
-        {/* Links Columns */}
-        <div className="flex flex-col md:flex-row gap-[40px] md:gap-[150px]">
-          {/* Important Links */}
-          <div className="flex flex-col gap-[30px] md:gap-[42px] min-w-[170px]">
-            <p className="m-0 font-[family-name:var(--font-manrope)] text-[20px] md:text-[24px] font-bold text-white">
-              Important Link
-            </p>
-            <div className="flex flex-col gap-4 md:gap-6">
-              {[
-                ["About us", "/#about"],
-                ["Services", "/#services"],
-                ["FAQs", "/#faqs"],
-                ["Partnership", "/#portfolio"],
-              ].map(([label, href]) => (
-                <a key={label} href={href} className="flex items-center gap-2 font-[family-name:var(--font-manrope)] text-[16px] md:text-[18px] font-medium text-white no-underline transition-opacity hover:opacity-75">
-                  {label}
-                  <Image
-                    src="/assets/portfolio/footer-arrow-icon.svg"
-                    alt=""
-                    width={24}
-                    height={24}
-                    className="size-5 md:size-6 ml-2"
-                  />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Get in Touch */}
-          <div className="flex flex-col gap-[30px] md:gap-[42px] max-w-[286px]">
-            <p className="m-0 font-[family-name:var(--font-manrope)] text-[20px] md:text-[24px] font-bold text-white">
-              Get in Touch
-            </p>
-            <div className="flex flex-col gap-4 font-[family-name:var(--font-manrope)] text-[14px] md:text-[16px]">
-              {[
-                ["CONTACT", "(855) 98-992-895 / 89-992-895"],
-                ["EMAIL", "info@dojology.com"],
-                ["HEAD QUARTER", "Lettuce Building , 3rd Floor , Street 371, Phnom Penh"],
-                ["WORK HOUR", "Mon - Sat, 8:00AM - 5:00PM"],
-              ].map(([label, value]) => (
-                <div key={label} className="flex flex-col gap-1">
-                  <p className="m-0 font-bold text-white">{label}</p>
-                  <p className="m-0 font-medium text-white/70">{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Bottom */}
-      <div className="w-full border-t border-white/20">
-        <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[100px] py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="m-0 font-[family-name:var(--font-manrope)] text-[14px] md:text-[16px] font-medium text-white text-center md:text-left">
-            Dojology © 2025 All Rights Reserved
-          </p>
-          <div className="flex items-center justify-center md:justify-end gap-4">
-            <a href="https://www.facebook.com/dojologytechandventures" target="_blank" rel="noreferrer" aria-label="Facebook" className="flex transition-opacity hover:opacity-75">
-              <Icon name="facebook" />
-            </a>
-            <a href="https://t.me/dojology" target="_blank" rel="noreferrer" aria-label="Telegram" className="flex transition-opacity hover:opacity-75">
-              <Icon name="telegram" />
-            </a>
-            <a href="https://www.linkedin.com/company/dojology-tech-and-ventures" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex transition-opacity hover:opacity-75">
-              <Icon name="linkedin" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 export default async function PortfolioDetailPage({ params }: Props) {
   const { id } = await params;
   const project = getPortfolioProject(id);
@@ -642,7 +536,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
 
       </div>
 
-      <DetailFooter />
+      <FooterSection />
     </main>
   );
 }
