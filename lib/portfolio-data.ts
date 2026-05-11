@@ -30,6 +30,12 @@ export type PortfolioProject = {
     name: string;
     role: string;
   };
+  mockups?: {
+    featured: string;
+    grid: string[];
+    carousel: string[];
+    heroTop?: string;
+  };
 };
 
 const commonServices = [
@@ -89,6 +95,21 @@ export const portfolioProjects: PortfolioProject[] = [
       name: "Umami Operations",
       role: "FoodTech Platform",
     },
+    mockups: {
+      featured: "/umami_mockup/umami_first.png",
+      grid: [
+        "/umami_mockup/umami_leftgrid.png",
+        "/umami_mockup/umami_rightgrid.png",
+      ],
+      carousel: [
+        "/umami_mockup/umami_topgrid.png",
+        "/umami_mockup/umami_scroll_1.png",
+        "/umami_mockup/umami_scroll_2.png",
+        "/umami_mockup/umami_scroll_3.png",
+        "/umami_mockup/umami_scroll_4.png",
+        "/umami_mockup/umami_scroll_5.png",
+      ],
+    },
   },
   {
     id: "cashgrow",
@@ -131,6 +152,22 @@ export const portfolioProjects: PortfolioProject[] = [
       body: "The platform gave lending teams one connected workflow from customer intake to operational review.",
       name: "CashGrow68 Team",
       role: "Digital Lending",
+    },
+    mockups: {
+      featured: "/cashgrow_mockup/cashgrow_first .png",
+      grid: [
+        "/cashgrow_mockup/cashgrow_leftgrid.png",
+        "/cashgrow_mockup/cashgrow_rightgrid.png",
+      ],
+      carousel: [
+        "/cashgrow_mockup/cashgrow_topgrid.png",
+        "/cashgrow_mockup/cashgrow_scroll_1.png",
+        "/cashgrow_mockup/cashgrow_scroll_2.png",
+        "/cashgrow_mockup/cashgrow_scroll_3.png",
+        "/cashgrow_mockup/cashgrow_scroll_4.png",
+        "/cashgrow_mockup/cashgrow_scroll_5.png",
+      ],
+      heroTop: "-9%",
     },
   },
   {
