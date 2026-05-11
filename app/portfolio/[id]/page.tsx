@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
-import CollaborateButton from "@/components/CollaborateButton";
+import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
 import PortfolioMoreProjectsSection from "@/components/PortfolioMoreProjectsSection";
 import {
@@ -92,18 +92,22 @@ function ImagePanel({
   src,
   crop = "large",
   rounded = true,
+  heroTop,
 }: {
   className?: string;
   src: string;
   crop?: "hero" | "large" | "small";
   rounded?: boolean;
+  heroTop?: string;
 }) {
   const cropClassName =
     crop === "hero"
-      ? "absolute left-0 top-[-23.43%] h-[128.06%] w-full max-w-none"
+      ? "absolute left-0 h-[128.06%] w-full max-w-none"
       : crop === "small"
         ? "absolute left-[-31.05%] top-[-23.43%] h-[128.06%] w-[162.3%] max-w-none"
         : "absolute left-[-18.44%] top-[-23.43%] h-[128.06%] w-[136.88%] max-w-none";
+  const objectFitClassName = crop === "hero" ? "object-cover" : "object-fill";
+  const imageStyle = crop === "hero" ? { top: heroTop ?? "-16%" } : undefined;
 
   return (
     <div
@@ -115,7 +119,8 @@ function ImagePanel({
         width={2300}
         height={1534}
         priority={crop === "hero"}
-        className={`${cropClassName} object-fill`}
+        className={`${cropClassName} ${objectFitClassName}`}
+        style={imageStyle}
       />
     </div>
   );
@@ -203,48 +208,19 @@ function FigmaMetricCard({
   );
 }
 
-function ScreenshotCarouselCard({ index }: { index: number }) {
+function ScreenshotCarouselCard({ index, src }: { index: number; src: string }) {
   return (
     <div
       className="relative h-[280px] md:h-[432px] w-[340px] md:w-[514px] shrink-0 overflow-hidden rounded-[32px] bg-white"
       aria-hidden={index > 5}
     >
       <Image
-        src="/assets/portfolio/project-mockup-small.png"
+        src={src}
         alt=""
         width={2300}
         height={1534}
         className="absolute left-[-31.05%] top-[-23.43%] h-[128.06%] w-[162.3%] max-w-none object-fill"
       />
-    </div>
-  );
-}
-
-function DetailCta() {
-  return (
-    <div
-      className="w-full relative flex flex-col items-start rounded-[20px] p-8 md:p-12"
-      style={{
-        background:
-          "conic-gradient(from 90deg, rgba(0,0,0,0) 0%, #000 100%), linear-gradient(89.9618deg, #4f46e5 0%, rgba(79,70,229,0.6) 24.064%, #fff 82.033%)",
-      }}
-    >
-      <p className="m-0 w-full md:w-[592px] max-w-full font-[family-name:var(--font-manrope)] text-[28px] md:text-[36px] font-bold leading-normal text-white">
-        Ready to Unlock Your Business Potential?
-      </p>
-      <div className="mt-8 flex w-full flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <p className="m-0 w-full md:w-[534px] font-[family-name:var(--font-manrope)] text-[18px] md:text-[24px] font-normal leading-normal text-white">
-          Let's collaborate to innovate, grow, and transform your business for lasting success.
-        </p>
-        <CollaborateButton
-          className="flex h-[52px] w-full md:w-auto items-center justify-center gap-4 rounded-[30px] bg-[linear-gradient(180deg,#2f1893_17.081%,#190c39_73.835%)] px-8 md:px-12 text-[#fbfbfd] no-underline whitespace-nowrap cursor-pointer transition-opacity hover:opacity-85"
-        >
-          <span className="font-[family-name:var(--font-manrope)] text-[18px] md:text-[20px] font-medium">
-            Start Your Journey
-          </span>
-          <ArrowUpRight size={24} />
-        </CollaborateButton>
-      </div>
     </div>
   );
 }
@@ -266,11 +242,22 @@ export default async function PortfolioDetailPage({ params }: Props) {
     ),
   ];
   const [metricOne, metricTwo, metricThree, metricFour] = project.metrics;
-  const screenshotCards = Array.from({ length: 5 }, (_, index) => index);
+  const mockups = project.mockups ?? {
+    featured: "/assets/portfolio/project-mockup-large.png",
+    grid: [
+      "/assets/portfolio/project-mockup-small.png",
+      "/assets/portfolio/project-mockup-small.png",
+    ],
+    carousel: Array.from({ length: 5 }, () => "/assets/portfolio/project-mockup-small.png"),
+  };
+  const heroMockupSrc = project.mockups ? mockups.featured : "/assets/portfolio/project-hero-bg.png";
+  const sectionFeaturedMockupSrc = project.mockups ? mockups.carousel[0] : mockups.featured;
+  const carouselMockups = project.mockups ? mockups.carousel.slice(1) : mockups.carousel;
+  const screenshotCards = carouselMockups.map((src, index) => ({ index, src }));
 
   return (
     <main className="w-full overflow-x-hidden bg-black text-white relative">
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[194px] flex flex-col relative pb-32">
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[194px] flex flex-col relative">
         
         {/* Header */}
         <div className="w-full flex flex-col gap-10 md:gap-[60px] pt-24 md:pt-[158px] mb-16 md:mb-[80px]">
@@ -287,9 +274,10 @@ export default async function PortfolioDetailPage({ params }: Props) {
         {/* Hero Image */}
         <ImagePanel
           className="w-[100vw] relative left-1/2 -translate-x-1/2 h-[300px] md:h-[500px] lg:h-[750px] mb-16"
-          src="/assets/portfolio/project-hero-bg.png"
+          src={heroMockupSrc}
           crop="hero"
           rounded={false}
+          heroTop={project.mockups?.heroTop}
         />
 
         {/* Separator / Gap */}
@@ -303,17 +291,17 @@ export default async function PortfolioDetailPage({ params }: Props) {
         {/* Mockups */}
         <ImagePanel
           className="w-full h-[300px] md:h-[500px] lg:h-[750px] max-w-[1052px] mx-auto mb-6"
-          src="/assets/portfolio/project-mockup-large.png"
+          src={sectionFeaturedMockupSrc}
         />
         <div className="w-full max-w-[1052px] mx-auto flex flex-col md:flex-row gap-6 mb-24">
           <ImagePanel
             className="w-full md:w-1/2 h-[300px] md:h-[432px]"
-            src="/assets/portfolio/project-mockup-small.png"
+            src={mockups.grid[0]}
             crop="small"
           />
           <ImagePanel
             className="w-full md:w-1/2 h-[300px] md:h-[432px]"
-            src="/assets/portfolio/project-mockup-small.png"
+            src={mockups.grid[1]}
             crop="small"
           />
         </div>
@@ -451,7 +439,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
             allowTrailingSpacer={false}
           >
             {screenshotCards.map((item) => (
-              <ScreenshotCarouselCard key={item} index={item} />
+              <ScreenshotCarouselCard key={`${item.src}-${item.index}`} index={item.index} src={item.src} />
             ))}
           </AutoHorizontalCarousel>
         </div>
@@ -461,13 +449,9 @@ export default async function PortfolioDetailPage({ params }: Props) {
           projects={relatedProjects}
         />
 
-        {/* CTA */}
-        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 max-w-[1440px] px-4 md:px-10 lg:px-[194px]">
-          <DetailCta />
-        </div>
-
       </div>
 
+      <CTASection />
       <FooterSection />
     </main>
   );

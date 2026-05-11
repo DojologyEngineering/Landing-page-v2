@@ -188,9 +188,9 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        <div className="pointer-events-none absolute left-1/2 top-[500px] z-[55] w-[90vw] max-w-[430px] -translate-x-1/2 sm:top-[620px] lg:top-[840px] lg:w-[430px]">
+        <div className="pointer-events-none relative z-[55] mx-auto mt-5 w-[88vw] max-w-[360px] lg:absolute lg:left-1/2 lg:top-[840px] lg:mt-0 lg:w-[430px] lg:max-w-[430px] lg:-translate-x-1/2">
           <div
-            className="relative h-[80px] overflow-hidden pt-5"
+            className="relative h-[72px] overflow-hidden pt-4 lg:h-[80px] lg:pt-5"
             style={{
               WebkitMaskImage:
                 "linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)",
@@ -207,8 +207,8 @@ export default function HeroSection() {
                 { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
               ]}
               speed={52}
-              gap={56}
-              logoHeight={52}
+              gap={40}
+              logoHeight={42}
               fadeOut={false}
               className="mx-auto opacity-40"
             />

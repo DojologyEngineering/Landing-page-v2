@@ -55,7 +55,7 @@ export default function PrinciplesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-white max-w-[1052px] mx-auto text-[48px] font-medium leading-[56px] tracking-[-0.48px]"
+          className="mx-auto max-w-[1052px] text-center text-[28px] leading-[1.18] tracking-[-0.28px] text-white sm:text-[36px] sm:leading-[1.14] lg:text-[48px] lg:leading-[56px] lg:tracking-[-0.48px] font-medium"
           style={{
             fontFamily: "Manrope, sans-serif"
           }}
@@ -155,7 +155,7 @@ export default function PrinciplesSection() {
                 }}
               >
                 <p className="text-white text-center text-base leading-relaxed">
-                  As investors and solution providers, we believe in empowering luxury brands with cutting-edge digital signage solutions. For over 15 years, we've delivered innovative, technical, and artistic solutions to elevate the visitor experience.
+                  As investors and solution providers, we believe in empowering luxury brands with cutting-edge digital signage solutions. For over 15 years, we&apos;ve delivered innovative, technical, and artistic solutions to elevate the visitor experience.
                 </p>
               </div>
             </div>
