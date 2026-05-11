@@ -172,15 +172,15 @@ export default function TeamSection() {
               variants={container}
               initial="hidden"
               animate="show"
-              className="grid w-full min-h-[384px] items-stretch gap-8 md:grid-cols-3 md:gap-8 lg:gap-12"
+              className="grid w-full grid-cols-3 items-start gap-2 sm:gap-3 md:min-h-[384px] md:gap-8 lg:gap-12"
             >
               {founders.map((member) => (
                 <motion.div
                   key={member.name}
                   variants={item}
-                  className="flex h-full min-h-[360px] flex-col items-center gap-6 px-2 py-4 text-center"
+                  className="flex h-full min-h-[260px] flex-col items-center gap-3 px-1 py-3 text-center md:min-h-[360px] md:gap-4 md:px-2 md:py-4"
                 >
-                  <div className="relative h-32 w-32 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15">
+                  <div className="relative h-16 w-16 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15 sm:h-20 sm:w-20 md:h-32 md:w-32">
                     <img
                       src={member.image}
                       alt={member.name}
@@ -188,16 +188,16 @@ export default function TeamSection() {
                     />
                   </div>
 
-                  <div className="flex min-h-[64px] flex-col items-center justify-start">
-                    <h3 className="font-[family-name:var(--font-manrope)] text-[20px] font-bold leading-7 text-white">
+                  <div className="flex min-h-[46px] flex-col items-center justify-start md:min-h-[64px]">
+                    <h3 className="font-[family-name:var(--font-manrope)] text-[11px] font-bold leading-[1.2] text-white sm:text-[13px] md:text-[20px] md:leading-7">
                       {member.name}
                     </h3>
-                    <p className="font-[family-name:var(--font-manrope)] text-base font-bold leading-6 text-[#34CB4D]">
+                    <p className="font-[family-name:var(--font-manrope)] text-[10px] font-bold leading-[1.2] text-[#34CB4D] sm:text-[11px] md:text-base md:leading-6">
                       {member.role}
                     </p>
                   </div>
 
-                  <p className="min-h-[80px] max-w-[420px] font-[family-name:var(--font-manrope)] text-sm leading-5 text-white/90">
+                  <p className="min-h-[72px] max-w-[140px] font-[family-name:var(--font-manrope)] text-[9px] leading-[1.35] text-white/90 sm:max-w-[160px] sm:text-[10px] md:min-h-[80px] md:max-w-[420px] md:text-sm md:leading-5">
                     {member.description}
                   </p>
 
@@ -205,7 +205,7 @@ export default function TeamSection() {
                     <a
                       href={member.linkedIn}
                       aria-label={`${member.name} LinkedIn`}
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-sm font-semibold text-white transition-colors hover:bg-white/30"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-[11px] font-semibold text-white transition-colors hover:bg-white/30 md:h-10 md:w-10 md:text-sm"
                     >
                       in
                     </a>
@@ -221,14 +221,14 @@ export default function TeamSection() {
               animate="show"
               className="w-full min-h-[384px] pr-1"
             >
-              <div className="grid w-full gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
                 {dojoPlaceholders.map((member) => (
                   <motion.div
                     key={member.id}
                     variants={item}
-                    className="flex flex-col items-center justify-center gap-4 px-2 py-4 text-center"
+                    className="flex flex-col items-center justify-center gap-3 px-1 py-3 text-center md:gap-4 md:px-2 md:py-4"
                   >
-                    <div className="relative h-24 w-24 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15">
+                    <div className="relative h-16 w-16 overflow-hidden rounded-full bg-[linear-gradient(135deg,#9333EA_0%,#4338CA_70.711%)] ring-1 ring-white/15 sm:h-20 sm:w-20 md:h-24 md:w-24">
                       {member.image && (
                         <img
                           src={member.image}
@@ -238,10 +238,10 @@ export default function TeamSection() {
                       )}
                     </div>
                     <div>
-                      <h3 className="font-[family-name:var(--font-manrope)] text-[16px] md:text-[18px] font-bold leading-7 text-white">
+                      <h3 className="font-[family-name:var(--font-manrope)] text-[13px] font-bold leading-5 text-white sm:text-[15px] md:text-[18px] md:leading-7">
                         {member.name}
                       </h3>
-                      <p className="font-[family-name:var(--font-manrope)] text-[14px] text-white/80">
+                      <p className="font-[family-name:var(--font-manrope)] text-[11px] text-white/80 sm:text-[12px] md:text-[14px]">
                         {member.role}
                       </p>
                     </div>

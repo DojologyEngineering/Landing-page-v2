@@ -4,7 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
-import CollaborateButton from "@/components/CollaborateButton";
+import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
 import PortfolioMoreProjectsSection from "@/components/PortfolioMoreProjectsSection";
 import {
@@ -225,35 +225,6 @@ function ScreenshotCarouselCard({ index, src }: { index: number; src: string }) 
   );
 }
 
-function DetailCta() {
-  return (
-    <div
-      className="w-full relative flex flex-col items-start rounded-[20px] p-8 md:p-12"
-      style={{
-        background:
-          "conic-gradient(from 90deg, rgba(0,0,0,0) 0%, #000 100%), linear-gradient(89.9618deg, #4f46e5 0%, rgba(79,70,229,0.6) 24.064%, #fff 82.033%)",
-      }}
-    >
-      <p className="m-0 w-full md:w-[592px] max-w-full font-[family-name:var(--font-manrope)] text-[28px] md:text-[36px] font-bold leading-normal text-white">
-        Ready to Unlock Your Business Potential?
-      </p>
-      <div className="mt-8 flex w-full flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <p className="m-0 w-full md:w-[534px] font-[family-name:var(--font-manrope)] text-[18px] md:text-[24px] font-normal leading-normal text-white">
-          Let&apos;s collaborate to innovate, grow, and transform your business for lasting success.
-        </p>
-        <CollaborateButton
-          className="flex h-[52px] w-full md:w-auto items-center justify-center gap-4 rounded-[30px] bg-[linear-gradient(180deg,#2f1893_17.081%,#190c39_73.835%)] px-8 md:px-12 text-[#fbfbfd] no-underline whitespace-nowrap cursor-pointer transition-opacity hover:opacity-85"
-        >
-          <span className="font-[family-name:var(--font-manrope)] text-[18px] md:text-[20px] font-medium">
-            Start Your Journey
-          </span>
-          <ArrowUpRight size={24} />
-        </CollaborateButton>
-      </div>
-    </div>
-  );
-}
-
 export default async function PortfolioDetailPage({ params }: Props) {
   const { id } = await params;
   const project = getPortfolioProject(id);
@@ -286,7 +257,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
 
   return (
     <main className="w-full overflow-x-hidden bg-black text-white relative">
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[194px] flex flex-col relative pb-32">
+      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[194px] flex flex-col relative">
         
         {/* Header */}
         <div className="w-full flex flex-col gap-10 md:gap-[60px] pt-24 md:pt-[158px] mb-16 md:mb-[80px]">
@@ -478,13 +449,9 @@ export default async function PortfolioDetailPage({ params }: Props) {
           projects={relatedProjects}
         />
 
-        {/* CTA */}
-        <div className="w-[100vw] relative left-1/2 -translate-x-1/2 max-w-[1440px] px-4 md:px-10 lg:px-[194px]">
-          <DetailCta />
-        </div>
-
       </div>
 
+      <CTASection />
       <FooterSection />
     </main>
   );

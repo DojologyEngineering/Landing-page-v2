@@ -11,7 +11,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="relative -mt-2 md:-mt-8 flex items-center justify-center pointer-events-auto overflow-visible z-[80]">
+    <section className="relative mt-6 md:-mt-8 flex items-center justify-center pointer-events-auto overflow-visible z-[80]">
       <div className="w-full max-w-[1240px] px-4">
         <div className="relative z-[81] overflow-hidden rounded-[20px] md:rounded-[32px] bg-[rgba(199,199,199,0.10)] px-4 py-6 md:px-16 md:py-8 shadow-[0_20px_60px_rgba(0,0,0,0.55)] backdrop-blur-[8px]">
           <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-10">

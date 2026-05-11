@@ -191,7 +191,7 @@ export default function ServicesSection() {
 
         {/* Bottom section - 3 Secondary Cards */}
         <div className="w-full h-px bg-gradient-to-r from-[rgba(255,255,255,0.02)] via-[rgba(255,255,255,0.10)] to-[rgba(255,255,255,0.02)] my-8" />
-        <div className="relative z-10 flex flex-wrap items-start justify-between gap-8 w-full">
+        <div className="relative z-10 grid w-full grid-cols-3 items-start gap-4 md:gap-8 lg:flex lg:flex-wrap lg:justify-between">
           {[
             { title: "Equity Shares", icon: "/assets/equity-share.svg", iconOffsetY: 2 },
             { title: "Revenue Share", icon: "/assets/revenue_share.svg", iconOffsetY: 0 },
@@ -203,9 +203,9 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * i, duration: 0.5 }}
-              className="flex flex-col items-center gap-3 w-full max-w-[203px] shrink-0 mx-auto sm:mx-0"
+              className="mx-auto flex w-full max-w-none shrink-0 flex-col items-center gap-3 lg:mx-0 lg:max-w-[203px]"
             >
-              <div className="relative shrink-0 w-11 h-11 flex items-center justify-center overflow-visible">
+              <div className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-visible md:h-11 md:w-11">
                 <img
                   src={card.icon}
                   alt={card.title}
@@ -213,8 +213,8 @@ export default function ServicesSection() {
                   style={{ transform: `translateY(${card.iconOffsetY}px)` }}
                 />
               </div>
-              <div className="relative flex w-full items-center justify-center rounded-[30px] bg-gradient-to-b from-[#4f1ad6] to-[#8059e3] py-3 px-4 border-2 border-white/15">
-                <span className="font-['Manrope'] font-semibold text-white text-center text-base leading-none">
+              <div className="relative flex w-full items-center justify-center rounded-[30px] border-2 border-white/15 bg-gradient-to-b from-[#4f1ad6] to-[#8059e3] px-2 py-2.5 md:px-4 md:py-3">
+                <span className="font-['Manrope'] text-center text-[13px] font-semibold leading-none text-white md:text-base">
                   {card.title}
                 </span>
               </div>
