@@ -234,7 +234,7 @@ function ScreenshotCarouselCard({ index, src }: { index: number; src: string }) 
         loading="lazy"
         sizes="(min-width: 768px) 840px, 162vw"
         quality={82}
-        className="absolute left-[-31.05%] top-[-23.43%] h-[128.06%] w-[162.3%] max-w-none object-fill"
+        className="absolute left-1/2 top-1/2 h-[128.06%] w-[162.3%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-center"
       />
     </div>
   );
