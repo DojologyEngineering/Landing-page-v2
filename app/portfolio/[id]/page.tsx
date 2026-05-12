@@ -104,9 +104,9 @@ function ImagePanel({
     crop === "hero"
       ? "absolute left-0 h-[128.06%] w-full max-w-none"
       : crop === "small"
-        ? "absolute left-[-31.05%] top-[-23.43%] h-[128.06%] w-[162.3%] max-w-none"
-        : "absolute left-[-18.44%] top-[-23.43%] h-[128.06%] w-[136.88%] max-w-none";
-  const objectFitClassName = crop === "hero" ? "object-cover" : "object-fill";
+        ? "absolute left-1/2 top-1/2 h-[128.06%] w-[162.3%] max-w-none -translate-x-1/2 -translate-y-1/2"
+        : "absolute left-1/2 top-1/2 h-[128.06%] w-[136.88%] max-w-none -translate-x-1/2 -translate-y-1/2";
+  const objectFitClassName = "object-cover object-center";
   const imageStyle = crop === "hero" ? { top: heroTop ?? "-16%" } : undefined;
 
   return (
