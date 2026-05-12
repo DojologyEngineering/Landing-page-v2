@@ -17,6 +17,7 @@ export type PortfolioProject = {
   links: {
     label: string;
     url?: string;
+    icon?: "facebook" | "telegram" | "instagram";
   }[];
   other: string[];
   metrics: {
@@ -73,13 +74,27 @@ export const portfolioProjects: PortfolioProject[] = [
       "Cloud Infrastructure",
     ],
     links: [
-      { label: "Social Media" },
       {
-        label: "Umami: Save Food, Save Money",
+        label: "Facebook",
+        url: "https://web.facebook.com/profile.php?id=61587125687833",
+        icon: "facebook",
+      },
+      {
+        label: "Telegram",
+        url: "https://t.me/umamikh",
+        icon: "telegram",
+      },
+      {
+        label: "Instagram",
+        url: "https://www.instagram.com/umami.eco/",
+        icon: "instagram",
+      },
+      {
+        label: "App Store",
         url: "https://apps.apple.com/kh/app/umami-save-food-save-money/id6760289489",
       },
       {
-        label: "Umami: Save Food, Save Money",
+        label: "Play Store",
         url: "https://play.google.com/store/apps/details?id=com.dojo.umami&pcampaignid=web_share",
       },
     ],
