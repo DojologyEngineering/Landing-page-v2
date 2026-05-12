@@ -2,7 +2,16 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, BarChart3, Check, CircleDollarSign, TrendingUp } from "lucide-react";
+import {
+  ArrowUpRight,
+  BarChart3,
+  Check,
+  CircleDollarSign,
+  Facebook,
+  Instagram,
+  Send,
+  TrendingUp,
+} from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
@@ -22,7 +31,26 @@ type DetailColumnItem =
   | {
       label: string;
       url?: string;
+      icon?: "facebook" | "telegram" | "instagram";
     };
+
+type SocialLinkItem = {
+  label: string;
+  url: string;
+  icon: "facebook" | "telegram" | "instagram";
+};
+
+function LinkIcon({ icon }: { icon: "facebook" | "telegram" | "instagram" }) {
+  if (icon === "facebook") {
+    return <Facebook size={20} />;
+  }
+
+  if (icon === "instagram") {
+    return <Instagram size={20} />;
+  }
+
+  return <Send size={20} />;
+}
 
 export function generateStaticParams() {
   return portfolioProjects.map((project) => ({ id: project.id }));
@@ -51,13 +79,35 @@ function DetailColumn({
   title: string;
   items: DetailColumnItem[];
 }) {
+  const iconItems = items.filter(
+    (item): item is SocialLinkItem =>
+      typeof item !== "string" && Boolean(item.icon && item.url),
+  );
+  const textItems = items.filter((item) => typeof item === "string" || !item.icon);
+
   return (
     <div className="flex w-full md:w-[329px] flex-col gap-3">
       <p className="m-0 font-[family-name:var(--font-manrope)] text-[20px] font-normal leading-normal text-white/50">
         {title}
       </p>
       <div className="flex flex-col font-[family-name:var(--font-manrope)] text-[20px] font-normal leading-normal text-white">
-        {items.map((item, index) => {
+        {iconItems.length > 0 && (
+          <div className="mb-3 flex items-center gap-3">
+            {iconItems.map((item) => (
+              <a
+                key={`${item.label}-${item.url}`}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={item.label}
+                className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-white/35 hover:bg-white/10"
+              >
+                <LinkIcon icon={item.icon} />
+              </a>
+            ))}
+          </div>
+        )}
+        {textItems.map((item, index) => {
           const label = typeof item === "string" ? item : item.label;
           const url = typeof item === "string" ? undefined : item.url;
           const itemKey = `${label}-${url ?? index}`;
