@@ -4,10 +4,28 @@ import Image from "next/image";
 export default function StatsSection() {
   const logos = [
     { src: "/logo/umami-mark-figma.svg", alt: "Umami", width: 80, height: 80 },
-    { src: "/logo/cashgrow68-figma.png", alt: "CashGrow68", width: 80, height: 80 },
-    { src: "/logo/prohose-figma.png", alt: "Prohose Official", width: 80, height: 80 },
-    { src: "/logo/csds-white-logo.png", alt: "CSDS", width: 80, height: 80 },
-    { src: "/logo/nsg-cable-figma.png", alt: "NSG Cable", width: 80, height: 80 },
+    {
+      src: "/logo/cashgrow68-figma.png",
+      alt: "CashGrow68",
+      width: 1024,
+      height: 1024,
+      className: "scale-[1.18] md:scale-[1.35]",
+    },
+    {
+      src: "/logo/prohose-figma.png",
+      alt: "Prohose Official",
+      width: 1536,
+      height: 1024,
+      className: "scale-[1.12] md:scale-[1.25]",
+    },
+    {
+      src: "/logo/csds-white-logo.png",
+      alt: "CSDS",
+      width: 1500,
+      height: 1500,
+      className: "translate-y-[3px] scale-[1.35] md:translate-y-[6px] md:scale-[1.65]",
+    },
+    { src: "/logo/nsg-cable-figma.png", alt: "NSG Cable", width: 1000, height: 1024 },
   ];
 
   return (
@@ -25,7 +43,7 @@ export default function StatsSection() {
                   alt={logo.alt}
                   width={logo.width}
                   height={logo.height}
-                  className="max-h-full w-auto max-w-full object-contain"
+                  className={`max-h-full w-auto max-w-full object-contain ${logo.className ?? ""}`}
                 />
               </div>
             ))}
