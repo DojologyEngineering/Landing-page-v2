@@ -93,21 +93,30 @@ function ImagePanel({
   crop = "large",
   rounded = true,
   heroTop,
+  priority = false,
 }: {
   className?: string;
   src: string;
   crop?: "hero" | "large" | "small";
   rounded?: boolean;
   heroTop?: string;
+  priority?: boolean;
 }) {
   const cropClassName =
     crop === "hero"
       ? "absolute left-0 h-[128.06%] w-full max-w-none"
       : crop === "small"
-        ? "absolute left-[-31.05%] top-[-23.43%] h-[128.06%] w-[162.3%] max-w-none"
-        : "absolute left-[-18.44%] top-[-23.43%] h-[128.06%] w-[136.88%] max-w-none";
-  const objectFitClassName = crop === "hero" ? "object-cover" : "object-fill";
+        ? "absolute left-1/2 top-1/2 h-[128.06%] w-[162.3%] max-w-none -translate-x-1/2 -translate-y-1/2"
+        : "absolute left-1/2 top-1/2 h-[128.06%] w-[136.88%] max-w-none -translate-x-1/2 -translate-y-1/2";
+  const objectFitClassName = "object-cover object-center";
   const imageStyle = crop === "hero" ? { top: heroTop ?? "-16%" } : undefined;
+  const sizes =
+    crop === "hero"
+      ? "100vw"
+      : crop === "small"
+        ? "(min-width: 768px) 840px, 162vw"
+        : "(min-width: 1024px) 1440px, 137vw";
+  const shouldPrioritize = priority || crop === "hero";
 
   return (
     <div
@@ -118,7 +127,10 @@ function ImagePanel({
         alt=""
         width={2300}
         height={1534}
-        priority={crop === "hero"}
+        priority={shouldPrioritize}
+        loading={shouldPrioritize ? undefined : "lazy"}
+        sizes={sizes}
+        quality={82}
         className={`${cropClassName} ${objectFitClassName}`}
         style={imageStyle}
       />
@@ -219,7 +231,10 @@ function ScreenshotCarouselCard({ index, src }: { index: number; src: string }) 
         alt=""
         width={2300}
         height={1534}
-        className="absolute left-[-31.05%] top-[-23.43%] h-[128.06%] w-[162.3%] max-w-none object-fill"
+        loading="lazy"
+        sizes="(min-width: 768px) 840px, 162vw"
+        quality={82}
+        className="absolute left-1/2 top-1/2 h-[128.06%] w-[162.3%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-center"
       />
     </div>
   );
