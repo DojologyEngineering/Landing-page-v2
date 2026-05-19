@@ -3,7 +3,13 @@ import Image from "next/image";
 
 export default function StatsSection() {
   const logos = [
-    { src: "/logo/umami-mark-figma.svg", alt: "Umami", width: 80, height: 80 },
+    {
+      src: "/logo/umami white logo.png",
+      alt: "Umami",
+      width: 1563,
+      height: 1563,
+      className: "scale-[0.9] md:scale-[1.05]",
+    },
     {
       src: "/logo/cashgrow68-figma.png",
       alt: "CashGrow68",

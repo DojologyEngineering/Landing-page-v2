@@ -90,6 +90,10 @@ export const portfolioProjects: PortfolioProject[] = [
         icon: "instagram",
       },
       {
+        label: "Website",
+        url: "https://www.umamikh.app",
+      },
+      {
         label: "App Store",
         url: "https://apps.apple.com/kh/app/umami-save-food-save-money/id6760289489",
       },
@@ -229,20 +233,20 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: "agritrace",
-    label: "KHMER AGRITRACE",
-    title: "Khmer Agritrace",
-    detailTitle: "Khmer Agritrace",
+    label: "ARG TECH",
+    title: "ARG TECH",
+    detailTitle: "ARG TECH",
     bgColor: "#006d30",
     logo: {
-      src: "/logo/umami white logo.png",
-      alt: "Khmer Agritrace Logo",
-      width: 303,
-      height: 80,
+      src: "/logo/ARG TECH white logo.png",
+      alt: "ARG TECH Logo",
+      width: 1563,
+      height: 1563,
     },
     description:
-      "AgriTrace is an end-to-end agricultural management ecosystem designed to digitize the farming lifecycle in Cambodia. By connecting physical field data, such as land plots and crop cycles, to a digital marketplace.",
+      "ARG TECH is an end-to-end agricultural management ecosystem designed to digitize the farming lifecycle in Cambodia. By connecting physical field data, such as land plots and crop cycles, to a digital marketplace.",
     detailDescription:
-      "Khmer Agritrace connects field operations, crop-cycle records, and marketplace readiness into one agricultural management ecosystem for Cambodian farming teams.",
+      "ARG TECH connects field operations, crop-cycle records, and marketplace readiness into one agricultural management ecosystem for Cambodian farming teams.",
     services: commonServices,
     tasks: [
       "Field Data Architecture",
@@ -265,7 +269,7 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
     quote: {
       body: "Field records became easier to track, verify, and prepare for commercial use.",
-      name: "Khmer Agritrace Team",
+      name: "ARG TECH Team",
       role: "Agricultural Operations",
     },
   },
