@@ -230,6 +230,21 @@ export const portfolioProjects: PortfolioProject[] = [
       name: "Prohose Team",
       role: "Agricultural Brand",
     },
+    mockups: {
+      featured: "/prohouse_mockup/prohouse_first.png",
+      grid: [
+        "/prohouse_mockup/prohouse_leftgrid.png",
+        "/prohouse_mockup/prohouse_rightgrid.png",
+      ],
+      carousel: [
+        "/prohouse_mockup/prohouse_topgrid.png",
+        "/prohouse_mockup/prohouse_scroll_1.png",
+        "/prohouse_mockup/prohouse_scroll_2.png",
+        "/prohouse_mockup/prohouse_scroll_3.png",
+        "/prohouse_mockup/prohouse_scroll_4.png",
+        "/prohouse_mockup/prohouse_scroll_5.png",
+      ],
+    },
   },
   {
     id: "agritrace",
