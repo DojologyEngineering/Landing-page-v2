@@ -40,6 +40,19 @@ type SocialLinkItem = {
   icon: "facebook" | "telegram" | "instagram";
 };
 
+type MockupCrop = {
+  widthPct: number;
+  heightPct: number;
+};
+
+type MockupCropKey = "hero" | "large" | "small";
+
+const DEFAULT_MOCKUP_CROPS: Record<MockupCropKey, MockupCrop> = {
+  hero: { widthPct: 100, heightPct: 128.06 },
+  large: { widthPct: 136.88, heightPct: 128.06 },
+  small: { widthPct: 162.3, heightPct: 128.06 },
+};
+
 function LinkIcon({ icon }: { icon: "facebook" | "telegram" | "instagram" }) {
   if (icon === "facebook") {
     return <Facebook size={20} />;
@@ -143,21 +156,26 @@ function ImagePanel({
   crop = "large",
   rounded = true,
   heroTop,
+  cropDimensions,
 }: {
   className?: string;
   src: string;
   crop?: "hero" | "large" | "small";
   rounded?: boolean;
   heroTop?: string;
+  cropDimensions?: MockupCrop;
 }) {
+  const { widthPct, heightPct } = cropDimensions ?? DEFAULT_MOCKUP_CROPS[crop];
   const cropClassName =
     crop === "hero"
-      ? "absolute left-0 h-[128.06%] w-full max-w-none"
-      : crop === "small"
-        ? "absolute left-1/2 top-1/2 h-[128.06%] w-[162.3%] max-w-none -translate-x-1/2 -translate-y-1/2"
-        : "absolute left-1/2 top-1/2 h-[128.06%] w-[136.88%] max-w-none -translate-x-1/2 -translate-y-1/2";
+      ? "absolute left-1/2 max-w-none -translate-x-1/2"
+      : "absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2";
   const objectFitClassName = "object-cover object-center";
-  const imageStyle = crop === "hero" ? { top: heroTop ?? "-16%" } : undefined;
+  const imageStyle = {
+    width: `${widthPct}%`,
+    height: `${heightPct}%`,
+    ...(crop === "hero" ? { top: heroTop ?? "-16%" } : {}),
+  };
 
   return (
     <div
@@ -258,7 +276,17 @@ function FigmaMetricCard({
   );
 }
 
-function ScreenshotCarouselCard({ index, src }: { index: number; src: string }) {
+function ScreenshotCarouselCard({
+  index,
+  src,
+  cropDimensions,
+}: {
+  index: number;
+  src: string;
+  cropDimensions?: MockupCrop;
+}) {
+  const { widthPct, heightPct } = cropDimensions ?? DEFAULT_MOCKUP_CROPS.small;
+
   return (
     <div
       className="relative h-[280px] md:h-[432px] w-[340px] md:w-[514px] shrink-0 overflow-hidden rounded-[32px] bg-white"
@@ -269,7 +297,11 @@ function ScreenshotCarouselCard({ index, src }: { index: number; src: string }) 
         alt=""
         width={2300}
         height={1534}
-        className="absolute left-1/2 top-1/2 h-[128.06%] w-[162.3%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-center"
+        className="absolute left-1/2 top-1/2 max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-center"
+        style={{
+          width: `${widthPct}%`,
+          height: `${heightPct}%`,
+        }}
       />
     </div>
   );
@@ -299,10 +331,17 @@ export default async function PortfolioDetailPage({ params }: Props) {
       "/assets/portfolio/project-mockup-small.png",
     ],
     carousel: Array.from({ length: 5 }, () => "/assets/portfolio/project-mockup-small.png"),
+    heroTop: undefined,
+    crop: undefined,
   };
   const heroMockupSrc = project.mockups ? mockups.featured : "/assets/portfolio/project-hero-bg.png";
   const sectionFeaturedMockupSrc = project.mockups ? mockups.carousel[0] : mockups.featured;
   const carouselMockups = project.mockups ? mockups.carousel.slice(1) : mockups.carousel;
+  const mockupCrops = {
+    hero: mockups.crop?.hero ?? DEFAULT_MOCKUP_CROPS.hero,
+    large: mockups.crop?.large ?? DEFAULT_MOCKUP_CROPS.large,
+    small: mockups.crop?.small ?? DEFAULT_MOCKUP_CROPS.small,
+  };
   const screenshotCards = carouselMockups.map((src, index) => ({ index, src }));
 
   return (
@@ -328,6 +367,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
           crop="hero"
           rounded={false}
           heroTop={project.mockups?.heroTop}
+          cropDimensions={mockupCrops.hero}
         />
 
         {/* Separator / Gap */}
@@ -342,17 +382,20 @@ export default async function PortfolioDetailPage({ params }: Props) {
         <ImagePanel
           className="w-full h-[300px] md:h-[500px] lg:h-[750px] max-w-[1052px] mx-auto mb-6"
           src={sectionFeaturedMockupSrc}
+          cropDimensions={mockupCrops.large}
         />
         <div className="w-full max-w-[1052px] mx-auto flex flex-col md:flex-row gap-6 mb-24">
           <ImagePanel
             className="w-full md:w-1/2 h-[300px] md:h-[432px]"
             src={mockups.grid[0]}
             crop="small"
+            cropDimensions={mockupCrops.small}
           />
           <ImagePanel
             className="w-full md:w-1/2 h-[300px] md:h-[432px]"
             src={mockups.grid[1]}
             crop="small"
+            cropDimensions={mockupCrops.small}
           />
         </div>
 
@@ -489,7 +532,12 @@ export default async function PortfolioDetailPage({ params }: Props) {
             allowTrailingSpacer={false}
           >
             {screenshotCards.map((item) => (
-              <ScreenshotCarouselCard key={`${item.src}-${item.index}`} index={item.index} src={item.src} />
+              <ScreenshotCarouselCard
+                key={`${item.src}-${item.index}`}
+                index={item.index}
+                src={item.src}
+                cropDimensions={mockupCrops.small}
+              />
             ))}
           </AutoHorizontalCarousel>
         </div>
