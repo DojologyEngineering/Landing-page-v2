@@ -1,3 +1,8 @@
+type MockupCrop = {
+  widthPct: number;
+  heightPct: number;
+};
+
 export type PortfolioProject = {
   id: string;
   label: string;
@@ -36,6 +41,11 @@ export type PortfolioProject = {
     grid: string[];
     carousel: string[];
     heroTop?: string;
+    crop?: {
+      hero?: MockupCrop;
+      large?: MockupCrop;
+      small?: MockupCrop;
+    };
   };
 };
 
@@ -244,6 +254,12 @@ export const portfolioProjects: PortfolioProject[] = [
         "/prohouse_mockup/prohouse_scroll_4.png",
         "/prohouse_mockup/prohouse_scroll_5.png",
       ],
+      heroTop: "-6%",
+      crop: {
+        hero: { widthPct: 100, heightPct: 112 },
+        large: { widthPct: 114, heightPct: 112 },
+        small: { widthPct: 128, heightPct: 112 },
+      },
     },
   },
   {
