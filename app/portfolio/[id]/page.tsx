@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
@@ -15,6 +14,7 @@ import {
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
+import PortfolioDetailImage from "@/components/PortfolioDetailImage";
 import PortfolioMoreProjectsSection from "@/components/PortfolioMoreProjectsSection";
 import {
   getPortfolioProject,
@@ -181,7 +181,7 @@ function ImagePanel({
     <div
       className={`relative overflow-hidden bg-white ${rounded ? "rounded-[32px]" : ""} ${className || ""}`}
     >
-      <Image
+      <PortfolioDetailImage
         src={src}
         alt=""
         width={2300}
@@ -292,7 +292,7 @@ function ScreenshotCarouselCard({
       className="relative h-[280px] md:h-[432px] w-[340px] md:w-[514px] shrink-0 overflow-hidden rounded-[32px] bg-white"
       aria-hidden={index > 5}
     >
-      <Image
+      <PortfolioDetailImage
         src={src}
         alt=""
         width={2300}
@@ -302,6 +302,7 @@ function ScreenshotCarouselCard({
           width: `${widthPct}%`,
           height: `${heightPct}%`,
         }}
+        spinnerClassName="size-8"
       />
     </div>
   );

@@ -205,10 +205,12 @@ export default function ServicesSection() {
               transition={{ delay: 0.1 * i, duration: 0.5 }}
               className="mx-auto flex w-full max-w-none min-w-0 shrink-0 flex-col items-center gap-3 lg:mx-0 lg:max-w-[203px]"
             >
-              <div className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-visible md:h-11 md:w-11">
+              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-visible md:h-11 md:w-11">
                 <img
                   src={card.icon}
                   alt={card.title}
+                  width={44}
+                  height={44}
                   className="w-full h-full object-contain"
                   style={{ transform: `translateY(${card.iconOffsetY}px)` }}
                 />
