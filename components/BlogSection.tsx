@@ -69,7 +69,7 @@ function BlogCard({
           style={{
             fontFamily: "Manrope, sans-serif",
             fontWeight: 400,
-            fontSize: "16px",
+            fontSize: "14px",
             lineHeight: "normal",
             color: "rgba(255,255,255,0.5)",
             whiteSpace: "nowrap",
@@ -84,7 +84,7 @@ function BlogCard({
             style={{
               fontFamily: "Manrope, sans-serif",
               fontWeight: 700,
-              fontSize: "24px",
+              fontSize: "20px",
               lineHeight: "normal",
               color: "#fff",
               margin: 0,
@@ -96,7 +96,7 @@ function BlogCard({
             style={{
               fontFamily: "Manrope, sans-serif",
               fontWeight: 400,
-              fontSize: "20px",
+              fontSize: "16px",
               lineHeight: "normal",
               color: "rgba(255,255,255,0.8)",
               margin: 0,
@@ -221,7 +221,7 @@ export default function BlogSection() {
               style={{
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 400,
-                fontSize: "16px",
+                fontSize: "14px",
                 lineHeight: "26px",
                 letterSpacing: "-0.5px",
                 color: "#fff",
@@ -249,7 +249,7 @@ export default function BlogSection() {
             style={{
               fontFamily: "Manrope, sans-serif",
               fontWeight: 700,
-              fontSize: "36px",
+              fontSize: "30px",
               lineHeight: "normal",
               backgroundImage:
                 "linear-gradient(90.4deg, #ffffff 10.14%, #4f46e5 100.69%)",
@@ -272,7 +272,7 @@ export default function BlogSection() {
               gap: "12px",
               fontFamily: "Manrope, sans-serif",
               fontWeight: 500,
-              fontSize: "16px",
+              fontSize: "14px",
               lineHeight: "normal",
               color: "#fff",
               textDecoration: "none",
