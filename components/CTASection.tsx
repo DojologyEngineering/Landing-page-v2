@@ -10,12 +10,12 @@ export default function CTASection() {
       style={{
         position: "relative",
         zIndex: 20,
-        marginTop: "-100px",
-        marginBottom: "-130px",
+        marginTop: "-56px",
+        marginBottom: "-156px",
         padding: "0 16px",
         boxSizing: "border-box",
       }}
-      className="sm:!px-[40px] lg:!px-[100px]"
+      className="sm:!mt-[-72px] sm:!mb-[-148px] sm:!px-[40px] lg:!mt-[-100px] lg:!mb-[-130px] lg:!px-[100px]"
     >
       {/* Banner card */}
       <div

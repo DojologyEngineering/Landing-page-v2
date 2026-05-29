@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, fadeUp } from "./motion";
 import Image from "next/image";
 import { AboutUsTag, WhoWeAreIcon, PillBackground, Card3Image } from "../assets/icons/icon-asset";
@@ -20,6 +21,12 @@ const item = {
 };
 
 export default function PrinciplesSection() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
+  function toggleCard(index: number) {
+    setActiveCard((current) => (current === index ? null : index));
+  }
+
   return (
     <motion.section id="about"
       initial="hidden"
@@ -77,6 +84,7 @@ export default function PrinciplesSection() {
           {/* Card 1: Who we are ? */}
           <motion.div
             variants={item}
+            onClick={() => toggleCard(0)}
             className="relative flex items-center justify-center w-full xl:w-[462px] h-[300px] sm:h-[360px] lg:h-[428px] flex-shrink-0 rounded-[20px] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:rounded-t-[20px] before:pointer-events-none"
             style={{
               background: "var(--color-card-bg)"
@@ -99,19 +107,28 @@ export default function PrinciplesSection() {
                   height={212}
                   className="max-w-full h-auto"
                 />
-                <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-2xl font-semibold text-white text-center">
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    toggleCard(0);
+                  }}
+                  className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 text-center text-[20px] font-semibold text-white transition-opacity hover:opacity-80 sm:text-2xl"
+                >
                   Who we are ?
-                </h3>
+                </button>
               </div>
               
               {/* Hover Overlay */}
               <div 
-                className="absolute inset-0 rounded-xl flex items-center justify-center p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-20"
+                className={`absolute inset-0 z-20 flex items-center justify-center rounded-xl p-6 transition-all duration-500 ease-out sm:p-8 ${
+                  activeCard === 0 ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                } lg:translate-y-full lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100`}
                 style={{
                   background: "linear-gradient(135deg, var(--color-hover-gradient-start) 0%, var(--color-hover-gradient-end) 100%)"
                 }}
               >
-                <p className="text-white text-center text-base leading-relaxed">
+                <p className="text-center text-sm leading-relaxed text-white sm:text-base">
                   We empower SMEs through strategic investments and tailored solutions, fostering growth and innovation in a competitive market.
                 </p>
               </div>
@@ -121,6 +138,7 @@ export default function PrinciplesSection() {
           {/* Card 2: What we think ? */}
           <motion.div
             variants={item}
+            onClick={() => toggleCard(1)}
             className="relative flex items-center justify-center w-full xl:w-[562px] h-[300px] sm:h-[360px] lg:h-[428px] flex-shrink-0 rounded-[20px]"
             style={{
               background: "var(--color-card-bg)"
@@ -143,18 +161,27 @@ export default function PrinciplesSection() {
                 }}
               />
               
-              <h3 className="text-2xl font-semibold text-white text-center relative z-10">
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  toggleCard(1);
+                }}
+                className="relative z-10 text-center text-[20px] font-semibold text-white transition-opacity hover:opacity-80 sm:text-2xl"
+              >
                 What we think ?
-              </h3>
+              </button>
               
               {/* Hover Overlay */}
               <div 
-                className="absolute inset-0 rounded-xl flex items-center justify-center p-8 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-20"
+                className={`absolute inset-0 z-20 flex items-center justify-center rounded-xl p-6 transition-all duration-500 ease-out sm:p-8 ${
+                  activeCard === 1 ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                } lg:translate-y-full lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100`}
                 style={{
                   background: "linear-gradient(135deg, var(--color-hover-gradient-start) 0%, var(--color-hover-gradient-end) 100%)"
                 }}
               >
-                <p className="text-white text-center text-base leading-relaxed">
+                <p className="text-center text-sm leading-relaxed text-white sm:text-base">
                   As investors and solution providers, we believe in empowering luxury brands with cutting-edge digital signage solutions. For over 15 years, we&apos;ve delivered innovative, technical, and artistic solutions to elevate the visitor experience.
                 </p>
               </div>
@@ -165,6 +192,7 @@ export default function PrinciplesSection() {
         {/* Second Row - Full Width Card */}
         <motion.div
           variants={item}
+          onClick={() => toggleCard(2)}
           className="relative flex items-center justify-center w-full xl:w-[1052px] max-w-[1052px] h-auto lg:h-[428px] flex-shrink-0 rounded-[20px]"
           style={{
             background: "var(--color-card-bg)"
@@ -180,19 +208,24 @@ export default function PrinciplesSection() {
             }}
           >
             {/* Left: Text */}
-            <div className="flex-1">
-              <h3 
-                className="text-white text-[32px] font-semibold leading-[32px] tracking-[-0.8px]"
+            <div className="flex w-full flex-1 justify-center lg:justify-start">
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  toggleCard(2);
+                }}
+                className="text-center text-white text-[24px] font-semibold leading-[28px] tracking-[-0.6px] transition-opacity hover:opacity-80 sm:text-[28px] sm:leading-[30px] lg:text-left lg:text-[32px] lg:leading-[32px] lg:tracking-[-0.8px]"
                 style={{
                   fontFamily: "Manrope, sans-serif"
                 }}
               >
                 What we stand for ?
-              </h3>
+              </button>
             </div>
 
             {/* Right: Illustration */}
-            <div className="flex items-center justify-end">
+            <div className="flex w-full items-center justify-center lg:w-auto lg:justify-end">
               <Image 
                 src={Card3Image}
                 alt="What we stand for" 
@@ -204,15 +237,17 @@ export default function PrinciplesSection() {
             
             {/* Hover Overlay */}
             <div 
-              className="absolute inset-0 rounded-xl flex items-center justify-center p-12 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-20"
+              className={`absolute inset-0 z-20 flex items-center justify-center rounded-xl p-6 transition-all duration-500 ease-out sm:p-8 lg:p-12 ${
+                activeCard === 2 ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+              } lg:translate-y-full lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100`}
               style={{
                 background: "linear-gradient(135deg, var(--color-hover-gradient-start) 0%, var(--color-hover-gradient-end) 100%)"
               }}
             >
-              <div className="text-white text-left space-y-4">
-                <p className="text-lg font-semibold">Excellence. Flexibility. Trust. Accountability.</p>
-                <p className="text-base leading-relaxed">Those are our values.</p>
-                <p className="text-base leading-relaxed">
+              <div className="space-y-3 text-center text-white lg:space-y-4 lg:text-left">
+                <p className="text-base font-semibold sm:text-lg">Excellence. Flexibility. Trust. Accountability.</p>
+                <p className="text-sm leading-relaxed sm:text-base">Those are our values.</p>
+                <p className="text-sm leading-relaxed sm:text-base">
                   Because customer satisfaction is our DNA, we always strive to offer you the best possible solution, no matter what.
                   It is equally essential for us to be reliable partners for our clients and to establish trusting relationships with our suppliers.
                 </p>
