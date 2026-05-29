@@ -29,16 +29,16 @@ export default async function BlogDetailsPage({ params }: Props) {
         {/* Article Header */}
         <div className="w-full max-w-[1052px] flex flex-col gap-[40px] md:gap-[62px] px-6 md:px-0">
           <div className="flex flex-col gap-[20px] md:gap-[32px]">
-            <p className="font-['Manrope'] font-normal text-[14px] md:text-[16px] text-white/50 uppercase">
+            <p className="font-['Manrope'] font-normal text-[13px] md:text-[16px] text-white/50 uppercase">
               {post.date}
             </p>
-            <h1 className="font-['Manrope'] font-bold text-[30px] md:text-[64px] leading-tight text-white">
+            <h1 className="font-['Manrope'] font-bold text-[26px] md:text-[64px] leading-tight text-white">
               {post.title}
             </h1>
           </div>
           
           <div className="flex flex-col gap-[40px] md:gap-[64px] w-full">
-            <p className="font-['Manrope'] font-normal text-[17px] md:text-[24px] text-white/80">
+            <p className="font-['Manrope'] font-normal text-[15px] md:text-[24px] text-white/80">
               {post.excerpt}
             </p>
             
