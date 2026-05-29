@@ -14,8 +14,9 @@ export default function FooterSection(): React.ReactElement {
         boxSizing: "border-box",
         overflow: "hidden",
         // paddingTop: 130px pushes the footer CONTENT (logo, links, etc.) below the CTA card's bottom half
-        paddingTop: "165px",
+        paddingTop: "196px",
       }}
+      className="sm:!pt-[184px] lg:!pt-[165px]"
     >
       <div
         aria-hidden="true"
@@ -252,6 +253,7 @@ export default function FooterSection(): React.ReactElement {
             rel="noreferrer"
             aria-label="Facebook"
             style={{ display: "flex", transition: "opacity 0.2s" }}
+            className="scale-[1.3] sm:scale-100"
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
@@ -263,6 +265,7 @@ export default function FooterSection(): React.ReactElement {
             rel="noreferrer"
             aria-label="Telegram"
             style={{ display: "flex", transition: "opacity 0.2s" }}
+            className="scale-[1.3] sm:scale-100"
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
@@ -274,6 +277,7 @@ export default function FooterSection(): React.ReactElement {
             rel="noreferrer"
             aria-label="LinkedIn"
             style={{ display: "flex", transition: "opacity 0.2s" }}
+            className="scale-[1.3] sm:scale-100"
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >

@@ -155,7 +155,10 @@ export default function Header(): React.ReactElement {
             />
           </div>
 
-          <div className="flex min-h-[64px] items-center justify-between rounded-[32px] bg-[rgba(255,255,255,0.05)] px-5 py-3 lg:hidden">
+          <div className="relative flex min-h-[64px] items-center justify-between overflow-hidden rounded-[32px] border border-white/20 bg-white/[0.04] px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(255,255,255,0.08)] backdrop-blur-[12px] lg:hidden">
+            <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0%,rgba(255,255,255,0)_55%)]" />
+            <div className="pointer-events-none absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 rounded-[32px] ring-1 ring-inset ring-white/10" />
             <a href="#home" aria-label="Dojology home">
               <Image
                 src="/assets/portfolio/footer-logo-figma.png"
@@ -170,7 +173,7 @@ export default function Header(): React.ReactElement {
             <button
               type="button"
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/5"
+              className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/5"
               aria-label="Toggle navigation"
               aria-expanded={isMenuOpen}
             >

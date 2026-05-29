@@ -119,12 +119,8 @@ export default function PortfolioMoreProjectsSection({
       <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-32">
         <AutoHorizontalCarousel
           key={activeFilter}
-          className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-0 py-4"
-          trackClassName="gap-4 md:gap-[30px]"
-          trackStyle={{
-            paddingLeft: "max(194px, calc(50vw - 526px))",
-            paddingRight: "max(194px, calc(50vw - 526px))",
-          }}
+          className="portfolio-detail-scroll w-full overflow-x-auto overflow-y-hidden py-4"
+          trackClassName="gap-4 pl-[max(16px,calc((100vw-320px)/2))] pr-[max(16px,calc((100vw-320px)/2))] md:gap-[30px] md:pl-[max(40px,calc((100vw-460px)/2))] md:pr-[max(40px,calc((100vw-460px)/2))] lg:pl-[max(194px,calc(50vw-526px))] lg:pr-[max(194px,calc(50vw-526px))]"
           itemSpan={490}
           itemWidth={460}
           logicalCount={filteredProjects.length}

@@ -518,12 +518,8 @@ export default async function PortfolioDetailPage({ params }: Props) {
         {/* Screenshots Carousel */}
         <div className="w-[100vw] relative left-1/2 -translate-x-1/2 mb-24">
           <AutoHorizontalCarousel
-            className="w-full overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:px-0 pb-10"
-            trackClassName="gap-4 md:gap-[30px]"
-            trackStyle={{
-              paddingLeft: 'max(194px, calc(50vw - 526px))',
-              paddingRight: 'max(194px, calc(50vw - 526px))',
-            }}
+            className="portfolio-detail-scroll w-full overflow-x-auto overflow-y-hidden pb-10"
+            trackClassName="gap-4 pl-[max(16px,calc((100vw-340px)/2))] pr-[max(16px,calc((100vw-340px)/2))] md:gap-[30px] md:pl-[max(40px,calc((100vw-514px)/2))] md:pr-[max(40px,calc((100vw-514px)/2))] lg:pl-[max(194px,calc(50vw-526px))] lg:pr-[max(194px,calc(50vw-526px))]"
             itemSpan={544}
             itemWidth={514}
             logicalCount={screenshotCards.length}

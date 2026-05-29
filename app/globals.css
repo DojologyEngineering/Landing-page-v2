@@ -213,3 +213,7 @@
   scroll-behavior: smooth;
   touch-action: pan-x;
 }
+
+.portfolio-detail-scroll {
+  touch-action: manipulation;
+}
