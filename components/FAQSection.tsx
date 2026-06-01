@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "What is your investment model?",
     answer:
-      "We offer strategic investment in mature startups with proven products and growth potential.",
+      "We offer strategic investment in startups and SMEs with proven products and growth potential.",
   },
   {
     question: "How do I get started?",

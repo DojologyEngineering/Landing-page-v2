@@ -19,6 +19,28 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
+const automationLogos = [
+  { src: "/logo/yeac-figma.png", alt: "YEAC" },
+  { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
+  { src: "/logo/auscham-logo.png?v=2", alt: "AusCham" },
+  { src: "/logo/yeac-figma.png", alt: "YEAC" },
+  { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
+  { src: "/logo/auscham-logo.png?v=2", alt: "AusCham" },
+];
+
+function getAutomationLogoSize(alt?: string) {
+  switch (alt) {
+    case "AusCham":
+      return { width: 116, height: 48 };
+    case "Partner emblem":
+      return { width: 62, height: 48 };
+    case "YEAC":
+      return { width: 66, height: 48 };
+    default:
+      return { width: 58, height: 48 };
+  }
+}
+
 export default function HeroSection() {
   return (
     <motion.section
@@ -188,9 +210,9 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        <div className="pointer-events-none relative z-[55] mx-auto mt-5 w-[88vw] max-w-[360px] lg:absolute lg:left-1/2 lg:top-[840px] lg:mt-0 lg:w-[430px] lg:max-w-[430px] lg:-translate-x-1/2">
+        <div className="pointer-events-none relative z-[55] mx-auto mt-5 w-[92vw] max-w-[420px] lg:absolute lg:left-1/2 lg:top-[840px] lg:mt-0 lg:w-[520px] lg:max-w-[520px] lg:-translate-x-1/2">
           <div
-            className="relative h-[72px] overflow-hidden pt-4 lg:h-[80px] lg:pt-5"
+            className="relative h-[78px] overflow-hidden pt-4 lg:h-[88px] lg:pt-5"
             style={{
               WebkitMaskImage:
                 "linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)",
@@ -200,17 +222,41 @@ export default function HeroSection() {
           >
             <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
             <LogoLoop
-              logos={[
-                { src: "/logo/yeac-figma.png", alt: "YEAC" },
-                { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
-                { src: "/logo/yeac-figma.png", alt: "YEAC" },
-                { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
-              ]}
+              logos={automationLogos}
               speed={52}
-              gap={40}
-              logoHeight={42}
+              gap={16}
+              logoHeight={48}
               fadeOut={false}
-              className="mx-auto opacity-40"
+              className="mx-auto opacity-100"
+              renderItem={(item, key) => {
+                if (!("src" in item)) {
+                  return item.node;
+                }
+
+                const size = getAutomationLogoSize(item.alt);
+
+                return (
+                  <div
+                    key={key}
+                    className="flex h-[48px] w-[120px] items-center justify-center"
+                  >
+                    <img
+                      src={item.src}
+                      alt={item.alt ?? ""}
+                      width={size.width}
+                      height={size.height}
+                      loading="eager"
+                      decoding="async"
+                      draggable={false}
+                      className="h-auto object-contain opacity-100 brightness-[1.28] contrast-[1.1] saturate-[1.12] [image-rendering:-webkit-optimize-contrast]"
+                      style={{
+                        width: `${size.width}px`,
+                        maxHeight: "48px",
+                      }}
+                    />
+                  </div>
+                );
+              }}
             />
           </div>
         </div>

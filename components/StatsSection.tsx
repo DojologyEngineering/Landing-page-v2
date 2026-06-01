@@ -31,7 +31,7 @@ export default function StatsSection() {
       height: 1500,
       className: "translate-y-[3px] scale-[1.35] md:translate-y-[6px] md:scale-[1.65]",
     },
-    { src: "/logo/nsg-cable-figma.png", alt: "NSG Cable", width: 1000, height: 1024 },
+    { src: "/logo/nsg-cable-figma.png", alt: "RNSG CRM", width: 1000, height: 1024 },
   ];
 
   return (

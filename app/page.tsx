@@ -7,7 +7,6 @@ import FooterSection from "@/components/FooterSection";
 import StatsSection from "@/components/StatsSection";
 import PortfolioSection from "@/components/portfolioSection";
 import AdvisorCarousel from "@/components/AdvisorCarousel";
-import BlogSection from "@/components/BlogSection";
 import CTASection from "@/components/CTASection";
 import MissionSection from "@/components/MissionSection";
 import StudioModelSection from "@/components/StudioModelSection";
@@ -26,7 +25,6 @@ export default function Home() {
       <PortfolioSection />
       {SHOW_ADVISOR_CAROUSEL ? <AdvisorCarousel /> : null}
       <MissionSection />
-      <BlogSection />
       <FAQSection />
       <CTASection />
       <FooterSection />

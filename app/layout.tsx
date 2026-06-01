@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   title: "Dojology Tech & Ventures",
   description: "Modern landing page built with Next.js, TypeScript, and Framer Motion",
   icons: {
-    icon: [{ url: "/logo/favcon-dojo.svg", type: "image/svg+xml" }],
-    shortcut: "/logo/favcon-dojo.svg",
-    apple: "/logo/favcon-dojo.svg",
+    icon: [{ url: "/logo/favcon-dojo.png", type: "image/svg+xml" }],
+    shortcut: "/logo/favcon-dojo.png",
+    apple: "/logo/favcon-dojo.png",
   },
 };
 

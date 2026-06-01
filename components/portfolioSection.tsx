@@ -241,12 +241,12 @@ export default function PortfolioSection() {
               lineHeight: "1.0",
               letterSpacing: "clamp(-3px, -0.55vw, -7px)",
               color: "transparent",
-              display: "grid",
-              gridTemplateColumns: "max-content",
-              gridTemplateRows: "max-content",
-              placeItems: "start",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
               userSelect: "none",
               position: "relative",
+              textAlign: "center",
             }}
           >
             {/* OUR */}
@@ -256,49 +256,26 @@ export default function PortfolioSection() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                gridColumn: 1,
-                gridRow: 1,
-                marginLeft: "clamp(0px, 18vw, 187px)",
-                marginTop: 0,
+                margin: 0,
                 letterSpacing: "clamp(-3px, -0.55vw, -7px)",
                 lineHeight: "1.0",
               }}
             >
-              OUR{" "}
+              OUR
             </p>
-            {/* RECENT */}
-            <p
-              style={{
-                backgroundImage: "linear-gradient(89.49deg, #ffffff 2.08%, #4f46e5 107.66%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                gridColumn: 1,
-                gridRow: 1,
-                marginLeft: "clamp(0px, 7.5vw, 76px)",
-                marginTop: "clamp(60px, 9.8vw, 100px)",
-                letterSpacing: "clamp(-2px, -0.4vw, -5px)",
-                lineHeight: "1.0",
-              }}
-            >
-              RECENT
-            </p>
-            {/* PROJECTS */}
+            {/* PROJECT */}
             <p
               style={{
                 backgroundImage: "linear-gradient(to bottom, #ffffff, #4f46e5)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                gridColumn: 1,
-                gridRow: 1,
-                marginLeft: 0,
-                marginTop: "clamp(120px, 19.6vw, 200px)",
+                margin: "-0.05em 0 0",
                 letterSpacing: "clamp(-2px, -0.4vw, -5px)",
                 lineHeight: "1.0",
               }}
             >
-              PROJECTS
+              PROJECT
             </p>
           </div>
 

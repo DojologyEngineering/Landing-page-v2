@@ -17,7 +17,6 @@ const menuItems: MenuItem[] = [
   { label: "Service", href: "#services" },
   { label: "Studio Model", href: "#studio" },
   { label: "Portfolio", href: "#portfolio" },
-  { label: "Blogs", href: "#blog" },
 ];
 
 function NavLabel({
@@ -56,7 +55,7 @@ export default function Header(): React.ReactElement {
   const isDetailPage = pathname?.startsWith("/blog/") || isPortfolioDetailPage;
 
   if (isDetailPage) {
-    const closeHref = isPortfolioDetailPage ? "/#portfolio" : "/#blog";
+    const closeHref = isPortfolioDetailPage ? "/#portfolio" : "/";
 
     return (
       <header className="sticky inset-x-0 top-0 z-[120] mb-[-98px] border-b border-white/20 bg-[rgba(5,5,5,0.01)] backdrop-blur-[142px]">
@@ -147,10 +146,6 @@ export default function Header(): React.ReactElement {
             />
             <NavLabel
               item={menuItems[4]}
-              className="font-[family-name:var(--font-manrope)] leading-[1.16]"
-            />
-            <NavLabel
-              item={menuItems[5]}
               className="font-[family-name:var(--font-manrope)] leading-[1.16]"
             />
           </div>

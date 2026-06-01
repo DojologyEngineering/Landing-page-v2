@@ -15,9 +15,9 @@ import {
 const services = [
   {
     icon: ServiceIconA,
-    title: "Strategic Investment in Mature Startups",
+    title: "Strategic Investment in Startups & SMEs",
     description:
-      "We partner with established startups that have proven digital products, providing equity funding, payroll support, and strategic guidance to accelerate expansion.",
+      "We partner with startups and SMEs that have proven digital products, providing equity funding, payroll support, and strategic guidance to accelerate expansion.",
   },
   {
     icon: ServiceIconB,
