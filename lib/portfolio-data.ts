@@ -354,7 +354,7 @@ export const portfolioFilterLabels = [
   "PROHOSE",
   "RNSG CRM",
   "CASHGROW68",
-  "KHMER AGRITRACE",
+  "ARG TECH",
 ];
 
 export function getPortfolioProject(id: string): PortfolioProject | undefined {

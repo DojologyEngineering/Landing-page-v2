@@ -10,6 +10,32 @@ import {
   type PortfolioProject,
 } from "@/lib/portfolio-data";
 
+const projectLogoOverrides: Record<
+  string,
+  { src: string; width: number; height: number }
+> = {
+  umami: {
+    src: "/logo/umami-project.png",
+    width: 1284,
+    height: 924,
+  },
+  cashgrow: {
+    src: "/logo/cashgrow-project.png",
+    width: 1284,
+    height: 924,
+  },
+  prohose: {
+    src: "/logo/prohouse-project.png",
+    width: 1284,
+    height: 924,
+  },
+  agritrace: {
+    src: "/logo/argtech-project.png",
+    width: 856,
+    height: 616,
+  },
+};
+
 // Service tag chips
 function ServiceTag({ label }: { label: string }) {
   return (
@@ -38,6 +64,8 @@ function ServiceTag({ label }: { label: string }) {
 }
 
 function ProjectLogo({ project }: { project: PortfolioProject }) {
+  const logo = projectLogoOverrides[project.id] ?? project.logo;
+  const shouldFillCard = project.id in projectLogoOverrides;
   const logoMaxSize =
     project.id === "umami" || project.id === "agritrace"
       ? 130
@@ -50,9 +78,9 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
   return (
     <div
       style={{
-        width: "200px",
-        height: "200px",
-        maxWidth: "82%",
+        width: shouldFillCard ? "100%" : "200px",
+        height: shouldFillCard ? "100%" : "200px",
+        maxWidth: shouldFillCard ? "100%" : "82%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -60,16 +88,16 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
       }}
     >
       <Image
-        src={project.logo.src}
+        src={logo.src}
         alt={project.logo.alt}
-        width={project.logo.width}
-        height={project.logo.height}
+        width={logo.width}
+        height={logo.height}
         style={{
-          height: "auto",
-          maxHeight: `${logoMaxSize}px`,
-          maxWidth: `${logoMaxSize}px`,
+          height: shouldFillCard ? "100%" : "auto",
+          maxHeight: shouldFillCard ? "100%" : `${logoMaxSize}px`,
+          maxWidth: shouldFillCard ? "100%" : `${logoMaxSize}px`,
           objectFit: "contain",
-          width: "auto",
+          width: shouldFillCard ? "100%" : "auto",
         }}
       />
     </div>
