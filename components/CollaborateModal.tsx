@@ -25,13 +25,18 @@ export default function CollaborateModal() {
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
+    const { body, documentElement } = document;
+    const previousBodyOverflow = body.style.overflow;
+    const previousHtmlOverflow = documentElement.style.overflow;
+
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+      body.style.overflow = "hidden";
+      documentElement.style.overflow = "hidden";
     }
+
     return () => {
-      document.body.style.overflow = "unset";
+      body.style.overflow = previousBodyOverflow;
+      documentElement.style.overflow = previousHtmlOverflow;
     };
   }, [isOpen]);
 
@@ -87,7 +92,7 @@ export default function CollaborateModal() {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="hide-scrollbar fixed inset-0 z-[200] overflow-y-auto p-4 sm:p-6">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden p-4 sm:p-6">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -103,7 +108,7 @@ export default function CollaborateModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="hide-scrollbar relative mx-auto my-6 w-full max-w-[480px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-[24px] border border-white/10 bg-[#10131c] px-6 pb-6 pt-16 shadow-2xl sm:my-10 sm:max-h-[calc(100dvh-5rem)] sm:px-8 sm:pb-8 sm:pt-[72px]"
+            className="hide-scrollbar relative w-full max-w-[480px] max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-[24px] border border-white/10 bg-[#10131c] px-6 pb-6 pt-6 shadow-2xl sm:max-h-[calc(100dvh-3rem)] sm:px-8 sm:pb-8 sm:pt-8"
           >
             <div
               aria-hidden
@@ -118,30 +123,31 @@ export default function CollaborateModal() {
               />
             </div>
 
-            {/* Close Button */}
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="absolute right-3 top-3 z-30 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-white/55 transition-colors [touch-action:manipulation] hover:text-white sm:right-4 sm:top-4"
-              aria-label="Close dialog"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-
             {/* Header */}
-            <h2 
-              className="relative z-10 mb-6 font-[family-name:var(--font-manrope)] text-[28px] font-bold"
-              style={{
-                backgroundImage: "linear-gradient(90.7deg, #FFFFFF -100%, #4F46E5 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              Let&apos;s Collaborate
-            </h2>
+            <div className="relative z-10 mb-6 flex items-start justify-between gap-4">
+              <h2
+                className="font-[family-name:var(--font-manrope)] text-[28px] font-bold"
+                style={{
+                  backgroundImage: "linear-gradient(90.7deg, #FFFFFF -100%, #4F46E5 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Let&apos;s Collaborate
+              </h2>
+
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-transparent text-white/55 transition-colors [touch-action:manipulation] hover:text-white"
+                aria-label="Close dialog"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
 
             {/* Form */}
             <form className="relative z-10 flex flex-col gap-4 font-[family-name:var(--font-manrope)]" onSubmit={handleSubmit}>
