@@ -103,25 +103,27 @@ export default function CollaborateModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="hide-scrollbar relative mx-auto my-6 w-full max-w-[480px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-[24px] border border-white/10 bg-[#10131c] p-6 shadow-2xl sm:my-10 sm:max-h-[calc(100dvh-5rem)] sm:p-8"
+            className="hide-scrollbar relative mx-auto my-6 w-full max-w-[480px] max-h-[calc(100dvh-3rem)] overflow-y-auto rounded-[24px] border border-white/10 bg-[#10131c] px-6 pb-6 pt-16 shadow-2xl sm:my-10 sm:max-h-[calc(100dvh-5rem)] sm:px-8 sm:pb-8 sm:pt-[72px]"
           >
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 overflow-hidden rounded-[24px]"
             >
               <div
-                className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[95px]"
+                className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[110px]"
                 style={{
                   background:
-                    "radial-gradient(circle, rgba(168,85,247,0.32) 0%, rgba(168,85,247,0.14) 42%, rgba(168,85,247,0) 72%)",
+                    "radial-gradient(circle, rgba(196,132,252,0.48) 0%, rgba(196,132,252,0.26) 42%, rgba(196,132,252,0.08) 62%, rgba(196,132,252,0) 78%)",
                 }}
               />
             </div>
 
             {/* Close Button */}
             <button
+              type="button"
               onClick={() => setIsOpen(false)}
-              className="absolute right-5 top-5 z-10 text-white/40 transition-colors hover:text-white"
+              className="absolute right-3 top-3 z-30 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-transparent text-white/55 transition-colors [touch-action:manipulation] hover:text-white sm:right-4 sm:top-4"
+              aria-label="Close dialog"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
