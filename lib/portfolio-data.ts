@@ -306,20 +306,20 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     id: "nsgcable",
-    label: "NSG CABLE",
-    title: "NSG Cable",
-    detailTitle: "NSG Cable",
+    label: "RNSG CRM",
+    title: "RNSG CRM",
+    detailTitle: "RNSG CRM",
     bgColor: "#4f1ad6",
     logo: {
       src: "/logo/nsg-card-figma.png",
-      alt: "NSG Cable Logo",
+      alt: "RNSG CRM Logo",
       width: 200,
       height: 200,
     },
     description:
       "A comprehensive, dual-platform management ecosystem connecting field agents, warehouse operations, and retailers through a Telegram-based Field Intelligence Bot and a Centralized Command Center web portal.",
     detailDescription:
-      "NSG Cable connects field agents, warehouse teams, and retailer workflows through a Telegram-based field intelligence bot and centralized command center.",
+      "RNSG CRM connects field agents, warehouse teams, and retailer workflows through a Telegram-based field intelligence bot and centralized command center.",
     services: commonServices,
     tasks: [
       "Telegram Bot",
@@ -342,7 +342,7 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
     quote: {
       body: "Operations moved from scattered updates into a single command flow the team could act on.",
-      name: "NSG Cable Team",
+      name: "RNSG CRM Team",
       role: "Field Operations",
     },
   },
@@ -352,7 +352,7 @@ export const portfolioFilterLabels = [
   "All",
   "UMAMI",
   "PROHOSE",
-  "NSG CABLE",
+  "RNSG CRM",
   "CASHGROW68",
   "KHMER AGRITRACE",
 ];
