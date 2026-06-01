@@ -99,7 +99,7 @@ export default function ServicesSection() {
 
         {/* Book a call button */}
         <motion.button 
-          onClick={() => {}}
+          onClick={() => window.dispatchEvent(new Event("open-collaborate-modal"))}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="relative z-10 px-6 py-3 font-semibold rounded-lg transition-colors cursor-pointer hover:opacity-90"
