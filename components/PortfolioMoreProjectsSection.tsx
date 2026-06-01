@@ -7,7 +7,35 @@ import { ArrowUpRight } from "lucide-react";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import type { PortfolioProject } from "@/lib/portfolio-data";
 
+const projectLogoOverrides: Record<
+  string,
+  { src: string; width: number; height: number }
+> = {
+  umami: {
+    src: "/logo/umami-project.png",
+    width: 1284,
+    height: 924,
+  },
+  cashgrow: {
+    src: "/logo/cashgrow-project.png",
+    width: 1284,
+    height: 924,
+  },
+  prohose: {
+    src: "/logo/prohouse-project.png",
+    width: 1284,
+    height: 924,
+  },
+  agritrace: {
+    src: "/logo/argtech-project.png",
+    width: 856,
+    height: 616,
+  },
+};
+
 function RelatedProjectLogo({ project }: { project: PortfolioProject }) {
+  const logo = projectLogoOverrides[project.id] ?? project.logo;
+  const shouldFillCard = project.id in projectLogoOverrides;
   const logoMaxSize =
     project.id === "umami" || project.id === "agritrace"
       ? 130
@@ -18,18 +46,25 @@ function RelatedProjectLogo({ project }: { project: PortfolioProject }) {
           : 200;
 
   return (
-    <div className="flex h-[200px] w-[200px] max-w-[78%] shrink-0 items-center justify-center">
+    <div
+      className="flex shrink-0 items-center justify-center"
+      style={{
+        width: shouldFillCard ? "100%" : "200px",
+        height: shouldFillCard ? "100%" : "200px",
+        maxWidth: shouldFillCard ? "100%" : "78%",
+      }}
+    >
       <Image
-        src={project.logo.src}
+        src={logo.src}
         alt={project.logo.alt}
-        width={project.logo.width}
-        height={project.logo.height}
+        width={logo.width}
+        height={logo.height}
         style={{
-          height: "auto",
-          maxHeight: `${logoMaxSize}px`,
-          maxWidth: `${logoMaxSize}px`,
+          height: shouldFillCard ? "100%" : "auto",
+          maxHeight: shouldFillCard ? "100%" : `${logoMaxSize}px`,
+          maxWidth: shouldFillCard ? "100%" : `${logoMaxSize}px`,
           objectFit: "contain",
-          width: "auto",
+          width: shouldFillCard ? "100%" : "auto",
         }}
       />
     </div>
