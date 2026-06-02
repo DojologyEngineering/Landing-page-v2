@@ -260,7 +260,7 @@ export default function FooterSection(): React.ReactElement {
             <Icon name="facebook" />
           </a>
           <a
-            href="https://t.me/dojology"
+            href="https://t.me/Penlymeng789"
             target="_blank"
             rel="noreferrer"
             aria-label="Telegram"

@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import {
   portfolioFilterLabels,
   portfolioProjects,
@@ -35,6 +36,47 @@ const projectLogoOverrides: Record<
     height: 616,
   },
 };
+
+const projectOrder = ["umami", "cashgrow", "prohose", "nsgcable", "agritrace"] as const;
+const projectOrderIndex = new Map<string, number>(projectOrder.map((id, index) => [id, index]));
+const preferredFilterOrder = ["All", "UMAMI", "CASHGROW68", "PROHOSE", "RNSG CRM", "ARG TECH"];
+const filterOrderIndex = new Map(preferredFilterOrder.map((label, index) => [label, index]));
+const projectGlowColors: Record<string, string> = {
+  umami: "#005c3b",
+  cashgrow: "#f59245",
+  prohose: "#7ed321",
+  nsgcable: "#6b3cff",
+  agritrace: "#0a5a2b",
+};
+const projectGlowOpacity: Record<string, { strong: number; mid: number; soft: number }> = {
+  cashgrow: { strong: 0.28, mid: 0.16, soft: 0.07 },
+  prohose: { strong: 0.28, mid: 0.16, soft: 0.07 },
+  nsgcable: { strong: 0.26, mid: 0.15, soft: 0.06 },
+};
+const projectDescriptionColors: Record<string, string> = {
+  umami: "#cccccc",
+  cashgrow: "#ffffff",
+  prohose: "#ffffff",
+  nsgcable: "#ffffff",
+  agritrace: "#ffffff",
+};
+
+function hexToRgba(hex: string, alpha: number) {
+  const normalizedHex = hex.replace("#", "");
+  const safeHex =
+    normalizedHex.length === 3
+      ? normalizedHex
+          .split("")
+          .map((value) => value + value)
+          .join("")
+      : normalizedHex;
+
+  const red = Number.parseInt(safeHex.slice(0, 2), 16);
+  const green = Number.parseInt(safeHex.slice(2, 4), 16);
+  const blue = Number.parseInt(safeHex.slice(4, 6), 16);
+
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+}
 
 // Service tag chips
 function ServiceTag({ label }: { label: string }) {
@@ -106,17 +148,20 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
 
 // Single Project Card
 function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
+  const glowColor = projectGlowColors[project.id] ?? project.bgColor;
+  const descriptionColor = projectDescriptionColors[project.id] ?? "#ffffff";
+  const glowOpacity = projectGlowOpacity[project.id] ?? {
+    strong: 0.42,
+    mid: 0.24,
+    soft: 0.11,
+  };
+  const brandedGlow = `radial-gradient(circle at center, ${hexToRgba(glowColor, glowOpacity.strong)} 0%, ${hexToRgba(glowColor, glowOpacity.mid)} 36%, ${hexToRgba(glowColor, glowOpacity.soft)} 58%, rgba(0, 0, 0, 0) 80%)`;
+
   return (
     <Link
       href={`/portfolio/${project.id}`}
       aria-label={`View ${project.title} project details`}
-      style={{
-        width: "100%",
-        flexShrink: 0,
-        color: "inherit",
-        display: "block",
-        textDecoration: "none",
-      }}
+      className="block w-[320px] shrink-0 text-inherit no-underline md:h-[634px] md:w-[460px]"
     >
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -124,45 +169,17 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
         viewport={{ once: true, amount: 0.1 }}
         whileHover={{ y: -8 }}
         transition={{ duration: 0.55, delay: index * 0.08 }}
-        style={{
-          background: "#10131c",
-          borderRadius: "24px",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "column",
-          paddingTop: "16px",
-          paddingLeft: "16px",
-          paddingRight: "16px",
-          paddingBottom: "32px",
-          gap: "32px",
-          width: "100%",
-          flexShrink: 0,
-          cursor: "pointer",
-        }}
+        className="flex w-full cursor-pointer flex-col gap-8 overflow-hidden rounded-[24px] bg-[#10131c] p-4 pb-8 md:h-full"
       >
-        {/* Image / Logo area */}
         <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "250px",
-            borderRadius: "12px",
-            background: project.bgColor,
-            overflow: "hidden",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-          }}
-          className="sm:!h-[308px]"
+          className="relative flex h-[250px] shrink-0 items-center justify-center overflow-hidden rounded-[12px] sm:!h-[308px]"
+          style={{ background: project.bgColor }}
         >
           <ProjectLogo project={project} />
         </div>
 
-        {/* Text and tags use full inner width */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "36px", width: "100%" }}>
-          {/* Title + Description */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <div className="flex w-full flex-1 flex-col gap-9">
+          <div className="flex w-full flex-col gap-4">
             <p
               style={{
                 fontFamily: "'Nunito Sans', Manrope, sans-serif",
@@ -175,22 +192,29 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             >
               {project.title}
             </p>
-            <p
-              style={{
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "24.375px",
-                letterSpacing: "-0.2344px",
-                color: "rgba(255,255,255,0.6)",
-                margin: 0,
-              }}
-            >
-              {project.description}
-            </p>
+            <div className="relative w-full overflow-visible py-1">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[72px] w-[108%] -translate-x-1/2 -translate-y-1/2 rounded-[999px] blur-[38px] md:h-[76px] md:w-[104%]"
+                style={{ background: brandedGlow }}
+              />
+              <p
+                className="relative z-10"
+                style={{
+                  fontFamily: "Manrope, sans-serif",
+                  fontWeight: 400,
+                  fontSize: "16px",
+                  lineHeight: "24.375px",
+                  letterSpacing: "-0.2344px",
+                  color: descriptionColor,
+                  margin: 0,
+                }}
+              >
+                {project.description}
+              </p>
+            </div>
           </div>
 
-          {/* Service tags use natural height, horizontal scroll, no scrollbar */}
           <div
             className="tags-scroll"
             style={{
@@ -221,46 +245,39 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filteredProjects = portfolioProjects.filter((p) => {
-    if (activeFilter === "All") return true;
-    return p.label === activeFilter;
-  });
+  const orderedFilterLabels = useMemo(
+    () =>
+      [...portfolioFilterLabels].sort(
+        (left, right) =>
+          (filterOrderIndex.get(left) ?? Number.MAX_SAFE_INTEGER) -
+          (filterOrderIndex.get(right) ?? Number.MAX_SAFE_INTEGER),
+      ),
+    [],
+  );
 
-  // Split into two columns (alternating)
-  const leftCol = filteredProjects.filter((_, i) => i % 2 === 0);
-  const rightCol = filteredProjects.filter((_, i) => i % 2 !== 0);
+  const filteredProjects = useMemo(() => {
+    const visibleProjects = portfolioProjects.filter((project) => {
+      if (activeFilter === "All") {
+        return true;
+      }
+
+      return project.label === activeFilter;
+    });
+
+    return visibleProjects.sort(
+      (left, right) =>
+        (projectOrderIndex.get(left.id) ?? Number.MAX_SAFE_INTEGER) -
+        (projectOrderIndex.get(right.id) ?? Number.MAX_SAFE_INTEGER),
+    );
+  }, [activeFilter]);
 
   return (
     <section
       id="portfolio"
-      style={{
-        background: "#010103",
-        width: "100%",
-        padding: "80px 16px",
-        boxSizing: "border-box",
-      }}
-      className="sm:!px-8 lg:!px-[194px] lg:!py-[120px]"
+      className="w-full overflow-hidden bg-[#010103] px-4 py-[80px] sm:!px-8 lg:!py-[120px]"
     >
-      <div
-        style={{
-          maxWidth: "1052px",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: "64px",
-        }}
-      >
-        {/* Header */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "32px",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          {/* Stacked gradient title */}
+      <div className="mx-auto flex max-w-[1052px] flex-col gap-16">
+        <div className="flex w-full flex-col items-center gap-8">
           <div
             style={{
               fontFamily: "Manrope, sans-serif",
@@ -277,7 +294,6 @@ export default function PortfolioSection() {
               textAlign: "center",
             }}
           >
-            {/* OUR */}
             <p
               style={{
                 backgroundImage: "linear-gradient(to bottom, #4f46e5, #ffffff)",
@@ -291,7 +307,6 @@ export default function PortfolioSection() {
             >
               OUR
             </p>
-            {/* PROJECT */}
             <p
               style={{
                 backgroundImage: "linear-gradient(to bottom, #ffffff, #4f46e5)",
@@ -307,7 +322,6 @@ export default function PortfolioSection() {
             </p>
           </div>
 
-          {/* Filter tabs */}
           <div
             className="tags-scroll"
             style={{
@@ -328,7 +342,7 @@ export default function PortfolioSection() {
                 overflow: "visible",
               }}
             >
-              {portfolioFilterLabels.map((label) => {
+              {orderedFilterLabels.map((label) => {
                 const isActive = activeFilter === label;
                 return (
                   <button
@@ -359,25 +373,20 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* Two-column Project Grid */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-y-[40px] gap-x-[40px] lg:gap-x-[120px] lg:gap-y-[60px] w-full"
-          style={{
-            alignItems: "start",
-          }}
-        >
-          {/* Left column */}
-          <div className="flex flex-col gap-[40px] lg:gap-[60px]">
-            {leftCol.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i * 2} />
+        <div className="relative left-1/2 w-[100vw] -translate-x-1/2">
+          <AutoHorizontalCarousel
+            key={activeFilter}
+            className="w-full overflow-x-auto overflow-y-hidden py-4"
+            trackClassName="gap-4 pl-[max(16px,calc((100vw-320px)/2))] pr-[max(16px,calc((100vw-320px)/2))] md:gap-[30px] md:pl-[max(40px,calc((100vw-460px)/2))] md:pr-[max(40px,calc((100vw-460px)/2))] lg:pl-[max(194px,calc(50vw-526px))] lg:pr-[max(194px,calc(50vw-526px))]"
+            itemSpan={490}
+            itemWidth={460}
+            logicalCount={filteredProjects.length}
+            allowTrailingSpacer={false}
+          >
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
-          </div>
-          {/* Right column offset downward like Figma stagger */}
-          <div className="flex flex-col gap-[40px] lg:gap-[60px]">
-            {rightCol.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i * 2 + 1} />
-            ))}
-          </div>
+          </AutoHorizontalCarousel>
         </div>
       </div>
     </section>
