@@ -38,7 +38,7 @@ const projectLogoOverrides: Record<
 };
 
 const projectOrder = ["umami", "cashgrow", "prohose", "nsgcable", "agritrace"] as const;
-const projectOrderIndex = new Map(projectOrder.map((id, index) => [id, index]));
+const projectOrderIndex = new Map<string, number>(projectOrder.map((id, index) => [id, index]));
 const preferredFilterOrder = ["All", "UMAMI", "CASHGROW68", "PROHOSE", "RNSG CRM", "ARG TECH"];
 const filterOrderIndex = new Map(preferredFilterOrder.map((label, index) => [label, index]));
 const projectGlowColors: Record<string, string> = {
