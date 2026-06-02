@@ -15,6 +15,7 @@ const menuItems: MenuItem[] = [
   { label: "About us", href: "#about" },
   { label: "Our Team", href: "#team" },
   { label: "Service", href: "#services" },
+  { label: "Blog" },
   { label: "Studio Model", href: "#studio" },
   { label: "Portfolio", href: "#portfolio" },
 ];
@@ -51,6 +52,8 @@ function NavLabel({
 export default function Header(): React.ReactElement {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const leftNavItems = menuItems.slice(0, 3);
+  const rightNavItems = menuItems.slice(3);
   const isPortfolioDetailPage = pathname?.startsWith("/portfolio/");
   const isDetailPage = pathname?.startsWith("/blog/") || isPortfolioDetailPage;
 
@@ -114,18 +117,13 @@ export default function Header(): React.ReactElement {
             <div className="pointer-events-none absolute inset-0 rounded-[72px] bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0%,rgba(255,255,255,0)_55%)]" />
             <div className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
             <div className="pointer-events-none absolute inset-0 rounded-[72px] ring-1 ring-inset ring-white/10" />
-            <NavLabel
-              item={menuItems[0]}
-              className="font-[family-name:var(--font-manrope)] leading-[1.16]"
-            />
-            <NavLabel
-              item={menuItems[1]}
-              className="font-[family-name:var(--font-manrope)] leading-[1.16]"
-            />
-            <NavLabel
-              item={menuItems[2]}
-              className="font-[family-name:var(--font-manrope)] leading-[1.16]"
-            />
+            {leftNavItems.map((item) => (
+              <NavLabel
+                key={item.label}
+                item={item}
+                className="font-[family-name:var(--font-manrope)] leading-[1.16]"
+              />
+            ))}
             <a
               href="#home"
               className="relative z-10 flex shrink-0 items-center justify-center rounded-full px-2"
@@ -140,14 +138,13 @@ export default function Header(): React.ReactElement {
                 className="h-[50px] w-auto"
               />
             </a>
-            <NavLabel
-              item={menuItems[3]}
-              className="font-[family-name:var(--font-manrope)] leading-[1.16]"
-            />
-            <NavLabel
-              item={menuItems[4]}
-              className="font-[family-name:var(--font-manrope)] leading-[1.16]"
-            />
+            {rightNavItems.map((item) => (
+              <NavLabel
+                key={item.label}
+                item={item}
+                className="font-[family-name:var(--font-manrope)] leading-[1.16]"
+              />
+            ))}
           </div>
 
           <div className="relative flex min-h-[64px] items-center justify-between overflow-hidden rounded-[32px] border border-white/20 bg-white/[0.04] px-5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(255,255,255,0.08)] backdrop-blur-[12px] lg:hidden">
