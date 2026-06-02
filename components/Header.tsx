@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,21 +24,26 @@ function NavLabel({
   item,
   className,
   onActivate,
+  onUnavailable,
 }: {
   item: MenuItem;
   className?: string;
   onActivate?: () => void;
+  onUnavailable?: (label: string) => void;
 }): React.ReactElement {
   const sharedClassName = `relative z-10 whitespace-nowrap text-white/95 transition-colors duration-200 hover:text-white ${className ?? ""}`;
 
   if (!item.href) {
     return (
-      <span
+      <button
+        type="button"
+        onClick={() => onUnavailable?.(item.label)}
         className={sharedClassName}
         title={`${item.label} section is not available on this page yet`}
+        style={{ background: "transparent", border: "none", padding: 0, cursor: "pointer" }}
       >
         {item.label}
-      </span>
+      </button>
     );
   }
 
@@ -51,11 +56,34 @@ function NavLabel({
 
 export default function Header(): React.ReactElement {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
+  const noticeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
   const leftNavItems = menuItems.slice(0, 3);
   const rightNavItems = menuItems.slice(3);
   const isPortfolioDetailPage = pathname?.startsWith("/portfolio/");
   const isDetailPage = pathname?.startsWith("/blog/") || isPortfolioDetailPage;
+
+  useEffect(() => {
+    return () => {
+      if (noticeTimeoutRef.current) {
+        clearTimeout(noticeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const showComingSoonMessage = (label: string) => {
+    if (noticeTimeoutRef.current) {
+      clearTimeout(noticeTimeoutRef.current);
+    }
+
+    setIsMenuOpen(false);
+    setNotice(`${label} coming soon!`);
+    noticeTimeoutRef.current = setTimeout(() => {
+      setNotice(null);
+      noticeTimeoutRef.current = null;
+    }, 2400);
+  };
 
   if (isDetailPage) {
     const closeHref = isPortfolioDetailPage ? "/#portfolio" : "/";
@@ -122,6 +150,7 @@ export default function Header(): React.ReactElement {
                 key={item.label}
                 item={item}
                 className="font-[family-name:var(--font-manrope)] leading-[1.16]"
+                onUnavailable={showComingSoonMessage}
               />
             ))}
             <a
@@ -143,6 +172,7 @@ export default function Header(): React.ReactElement {
                 key={item.label}
                 item={item}
                 className="font-[family-name:var(--font-manrope)] leading-[1.16]"
+                onUnavailable={showComingSoonMessage}
               />
             ))}
           </div>
@@ -211,12 +241,29 @@ export default function Header(): React.ReactElement {
                     item={item}
                     className="font-[family-name:var(--font-manrope)] leading-[1.16]"
                     onActivate={() => setIsMenuOpen(false)}
+                    onUnavailable={showComingSoonMessage}
                   />
                 ))}
               </div>
             </motion.nav>
           </motion.div>
         )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {notice ? (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.2 }}
+            className="fixed left-1/2 top-[96px] z-[130] -translate-x-1/2 rounded-full border border-white/12 bg-[#090909]/90 px-5 py-3 text-center text-white shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-[12px] lg:top-[112px]"
+          >
+            <span className="font-[family-name:var(--font-manrope)] text-[14px] font-medium tracking-[-0.2px] text-white/95">
+              {notice}
+            </span>
+          </motion.div>
+        ) : null}
       </AnimatePresence>
     </>
   );
