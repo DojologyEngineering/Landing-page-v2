@@ -33,7 +33,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Dojology Tech & Ventures",
-  description: "Modern landing page built with Next.js, TypeScript, and Framer Motion",
+  description: "Building technology for startups and SMEs through flexible equity, revenue share, and cashflow partnerships. No massive upfront costs, just pure growth.",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
     shortcut: "/favicon.png",
