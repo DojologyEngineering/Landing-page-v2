@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import type { PortfolioProject } from "@/lib/portfolio-data";
 
@@ -32,6 +33,14 @@ const projectLogoOverrides: Record<
     height: 616,
   },
 };
+
+function ServiceTag({ label }: { label: string }) {
+  return (
+    <span className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-white/20 bg-white/[0.05] px-[14px] py-[8px] font-[family-name:var(--font-manrope)] text-[12px] font-medium leading-[1.2] tracking-[-0.12px] text-white">
+      {label}
+    </span>
+  );
+}
 
 function RelatedProjectLogo({ project }: { project: PortfolioProject }) {
   const logo = projectLogoOverrides[project.id] ?? project.logo;
@@ -75,25 +84,32 @@ function RelatedProjectCard({ project }: { project: PortfolioProject }) {
   return (
     <Link
       href={`/portfolio/${project.id}`}
-      className="relative block h-[500px] md:h-[610px] w-[320px] md:w-[460px] shrink-0 overflow-hidden rounded-[24px] bg-[#10131c] p-4 text-white no-underline transition-transform duration-200 hover:-translate-y-1"
+      className="relative block h-[540px] md:h-[650px] w-[320px] md:w-[460px] shrink-0 overflow-hidden rounded-[24px] bg-[#10131c] p-4 text-white no-underline transition-transform duration-200 hover:-translate-y-1"
     >
-      <div
-        className="flex h-[200px] md:h-[308px] items-center justify-center rounded-[12px]"
-        style={{ background: project.bgColor }}
-      >
-        <RelatedProjectLogo project={project} />
-      </div>
-      <div className="mt-6 md:mt-8 flex w-[100%] md:w-[428px] max-w-full flex-col gap-4">
-        <div className="flex items-start justify-between gap-4">
-          <p className="m-0 font-[family-name:var(--font-manrope)] text-[22px] md:text-[28px] font-bold leading-normal">
-            {project.title}
-          </p>
-          <ArrowUpRight className="mt-2 shrink-0 text-white/50" size={22} />
+      <motion.div whileTap={{ scale: 0.985, y: -2 }} transition={{ duration: 0.18 }} className="h-full">
+        <div
+          className="flex h-[200px] md:h-[308px] items-center justify-center rounded-[12px]"
+          style={{ background: project.bgColor }}
+        >
+          <RelatedProjectLogo project={project} />
         </div>
-        <p className="m-0 line-clamp-4 font-[family-name:var(--font-manrope)] text-[14px] md:text-[16px] font-normal leading-[1.5] tracking-[-0.2344px] text-white/60">
-          {project.description}
-        </p>
-      </div>
+        <div className="mt-6 md:mt-8 flex w-[100%] md:w-[428px] max-w-full flex-col gap-4">
+          <div className="flex items-start justify-between gap-4">
+            <p className="m-0 font-[family-name:var(--font-manrope)] text-[22px] md:text-[28px] font-bold leading-normal">
+              {project.title}
+            </p>
+            <ArrowUpRight className="mt-2 shrink-0 text-white/50" size={22} />
+          </div>
+          <p className="m-0 line-clamp-4 font-[family-name:var(--font-manrope)] text-[14px] md:text-[16px] font-normal leading-[1.5] tracking-[-0.2344px] text-white/60">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap items-center gap-[10px] pt-2">
+            {project.services.map((service) => (
+              <ServiceTag key={service} label={service} />
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </Link>
   );
 }

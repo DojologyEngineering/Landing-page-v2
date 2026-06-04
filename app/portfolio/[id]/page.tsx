@@ -14,6 +14,7 @@ import {
 import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
+import { MotionDiv } from "@/components/motion";
 import PortfolioDetailImage from "@/components/PortfolioDetailImage";
 import PortfolioMoreProjectsSection from "@/components/PortfolioMoreProjectsSection";
 import {
@@ -347,7 +348,12 @@ export default async function PortfolioDetailPage({ params }: Props) {
 
   return (
     <main className="w-full overflow-x-hidden bg-black text-white relative">
-      <div className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[194px] flex flex-col relative">
+      <MotionDiv
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.38, ease: "easeOut" }}
+        className="w-full max-w-[1440px] mx-auto px-4 md:px-10 lg:px-[194px] flex flex-col relative"
+      >
         
         {/* Header */}
         <div className="w-full flex flex-col gap-10 md:gap-[60px] pt-24 md:pt-[158px] mb-16 md:mb-[80px]">
@@ -544,7 +550,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
           projects={relatedProjects}
         />
 
-      </div>
+      </MotionDiv>
 
       <CTASection />
       <FooterSection />

@@ -34,6 +34,7 @@ export default function ProjectAutoRail({
   const dragStartXRef = useRef(0);
   const dragStartScrollLeftRef = useRef(0);
   const draggedRef = useRef(false);
+  const dragCaptureActiveRef = useRef(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [canLoop, setCanLoop] = useState(false);
   const items = useMemo(() => Children.toArray(children), [children]);
@@ -181,8 +182,7 @@ export default function ProjectAutoRail({
       dragStartXRef.current = event.clientX;
       dragStartScrollLeftRef.current = viewport.scrollLeft;
       draggedRef.current = false;
-      viewport.setPointerCapture(event.pointerId);
-      pauseAnimation(0);
+      dragCaptureActiveRef.current = false;
     };
     const handlePointerMove = (event: PointerEvent) => {
       if (dragPointerIdRef.current !== event.pointerId) {
@@ -191,24 +191,36 @@ export default function ProjectAutoRail({
 
       const deltaX = event.clientX - dragStartXRef.current;
 
-      if (Math.abs(deltaX) > 4) {
+      if (!draggedRef.current) {
+        if (Math.abs(deltaX) <= 4) {
+          return;
+        }
+
         draggedRef.current = true;
+        dragCaptureActiveRef.current = true;
+        viewport.setPointerCapture(event.pointerId);
+        pauseAnimation(0);
       }
 
       viewport.scrollLeft = dragStartScrollLeftRef.current - deltaX;
       rebaseLoopPosition();
+      event.preventDefault();
     };
     const finishPointerDrag = (event: PointerEvent) => {
       if (dragPointerIdRef.current !== event.pointerId) {
         return;
       }
 
-      if (viewport.hasPointerCapture(event.pointerId)) {
+      if (dragCaptureActiveRef.current && viewport.hasPointerCapture(event.pointerId)) {
         viewport.releasePointerCapture(event.pointerId);
       }
 
       dragPointerIdRef.current = null;
-      pauseAnimation(900);
+      dragCaptureActiveRef.current = false;
+
+      if (draggedRef.current) {
+        pauseAnimation(900);
+      }
     };
     const handleClickCapture = (event: MouseEvent) => {
       if (!draggedRef.current) {

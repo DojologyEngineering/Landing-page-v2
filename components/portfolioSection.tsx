@@ -162,6 +162,7 @@ function MobileProjectCard({ project, index }: { project: PortfolioProject; inde
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
+        whileTap={{ scale: 0.985 }}
         transition={{ duration: 0.45, delay: index * 0.06 }}
         className="overflow-hidden rounded-[24px] bg-[#10131c] p-3"
       >
@@ -195,6 +196,7 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         whileHover={{ y: -8 }}
+        whileTap={{ scale: 0.985, y: -2 }}
         transition={{ duration: 0.55, delay: index * 0.08 }}
         className="flex w-full cursor-pointer flex-col gap-8 overflow-hidden rounded-[24px] bg-[#10131c] p-4 pb-8 md:h-full"
       >
@@ -333,7 +335,7 @@ export default function PortfolioSection() {
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-[#010103] via-[#010103]/88 to-transparent lg:block" />
           <ProjectAutoRail
             className="px-[max(16px,calc((100vw-320px)/2))] md:px-[max(40px,calc((100vw-460px)/2))] lg:px-[max(194px,calc(50vw-526px))]"
-            segmentClassName="gap-4 md:gap-[30px]"
+            segmentClassName="gap-4 pr-4 md:gap-[30px] md:pr-[30px]"
             speed={42}
             resumeDelayMs={1900}
           >
