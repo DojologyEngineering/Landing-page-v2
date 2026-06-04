@@ -3,13 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
-import AutoHorizontalCarousel from "@/components/AutoHorizontalCarousel";
-import {
-  portfolioFilterLabels,
-  portfolioProjects,
-  type PortfolioProject,
-} from "@/lib/portfolio-data";
+import { useMemo } from "react";
+import ProjectAutoRail from "@/components/ProjectAutoRail";
+import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio-data";
 
 const projectLogoOverrides: Record<
   string,
@@ -39,8 +35,6 @@ const projectLogoOverrides: Record<
 
 const projectOrder = ["umami", "cashgrow", "prohose", "nsgcable", "agritrace"] as const;
 const projectOrderIndex = new Map<string, number>(projectOrder.map((id, index) => [id, index]));
-const preferredFilterOrder = ["All", "UMAMI", "CASHGROW68", "PROHOSE", "RNSG CRM", "ARG TECH"];
-const filterOrderIndex = new Map(preferredFilterOrder.map((label, index) => [label, index]));
 const projectGlowColors: Record<string, string> = {
   umami: "#005c3b",
   cashgrow: "#f59245",
@@ -86,16 +80,16 @@ function ServiceTag({ label }: { label: string }) {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "11px 31px",
-        borderRadius: "40px",
+        padding: "8px 14px",
+        borderRadius: "999px",
         border: "1px solid rgba(255,255,255,0.2)",
         background: "rgba(255,255,255,0.05)",
         color: "#fff",
         fontFamily: "Manrope, sans-serif",
-        fontSize: "16px",
-        fontWeight: 400,
-        lineHeight: "24.375px",
-        letterSpacing: "-0.2344px",
+        fontSize: "12px",
+        fontWeight: 500,
+        lineHeight: "1.2",
+        letterSpacing: "-0.12px",
         whiteSpace: "nowrap",
         flexShrink: 0,
       }}
@@ -146,6 +140,39 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
   );
 }
 
+function ProjectCover({ project }: { project: PortfolioProject }) {
+  return (
+    <div
+      className="relative flex h-[250px] shrink-0 items-center justify-center overflow-hidden rounded-[12px] sm:!h-[308px]"
+      style={{ background: project.bgColor }}
+    >
+      <ProjectLogo project={project} />
+    </div>
+  );
+}
+
+function MobileProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
+  return (
+    <Link
+      href={`/portfolio/${project.id}`}
+      aria-label={`View ${project.title} project details`}
+      className="block w-full text-inherit no-underline"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.45, delay: index * 0.06 }}
+        className="overflow-hidden rounded-[24px] bg-[#10131c] p-3"
+      >
+        <div className="overflow-hidden rounded-[18px]">
+          <ProjectCover project={project} />
+        </div>
+      </motion.div>
+    </Link>
+  );
+}
+
 // Single Project Card
 function ProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
   const glowColor = projectGlowColors[project.id] ?? project.bgColor;
@@ -171,14 +198,9 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
         transition={{ duration: 0.55, delay: index * 0.08 }}
         className="flex w-full cursor-pointer flex-col gap-8 overflow-hidden rounded-[24px] bg-[#10131c] p-4 pb-8 md:h-full"
       >
-        <div
-          className="relative flex h-[250px] shrink-0 items-center justify-center overflow-hidden rounded-[12px] sm:!h-[308px]"
-          style={{ background: project.bgColor }}
-        >
-          <ProjectLogo project={project} />
-        </div>
+        <ProjectCover project={project} />
 
-        <div className="flex w-full flex-1 flex-col gap-9">
+        <div className="flex w-full flex-1 flex-col gap-6">
           <div className="flex w-full flex-col gap-4">
             <p
               style={{
@@ -215,19 +237,14 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
             </div>
           </div>
 
-          <div
-            className="tags-scroll"
-            style={{
-              overflowX: "auto",
-              flexShrink: 0,
-            }}
-          >
+          <div style={{ flexShrink: 0 }}>
             <div
               style={{
                 display: "flex",
-                gap: "12px",
+                gap: "10px",
                 alignItems: "center",
-                width: "max-content",
+                flexWrap: "wrap",
+                width: "100%",
               }}
             >
               {project.services.map((s) => (
@@ -243,33 +260,15 @@ function ProjectCard({ project, index }: { project: PortfolioProject; index: num
 
 // Main Section
 export default function PortfolioSection() {
-  const [activeFilter, setActiveFilter] = useState("All");
-
-  const orderedFilterLabels = useMemo(
+  const orderedProjects = useMemo(
     () =>
-      [...portfolioFilterLabels].sort(
-        (left, right) =>
-          (filterOrderIndex.get(left) ?? Number.MAX_SAFE_INTEGER) -
-          (filterOrderIndex.get(right) ?? Number.MAX_SAFE_INTEGER),
-      ),
-    [],
-  );
-
-  const filteredProjects = useMemo(() => {
-    const visibleProjects = portfolioProjects.filter((project) => {
-      if (activeFilter === "All") {
-        return true;
-      }
-
-      return project.label === activeFilter;
-    });
-
-    return visibleProjects.sort(
+      [...portfolioProjects].sort(
       (left, right) =>
         (projectOrderIndex.get(left.id) ?? Number.MAX_SAFE_INTEGER) -
         (projectOrderIndex.get(right.id) ?? Number.MAX_SAFE_INTEGER),
-    );
-  }, [activeFilter]);
+      ),
+    [],
+  );
 
   return (
     <section
@@ -277,7 +276,7 @@ export default function PortfolioSection() {
       className="w-full overflow-hidden bg-[#010103] px-4 py-[80px] sm:!px-8 lg:!py-[120px]"
     >
       <div className="mx-auto flex max-w-[1052px] flex-col gap-16">
-        <div className="flex w-full flex-col items-center gap-8">
+        <div className="flex w-full flex-col items-center">
           <div
             style={{
               fontFamily: "Manrope, sans-serif",
@@ -321,72 +320,27 @@ export default function PortfolioSection() {
               PROJECT
             </p>
           </div>
-
-          <div
-            className="tags-scroll"
-            style={{
-              background: "rgba(255,255,255,0.05)",
-              borderRadius: "90px",
-              padding: "12px 24px",
-              width: "100%",
-              boxSizing: "border-box",
-              overflowX: "auto",
-              overflowY: "hidden",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                gap: "12px",
-                alignItems: "flex-end",
-                overflow: "visible",
-              }}
-            >
-              {orderedFilterLabels.map((label) => {
-                const isActive = activeFilter === label;
-                return (
-                  <button
-                    key={label}
-                    onClick={() => setActiveFilter(label)}
-                    style={{
-                      padding: "11px 31px",
-                      borderRadius: "40px",
-                      border: isActive ? "none" : "1px solid rgba(255,255,255,0.2)",
-                      background: isActive ? "#4f1ad6" : "transparent",
-                      color: "#fff",
-                      fontFamily: "Manrope, sans-serif",
-                      fontSize: "16px",
-                      fontWeight: isActive ? 700 : 400,
-                      lineHeight: "24.375px",
-                      letterSpacing: isActive ? "-0.2344px" : "-0.1504px",
-                      whiteSpace: "nowrap",
-                      cursor: "pointer",
-                      flexShrink: 0,
-                      transition: "background 0.2s, border 0.2s",
-                    }}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
-        <div className="relative left-1/2 w-[100vw] -translate-x-1/2">
-          <AutoHorizontalCarousel
-            key={activeFilter}
-            className="w-full overflow-x-auto overflow-y-hidden py-4"
-            trackClassName="gap-4 pl-[max(16px,calc((100vw-320px)/2))] pr-[max(16px,calc((100vw-320px)/2))] md:gap-[30px] md:pl-[max(40px,calc((100vw-460px)/2))] md:pr-[max(40px,calc((100vw-460px)/2))] lg:pl-[max(194px,calc(50vw-526px))] lg:pr-[max(194px,calc(50vw-526px))]"
-            itemSpan={490}
-            itemWidth={460}
-            logicalCount={filteredProjects.length}
-            allowTrailingSpacer={false}
+        <div className="flex flex-col gap-4 md:hidden">
+          {orderedProjects.map((project, index) => (
+            <MobileProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
+
+        <div className="relative left-1/2 hidden w-[100vw] -translate-x-1/2 md:block">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-[#010103] via-[#010103]/88 to-transparent lg:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-[#010103] via-[#010103]/88 to-transparent lg:block" />
+          <ProjectAutoRail
+            className="px-[max(16px,calc((100vw-320px)/2))] md:px-[max(40px,calc((100vw-460px)/2))] lg:px-[max(194px,calc(50vw-526px))]"
+            segmentClassName="gap-4 md:gap-[30px]"
+            speed={42}
+            resumeDelayMs={1900}
           >
-            {filteredProjects.map((project, index) => (
+            {orderedProjects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
-          </AutoHorizontalCarousel>
+          </ProjectAutoRail>
         </div>
       </div>
     </section>

@@ -211,7 +211,6 @@
 .portfolio-horizontal-scroll {
   overscroll-behavior-x: contain;
   scroll-behavior: smooth;
-  touch-action: pan-x;
 }
 
 .portfolio-detail-scroll {
