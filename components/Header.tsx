@@ -15,9 +15,9 @@ const menuItems: MenuItem[] = [
   { label: "About us", href: "#about" },
   { label: "Our Team", href: "#team" },
   { label: "Service", href: "#services" },
-  { label: "Blog" },
   { label: "Studio Model", href: "#studio" },
   { label: "Portfolio", href: "#portfolio" },
+  { label: "Blogs" },
 ];
 
 function NavLabel({
