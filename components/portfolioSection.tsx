@@ -140,10 +140,16 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
   );
 }
 
-function ProjectCover({ project }: { project: PortfolioProject }) {
+function ProjectCover({
+  project,
+  className = "",
+}: {
+  project: PortfolioProject;
+  className?: string;
+}) {
   return (
     <div
-      className="relative flex h-[250px] shrink-0 items-center justify-center overflow-hidden rounded-[12px] sm:!h-[308px]"
+      className={`relative flex h-[250px] shrink-0 items-center justify-center overflow-hidden rounded-[12px] sm:!h-[308px] ${className}`}
       style={{ background: project.bgColor }}
     >
       <ProjectLogo project={project} />
@@ -152,6 +158,9 @@ function ProjectCover({ project }: { project: PortfolioProject }) {
 }
 
 function MobileProjectCard({ project, index }: { project: PortfolioProject; index: number }) {
+  const glowColor = projectGlowColors[project.id] ?? project.bgColor;
+  const blurGlow = `radial-gradient(circle at center, ${hexToRgba(glowColor, 0.2)} 0%, ${hexToRgba(glowColor, 0.06)} 42%, rgba(0, 0, 0, 0) 78%)`;
+
   return (
     <Link
       href={`/portfolio/${project.id}`}
@@ -164,10 +173,33 @@ function MobileProjectCard({ project, index }: { project: PortfolioProject; inde
         viewport={{ once: true, amount: 0.2 }}
         whileTap={{ scale: 0.985 }}
         transition={{ duration: 0.45, delay: index * 0.06 }}
-        className="overflow-hidden rounded-[24px] bg-[#10131c] p-3"
+        className="overflow-hidden rounded-[26px] border border-white/8 bg-[#10131c] p-3 shadow-[0_18px_50px_rgba(0,0,0,0.34)]"
       >
-        <div className="overflow-hidden rounded-[18px]">
-          <ProjectCover project={project} />
+        <div className="relative h-[310px] overflow-hidden rounded-[20px] bg-[#0d1017]">
+          <div className="absolute inset-0 scale-[1.01] blur-[4px] opacity-58">
+            <ProjectCover project={project} className="h-full !rounded-[20px] sm:!h-full" />
+          </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, rgba(3,5,10,0.01) 0%, rgba(3,5,10,0.05) 42%, rgba(3,5,10,0.16) 100%)",
+            }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{ background: blurGlow }}
+          />
+          <div className="relative z-10 flex h-full items-center justify-center p-4">
+            <div className="flex w-full items-start justify-center pt-2">
+              <ProjectCover
+                project={project}
+                className="h-[190px] w-[92%] !rounded-[8px] shadow-[0_22px_40px_rgba(0,0,0,0.18)] sm:!h-[190px]"
+              />
+            </div>
+          </div>
         </div>
       </motion.div>
     </Link>
