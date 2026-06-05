@@ -19,15 +19,10 @@ export default function ProjectAutoRail({
   className = "",
   segmentClassName = "",
   speed = 46,
-  resumeDelayMs = 1600,
 }: ProjectAutoRailProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const segmentRef = useRef<HTMLDivElement>(null);
   const segmentWidthRef = useRef(0);
-  const pauseUntilRef = useRef(0);
-  const isPointerInsideRef = useRef(false);
-  const isTouchingRef = useRef(false);
-  const isFocusedRef = useRef(false);
   const isVisibleRef = useRef(false);
   const prefersReducedMotionRef = useRef(false);
   const dragPointerIdRef = useRef<number | null>(null);
@@ -115,9 +110,6 @@ export default function ProjectAutoRail({
       return;
     }
 
-    const pauseAnimation = (delay = resumeDelayMs) => {
-      pauseUntilRef.current = performance.now() + delay;
-    };
     const rebaseLoopPosition = () => {
       const segmentWidth = segmentWidthRef.current;
 
@@ -131,31 +123,6 @@ export default function ProjectAutoRail({
         viewport.scrollLeft -= segmentWidth;
       }
     };
-    const handlePointerEnter = () => {
-      isPointerInsideRef.current = true;
-    };
-    const handlePointerLeave = () => {
-      isPointerInsideRef.current = false;
-      pauseUntilRef.current = 0;
-    };
-    const handleFocusIn = () => {
-      isFocusedRef.current = true;
-    };
-    const handleFocusOut = () => {
-      isFocusedRef.current = viewport.contains(document.activeElement);
-
-      if (!isFocusedRef.current) {
-        pauseAnimation();
-      }
-    };
-    const handleTouchStart = () => {
-      isTouchingRef.current = true;
-      pauseAnimation(0);
-    };
-    const handleTouchEnd = () => {
-      isTouchingRef.current = false;
-      pauseAnimation();
-    };
     const handleScroll = () => {
       rebaseLoopPosition();
     };
@@ -163,8 +130,6 @@ export default function ProjectAutoRail({
       event.preventDefault();
     };
     const handleWheel = (event: WheelEvent) => {
-      pauseAnimation(900);
-
       if (!event.shiftKey || Math.abs(event.deltaY) <= 0) {
         return;
       }
@@ -199,7 +164,6 @@ export default function ProjectAutoRail({
         draggedRef.current = true;
         dragCaptureActiveRef.current = true;
         viewport.setPointerCapture(event.pointerId);
-        pauseAnimation(0);
       }
 
       viewport.scrollLeft = dragStartScrollLeftRef.current - deltaX;
@@ -217,10 +181,6 @@ export default function ProjectAutoRail({
 
       dragPointerIdRef.current = null;
       dragCaptureActiveRef.current = false;
-
-      if (draggedRef.current) {
-        pauseAnimation(900);
-      }
     };
     const handleClickCapture = (event: MouseEvent) => {
       if (!draggedRef.current) {
@@ -232,13 +192,6 @@ export default function ProjectAutoRail({
       draggedRef.current = false;
     };
 
-    viewport.addEventListener("pointerenter", handlePointerEnter);
-    viewport.addEventListener("pointerleave", handlePointerLeave);
-    viewport.addEventListener("focusin", handleFocusIn);
-    viewport.addEventListener("focusout", handleFocusOut);
-    viewport.addEventListener("touchstart", handleTouchStart, { passive: true });
-    viewport.addEventListener("touchend", handleTouchEnd, { passive: true });
-    viewport.addEventListener("touchcancel", handleTouchEnd, { passive: true });
     viewport.addEventListener("scroll", handleScroll, { passive: true });
     viewport.addEventListener("dragstart", handleDragStart);
     viewport.addEventListener("wheel", handleWheel, { passive: false });
@@ -249,13 +202,6 @@ export default function ProjectAutoRail({
     viewport.addEventListener("click", handleClickCapture, true);
 
     return () => {
-      viewport.removeEventListener("pointerenter", handlePointerEnter);
-      viewport.removeEventListener("pointerleave", handlePointerLeave);
-      viewport.removeEventListener("focusin", handleFocusIn);
-      viewport.removeEventListener("focusout", handleFocusOut);
-      viewport.removeEventListener("touchstart", handleTouchStart);
-      viewport.removeEventListener("touchend", handleTouchEnd);
-      viewport.removeEventListener("touchcancel", handleTouchEnd);
       viewport.removeEventListener("scroll", handleScroll);
       viewport.removeEventListener("dragstart", handleDragStart);
       viewport.removeEventListener("wheel", handleWheel);
@@ -265,7 +211,7 @@ export default function ProjectAutoRail({
       viewport.removeEventListener("pointercancel", finishPointerDrag);
       viewport.removeEventListener("click", handleClickCapture, true);
     };
-  }, [isLooping, resumeDelayMs]);
+  }, [isLooping]);
 
   useEffect(() => {
     if (!isLooping) {
@@ -286,19 +232,10 @@ export default function ProjectAutoRail({
 
       if (
         !isVisibleRef.current ||
-        isPointerInsideRef.current ||
-        isTouchingRef.current ||
-        isFocusedRef.current ||
         prefersReducedMotionRef.current ||
         document.visibilityState !== "visible" ||
         segmentWidth <= 0
       ) {
-        lastTimestamp = timestamp;
-        animationFrame = window.requestAnimationFrame(step);
-        return;
-      }
-
-      if (timestamp < pauseUntilRef.current) {
         lastTimestamp = timestamp;
         animationFrame = window.requestAnimationFrame(step);
         return;
