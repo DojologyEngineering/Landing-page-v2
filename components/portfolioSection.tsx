@@ -26,6 +26,11 @@ const projectLogoOverrides: Record<
     width: 1284,
     height: 924,
   },
+  nsgcable: {
+    src: "/logo/rnsg-crm.png",
+    width: 1280,
+    height: 720,
+  },
   agritrace: {
     src: "/logo/argtech-project.png",
     width: 856,
@@ -106,7 +111,7 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
     project.id === "umami" || project.id === "agritrace"
       ? 130
       : project.id === "nsgcable"
-        ? 150
+        ? 200
       : project.id === "prohose"
         ? 240
         : 200;
@@ -128,6 +133,8 @@ function ProjectLogo({ project }: { project: PortfolioProject }) {
         alt={project.logo.alt}
         width={logo.width}
         height={logo.height}
+        quality={100}
+        sizes="(max-width: 768px) 92vw, 428px"
         style={{
           height: shouldFillCard ? "100%" : "auto",
           maxHeight: shouldFillCard ? "100%" : `${logoMaxSize}px`,
