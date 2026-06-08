@@ -311,10 +311,10 @@ export const portfolioProjects: PortfolioProject[] = [
     detailTitle: "RNSG CRM",
     bgColor: "#4f1ad6",
     logo: {
-      src: "/logo/nsg-card-figma.png",
-      alt: "RNSG CRM Logo",
-      width: 200,
-      height: 200,
+      src: "/logo/rnsg-crm.png",
+      alt: "RNSG CRM project preview",
+      width: 1280,
+      height: 720,
     },
     description:
       "A comprehensive, dual-platform management ecosystem connecting field agents, warehouse operations, and retailers through a Telegram-based Field Intelligence Bot and a Centralized Command Center web portal.",
