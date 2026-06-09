@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function CollaborateModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollYRef = useRef(0);
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,20 +24,42 @@ export default function CollaborateModal() {
     return () => window.removeEventListener("open-collaborate-modal", handleOpen);
   }, []);
 
-  // Prevent background scrolling when modal is open
   useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
     const { body, documentElement } = document;
     const previousBodyOverflow = body.style.overflow;
+    const previousBodyPosition = body.style.position;
+    const previousBodyTop = body.style.top;
+    const previousBodyWidth = body.style.width;
+    const previousBodyLeft = body.style.left;
+    const previousBodyRight = body.style.right;
     const previousHtmlOverflow = documentElement.style.overflow;
+    const previousScrollBehavior = documentElement.style.scrollBehavior;
 
-    if (isOpen) {
-      body.style.overflow = "hidden";
-      documentElement.style.overflow = "hidden";
-    }
+    scrollYRef.current = window.scrollY;
+
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollYRef.current}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    documentElement.style.overflow = "hidden";
 
     return () => {
       body.style.overflow = previousBodyOverflow;
+      body.style.position = previousBodyPosition;
+      body.style.top = previousBodyTop;
+      body.style.width = previousBodyWidth;
+      body.style.left = previousBodyLeft;
+      body.style.right = previousBodyRight;
       documentElement.style.overflow = previousHtmlOverflow;
+      documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, scrollYRef.current);
+      documentElement.style.scrollBehavior = previousScrollBehavior;
     };
   }, [isOpen]);
 
