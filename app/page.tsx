@@ -10,12 +10,14 @@ import AdvisorCarousel from "@/components/AdvisorCarousel";
 import CTASection from "@/components/CTASection";
 import MissionSection from "@/components/MissionSection";
 import StudioModelSection from "@/components/StudioModelSection";
+import PageEntryLoader from "@/components/PageEntryLoader";
 
 const SHOW_ADVISOR_CAROUSEL = false;
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
+      <PageEntryLoader />
       <HeroSection />
       <StatsSection/>
       <PrinciplesSection />
