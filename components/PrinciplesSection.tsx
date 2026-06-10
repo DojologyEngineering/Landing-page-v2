@@ -33,7 +33,7 @@ export default function PrinciplesSection() {
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className="bg-black pt-[80px] pb-[80px] px-4 sm:px-8 md:px-12 lg:pt-[120px] lg:pb-[120px] lg:px-[194px] flex flex-col items-start gap-[64px] lg:gap-[124px]"
+      className="bg-black px-4 pt-16 pb-12 sm:px-8 md:px-12 md:pt-20 md:pb-16 lg:px-[194px] lg:pt-[120px] lg:pb-[120px] flex flex-col items-start gap-12 lg:gap-[124px]"
     >
       <div className="w-full flex flex-col items-center gap-8">
         {/* About Us Badge */}

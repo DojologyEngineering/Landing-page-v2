@@ -112,7 +112,7 @@ export default function TeamSection() {
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className="bg-[#2F1893] px-4 py-24 md:px-10 lg:px-[194px] lg:py-[100px]"
+      className="bg-[#2F1893] px-4 pt-20 pb-14 md:px-10 md:pt-24 md:pb-20 lg:px-[194px] lg:py-[100px]"
     >
       <div className="mx-auto flex w-full max-w-[1052px] flex-col gap-16 text-white lg:gap-[100px]">
         <div className="flex flex-col gap-5 md:gap-[30px]">
