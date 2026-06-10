@@ -46,7 +46,7 @@ export default function ServicesSection() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.15 }}
-      className="relative w-full bg-black flex justify-center py-[120px]"
+      className="relative flex w-full justify-center bg-black py-10 md:py-20 lg:py-[120px]"
     >
       {/* Container */}
       <div
@@ -54,8 +54,8 @@ export default function ServicesSection() {
           relative
           w-full max-w-[1052px]
           flex flex-col items-center
-          px-4 sm:px-8 py-[60px] sm:py-[80px] lg:px-[43px] lg:py-[120px]
-          gap-[60px]
+          px-4 py-10 sm:px-8 sm:py-[72px] lg:px-[43px] lg:py-[120px]
+          gap-12 md:gap-[60px]
           rounded-[20px]
           border border-white/5
           overflow-hidden
@@ -190,7 +190,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom section - 3 Secondary Cards */}
-        <div className="w-full h-px bg-gradient-to-r from-[rgba(255,255,255,0.02)] via-[rgba(255,255,255,0.10)] to-[rgba(255,255,255,0.02)] my-8" />
+        <div className="my-6 h-px w-full bg-gradient-to-r from-[rgba(255,255,255,0.02)] via-[rgba(255,255,255,0.10)] to-[rgba(255,255,255,0.02)] md:my-8" />
         <div className="relative z-10 grid w-full grid-cols-3 items-start gap-2 sm:gap-4 md:gap-8 lg:flex lg:flex-wrap lg:justify-between">
           {[
             { title: "Equity Shares", icon: "/assets/equity-share.svg", iconOffsetY: 2 },

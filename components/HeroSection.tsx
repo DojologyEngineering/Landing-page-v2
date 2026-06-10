@@ -23,9 +23,13 @@ const automationLogos = [
   { src: "/logo/yeac-figma.png", alt: "YEAC" },
   { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
   { src: "/logo/auscham-logo.png?v=2", alt: "AusCham" },
+  { src: "/logo/cci-logo.png", alt: "CCI France Cambodge" },
+  { src: "/logo/euro-cham.png", alt: "EuroCham" },
   { src: "/logo/yeac-figma.png", alt: "YEAC" },
   { src: "/logo/partner-emblem-figma.png", alt: "Partner emblem" },
   { src: "/logo/auscham-logo.png?v=2", alt: "AusCham" },
+  { src: "/logo/cci-logo.png", alt: "CCI France Cambodge" },
+  { src: "/logo/euro-cham.png", alt: "EuroCham" },
 ];
 
 function getAutomationLogoSize(alt?: string) {
@@ -36,6 +40,10 @@ function getAutomationLogoSize(alt?: string) {
       return { width: 62, height: 48 };
     case "YEAC":
       return { width: 66, height: 48 };
+    case "CCI France Cambodge":
+      return { width: 124, height: 42 };
+    case "EuroCham":
+      return { width: 122, height: 47 };
     default:
       return { width: 58, height: 48 };
   }
@@ -238,7 +246,8 @@ export default function HeroSection() {
                 return (
                   <div
                     key={key}
-                    className="flex h-[48px] w-[120px] items-center justify-center"
+                    className="flex h-[48px] shrink-0 items-center justify-center"
+                    style={{ width: `${size.width}px` }}
                   >
                     <img
                       src={item.src}
