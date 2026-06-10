@@ -77,10 +77,10 @@ export default function StudioModelSection() {
   const fillPct      = (activePhase / (phases.length - 1)) * 100;
 
   return (
-    <section id="studio" className="w-full overflow-hidden bg-black px-4 pt-10 pb-16 text-white md:px-10 md:py-24 lg:px-[194px] font-[family-name:var(--font-inter)]">
+    <section id="studio" className="w-full overflow-hidden bg-black px-4 pt-10 pb-16 text-white md:px-10 md:py-24 lg:px-[194px] lg:pt-20 lg:pb-20 font-[family-name:var(--font-inter)]">
       <style>{NEON_CSS}</style>
 
-      <div className="mx-auto flex max-w-[1052px] flex-col items-center gap-10 md:gap-16 lg:gap-32">
+      <div className="mx-auto flex max-w-[1052px] flex-col items-center gap-10 md:gap-16 lg:gap-24">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center gap-8">
